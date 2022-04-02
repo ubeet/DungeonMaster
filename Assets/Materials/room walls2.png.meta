@@ -1,0 +1,688 @@
+fileFormatVersion: 2
+guid: 799ac3890362f4e94af0f31e64fbc1eb
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6390117771990832438
+    second: room walls2_0
+  - first:
+      213: 7423594119926942357
+    second: room walls2_1
+  - first:
+      213: -8632090692551344496
+    second: room walls2_2
+  - first:
+      213: 3527097216489708111
+    second: room walls2_3
+  - first:
+      213: -3770320458619784355
+    second: room walls2_4
+  - first:
+      213: 7802159950968200246
+    second: room walls2_5
+  - first:
+      213: 3864334462393137445
+    second: room walls2_6
+  - first:
+      213: 780249179381220654
+    second: room walls2_7
+  - first:
+      213: -163985856059033371
+    second: room walls2_8
+  - first:
+      213: -2651236559991419056
+    second: room walls2_9
+  - first:
+      213: -6984380815237292672
+    second: room walls2_10
+  - first:
+      213: -1108176181633166068
+    second: room walls2_11
+  - first:
+      213: 2885245381186991580
+    second: room walls2_12
+  - first:
+      213: -2051916693066753196
+    second: room walls2_13
+  - first:
+      213: 5454587541025581943
+    second: room walls2_14
+  - first:
+      213: -7172578048014546165
+    second: room walls2_15
+  - first:
+      213: 9037233236203911524
+    second: room walls2_16
+  - first:
+      213: -164350844485311432
+    second: room walls2_17
+  - first:
+      213: -7656869834797808381
+    second: room walls2_18
+  - first:
+      213: -7454100931693450412
+    second: room walls2_19
+  - first:
+      213: 4988851236140704080
+    second: room walls2_20
+  - first:
+      213: 884739725901692503
+    second: room walls2_21
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 24
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: room walls2_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 94
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6359c60e1424ea850800000000000000
+      internalID: 6390117771990832438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room walls2_1
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 94
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59a8cea2587e50760800000000000000
+      internalID: 7423594119926942357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room walls2_2
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 93
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09e7589ff37a43880800000000000000
+      internalID: -8632090692551344496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room walls2_3
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 93
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4a53252b34c2f030800000000000000
+      internalID: 3527097216489708111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room walls2_4
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 93
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d537496d4812dabc0800000000000000
+      internalID: -3770320458619784355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room walls2_5
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 93
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63c1d364327d64c60800000000000000
+      internalID: 7802159950968200246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room walls2_6
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 65
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5293e3c28bfd0a530800000000000000
+      internalID: 3864334462393137445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room walls2_7
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 65
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e25ce45ae7004da00800000000000000
+      internalID: 780249179381220654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room walls2_8
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 38
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e8b9659bb769bdf0800000000000000
+      internalID: -163985856059033371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room walls2_9
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 38
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05fce22456ae43bd0800000000000000
+      internalID: -2651236559991419056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room walls2_10
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 38
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08d5ab347ae721f90800000000000000
+      internalID: -6984380815237292672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room walls2_11
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 38
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c05d43952a7fe90f0800000000000000
+      internalID: -1108176181633166068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room walls2_12
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 69
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -12, y: 12}
+        - {x: -12, y: -12}
+        - {x: 12, y: -12}
+        - {x: 12, y: 12}
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd5bc7333637a0820800000000000000
+      internalID: 2885245381186991580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room walls2_13
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 69
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -12, y: -12}
+        - {x: -12, y: 12}
+        - {x: 12, y: 12}
+        - {x: 12, y: -12}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45bdf01a3a02683e0800000000000000
+      internalID: -2051916693066753196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room walls2_14
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 38
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77be91b087692bb40800000000000000
+      internalID: 5454587541025581943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room walls2_15
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 14
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0b045c6442e57c90800000000000000
+      internalID: -7172578048014546165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room walls2_16
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 14
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 469b94c3fb3ba6d70800000000000000
+      internalID: 9037233236203911524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room walls2_17
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 14
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -12, y: -12}
+        - {x: -12, y: 12}
+        - {x: 12, y: 12}
+        - {x: 12, y: -12}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 834eae717cb18bdf0800000000000000
+      internalID: -164350844485311432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room walls2_18
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 14
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -12, y: -12}
+        - {x: -12, y: 12}
+        - {x: 12, y: 12}
+        - {x: 12, y: -12}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 305097df3755db590800000000000000
+      internalID: -7656869834797808381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room walls2_19
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 14
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45be08632b6bd8890800000000000000
+      internalID: -7454100931693450412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room walls2_20
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 38
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0516f6764c5fb3540800000000000000
+      internalID: 4988851236140704080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: room walls2_21
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 14
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75efb09d71a374c00800000000000000
+      internalID: 884739725901692503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
