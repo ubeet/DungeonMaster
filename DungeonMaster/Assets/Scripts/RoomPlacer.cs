@@ -17,7 +17,7 @@ public class RoomPlacer : MonoBehaviour
     {
         spawnedRooms = new Room[11, 11];
         spawnedRooms[5, 5] = startRoom;
-        for (int i = 0; i < 15; i++)
+        for (int i = 0; i < 6; i++)
         {
             PlaceOneRoom();
         }
