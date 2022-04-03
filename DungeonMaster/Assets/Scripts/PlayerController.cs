@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
     private Vector2 direction;
+    
+    public SpriteRenderer lamp;
 
     public GameObject GunPosChange;
     //public Joystick joystick;
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
         direction.y = Input.GetAxis("Vertical");
         if(direction.y == 0 && direction.x == 0)
             State = position;
+
         if (Input.GetButton("Fire1"))
         {
             gun.enabled = true;
@@ -41,25 +44,32 @@ public class PlayerController : MonoBehaviour
                 State = States.up;
                 position = States.idle_up;
                 gun.sortingOrder = 0;
-                
+                lamp.sortingOrder = 0;
+                lamp.flipX = true;
             }
             else if (GunPosChange.transform.rotation.z > -0.922 && GunPosChange.transform.rotation.z <= -0.386)
             {
                 State = States.down;
                 position = States.idle_down;
                 gun.sortingOrder = 2;
+                lamp.sortingOrder = 2;
+                lamp.flipX = false;
             }
             else if (GunPosChange.transform.rotation.z > -0.386 && GunPosChange.transform.rotation.z <= 0.386)
             {
                 State = States.right;
                 position = States.idle_right;
                 gun.sortingOrder = 2;
+                lamp.sortingOrder = 0;
+                lamp.flipX = false;
             }
             else if (!(GunPosChange.transform.rotation.z > -0.922 && GunPosChange.transform.rotation.z <= 0.922))
             {
                 State = States.left;
                 position = States.idle_left;
                 gun.sortingOrder = 0;
+                lamp.sortingOrder = 2;
+                lamp.flipX = true;
             }
         }
         else
@@ -69,28 +79,32 @@ public class PlayerController : MonoBehaviour
             {
                 State = States.right;
                 position = States.idle_right;
-                //gun.sortingOrder = 2;
+                lamp.sortingOrder = 0;
+                lamp.flipX = false;
             }
             else if (direction.x < 0)
             {
                 State = States.left;
                 position = States.idle_left;
-                //gun.sortingOrder = 0;
+                lamp.sortingOrder = 2;
+                lamp.flipX = true;
             }
             else if (direction.y < 0)
             {
                 State = States.down;
                 position = States.idle_down;
-                //gun.sortingOrder = 2;
+                lamp.sortingOrder = 2;
+                lamp.flipX = false;
             }
             else if (direction.y > 0)
             {
                 State = States.up;
                 position = States.idle_up;
-                //gun.sortingOrder = 0;
+                lamp.sortingOrder = 0;
+                lamp.flipX = true;
             }
+            
         }
-        
     }
 
     void FixedUpdate()
