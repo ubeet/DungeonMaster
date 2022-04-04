@@ -135,6 +135,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2588108814052973908, guid: cbf5ee927b5804e4ca9014a914b0bd7b, type: 3}
+      propertyPath: m_TileColorArray.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588108814052973908, guid: cbf5ee927b5804e4ca9014a914b0bd7b, type: 3}
+      propertyPath: m_TileMatrixArray.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588108814052973908, guid: cbf5ee927b5804e4ca9014a914b0bd7b, type: 3}
+      propertyPath: m_TileSpriteArray.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588108814052973908, guid: cbf5ee927b5804e4ca9014a914b0bd7b, type: 3}
       propertyPath: m_Tiles.Array.data[0].first.x
       value: 21
       objectReference: {fileID: 0}
@@ -620,6 +632,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2588108814309899561, guid: cbf5ee927b5804e4ca9014a914b0bd7b, type: 3}
       propertyPath: m_Tiles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588108814309899561, guid: cbf5ee927b5804e4ca9014a914b0bd7b, type: 3}
+      propertyPath: m_TileColorArray.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588108814309899561, guid: cbf5ee927b5804e4ca9014a914b0bd7b, type: 3}
+      propertyPath: m_TileMatrixArray.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588108814309899561, guid: cbf5ee927b5804e4ca9014a914b0bd7b, type: 3}
+      propertyPath: m_TileSpriteArray.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2588108814309899561, guid: cbf5ee927b5804e4ca9014a914b0bd7b, type: 3}
@@ -1116,6 +1140,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2588108814731799177, guid: cbf5ee927b5804e4ca9014a914b0bd7b, type: 3}
       propertyPath: m_Tiles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588108814731799177, guid: cbf5ee927b5804e4ca9014a914b0bd7b, type: 3}
+      propertyPath: m_TileColorArray.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588108814731799177, guid: cbf5ee927b5804e4ca9014a914b0bd7b, type: 3}
+      propertyPath: m_TileMatrixArray.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588108814731799177, guid: cbf5ee927b5804e4ca9014a914b0bd7b, type: 3}
+      propertyPath: m_TileSpriteArray.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2588108814731799177, guid: cbf5ee927b5804e4ca9014a914b0bd7b, type: 3}
@@ -2100,7 +2136,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.06441792, g: 0.06490762, b: 0.066037714, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
