@@ -2822,8 +2822,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomPrefabs:
   - {fileID: 8177475597660798148, guid: 1497c8a3144a08243b3ebde45142d128, type: 3}
-  startRoom: {fileID: 8177475597660798148, guid: 1497c8a3144a08243b3ebde45142d128, type: 3}
-  corVert: {fileID: 4288184365980572379, guid: 95362417958820b47bd42f3e3a241f1f, type: 3}
+  - {fileID: 8177475597660798148, guid: 1497c8a3144a08243b3ebde45142d128, type: 3}
+  startRoom: {fileID: 1734572152}
+  corVert: {fileID: 2636115066193363185, guid: 95362417958820b47bd42f3e3a241f1f, type: 3}
   corHor: {fileID: 2588108815685405522, guid: cbf5ee927b5804e4ca9014a914b0bd7b, type: 3}
 --- !u!4 &1321722811
 Transform:
@@ -2837,7 +2838,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1427437733
 GameObject:
@@ -3077,6 +3078,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1734572152 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8177475597660798148, guid: 1497c8a3144a08243b3ebde45142d128, type: 3}
+  m_PrefabInstance: {fileID: 8177475597578470857}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9175533fe6b1b479b9a71fa2fb706ff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8177475597578470857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3106,7 +3118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8177475597660798150, guid: 1497c8a3144a08243b3ebde45142d128, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8177475597660798150, guid: 1497c8a3144a08243b3ebde45142d128, type: 3}
       propertyPath: m_LocalPosition.x
