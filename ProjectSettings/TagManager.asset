@@ -6,6 +6,7 @@ TagManager:
   tags:
   - stop
   - don't stop
+  - bortik
   layers:
   - Default
   - TransparentFX

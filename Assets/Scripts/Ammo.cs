@@ -20,7 +20,7 @@ public class Ammo : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag != "Player")
+        if(other.gameObject.tag != "Player" && other.gameObject.tag != "bortik")
             Destroy(gameObject);
     }
 
