@@ -48,7 +48,7 @@ public class RoomPlacer : MonoBehaviour
         
         Vector2Int position = vacantPlaces.ElementAt(Random.Range(0, vacantPlaces.Count));
         ConnectToRooms(newRoom, position);
-        newRoom.transform.position = new Vector3((position.x - 5) * 36, (position.y - 5) * 27, 0);
+        newRoom.transform.position = new Vector3((position.x - 5) * 28, (position.y - 5) * 24, 0);
         spawnedRooms[position.x, position.y] = newRoom;
         /*int limit = 500;
         while (limit-- > 0)
@@ -84,7 +84,7 @@ public class RoomPlacer : MonoBehaviour
         {
             room.doorU.SetActive(false);
             selectedRoom.doorD.SetActive(false);
-            Instantiate(corVert, new Vector3((pos.x - 5) * 36, (pos.y - 5) * 27, 0), Quaternion.identity);
+            Instantiate(corVert, new Vector3((pos.x - 5) * 28, (pos.y - 5) * 24, 0), Quaternion.identity);
             //GameObject corridorU = Instantiate(corVert);
             //corridorU.transform.position = room.transform.position;
         }
@@ -92,7 +92,7 @@ public class RoomPlacer : MonoBehaviour
         {
             room.doorR.SetActive(false);
             selectedRoom.doorL.SetActive(false);
-            Instantiate(corHor, new Vector3((pos.x - 5) * 36, (pos.y - 5) * 27, 0), Quaternion.identity);            //GameObject corridorL = Instantiate(corHor);
+            Instantiate(corHor, new Vector3((pos.x - 5) * 28, (pos.y - 5) * 24, 0), Quaternion.identity);            //GameObject corridorL = Instantiate(corHor);
             //GameObject corridorR = Instantiate(corHor);
             //corridorR.transform.position = room.transform.position;
         }
@@ -100,7 +100,7 @@ public class RoomPlacer : MonoBehaviour
         {
             room.doorD.SetActive(false);
             selectedRoom.doorU.SetActive(false);
-            Instantiate(corVert, new Vector3((pos.x - 5) * 36, (pos.y - 5) * 27 - 27, 0), Quaternion.identity);
+            Instantiate(corVert, new Vector3((pos.x - 5) * 28, (pos.y - 5) * 24 - 24, 0), Quaternion.identity);
             //GameObject corridorD = Instantiate(corVert);
             //corridorD.transform.position = new Vector3(room.transform.position.x - 36, room.transform.position.y, room.transform.position.z);
         }
@@ -108,7 +108,7 @@ public class RoomPlacer : MonoBehaviour
         {
             room.doorL.SetActive(false);
             selectedRoom.doorR.SetActive(false);
-            Instantiate(corHor, new Vector3((pos.x - 5) * 36 - 36, (pos.y - 5) * 27, 0), Quaternion.identity);            //GameObject corridorL = Instantiate(corHor);
+            Instantiate(corHor, new Vector3((pos.x - 5) * 28 - 28, (pos.y - 5) * 24, 0), Quaternion.identity);            //GameObject corridorL = Instantiate(corHor);
             //corridorL.transform.position = new Vector3(room.transform.position.x, room.transform.position.y - 27, room.transform.position.z);
         }
 
