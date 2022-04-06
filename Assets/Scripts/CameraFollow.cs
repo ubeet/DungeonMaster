@@ -6,12 +6,14 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     [Header("Parameters")]
+    private Transform transform;
     [SerializeField] private Transform playerTransform;
     [SerializeField] private string playerTag;
     [SerializeField] private float movingSpeed;
 
     private void Awake()
     {
+        transform = GetComponent<Transform>();
         if (playerTransform == null)
         {
             if (playerTag == "")

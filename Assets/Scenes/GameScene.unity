@@ -430,7 +430,6 @@ GameObject:
   - component: {fileID: 261145556}
   - component: {fileID: 261145560}
   - component: {fileID: 261145557}
-  - component: {fileID: 261145559}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -542,18 +541,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &261145559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261145554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4867f778aa7044b2cb44eb1abb196563, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &261145560
 Animator:
   serializedVersion: 3
@@ -1108,7 +1095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!156049354 &862591864
 Grid:
   m_ObjectHideFlags: 0
@@ -1822,6 +1809,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5597826920980289690, guid: 1497c8a3144a08243b3ebde45142d128, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5597826921158970516, guid: 1497c8a3144a08243b3ebde45142d128, type: 3}
       propertyPath: m_Tiles.Array.size
       value: 8

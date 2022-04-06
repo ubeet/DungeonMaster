@@ -26,22 +26,26 @@ public class PlayerController : MonoBehaviour
         gun.enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnMouseDown()
     {
+        Debug.Log("OnMouseDown");
+    }
+    // Update is called once per frame
+    void FixedUpdate() {
+        rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
         //direction.x = joystick.Horizontal;
         //direction.y = joystick.Vertical;
         direction.x = Input.GetAxis("Horizontal");
         direction.y = Input.GetAxis("Vertical");
-        if(direction.y == 0 && direction.x == 0)
-            State = position;
+        bool stay = direction.y == 0 && direction.x == 0;
+            
 
         if (Input.GetButton("Fire1"))
         {
             gun.enabled = true;
             if (GunPosChange.transform.rotation.z > 0.386 && GunPosChange.transform.rotation.z < 0.922)
             {
-                State = States.up;
+                State = stay ? States.idle_up : States.up;
                 position = States.idle_up;
                 gun.sortingOrder = 0;
                 lamp.sortingOrder = 0;
@@ -49,7 +53,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (GunPosChange.transform.rotation.z > -0.922 && GunPosChange.transform.rotation.z <= -0.386)
             {
-                State = States.down;
+                State = stay ? States.idle_down : States.down;
                 position = States.idle_down;
                 gun.sortingOrder = 2;
                 lamp.sortingOrder = 2;
@@ -57,7 +61,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (GunPosChange.transform.rotation.z > -0.386 && GunPosChange.transform.rotation.z <= 0.386)
             {
-                State = States.right;
+                State = stay ? States.idle_right : States.right;
                 position = States.idle_right;
                 gun.sortingOrder = 2;
                 lamp.sortingOrder = 0;
@@ -65,7 +69,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (!(GunPosChange.transform.rotation.z > -0.922 && GunPosChange.transform.rotation.z <= 0.922))
             {
-                State = States.left;
+                State = stay ? States.idle_left : States.left;
                 position = States.idle_left;
                 gun.sortingOrder = 0;
                 lamp.sortingOrder = 2;
@@ -75,7 +79,9 @@ public class PlayerController : MonoBehaviour
         else
         {
             gun.enabled = false;
-            if (direction.x > 0)
+            if(direction.y == 0 && direction.x == 0)
+                State = position;
+            else if (direction.x > 0)
             {
                 State = States.right;
                 position = States.idle_right;
@@ -107,10 +113,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
-    {
-        rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
-    }
+    
 
     private States State
     {
