@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 direction;
     
     public SpriteRenderer lamp;
+    public Transform light;
+    public float lightSpeed;
 
     public GameObject GunPosChange;
     //public Joystick joystick;
@@ -20,17 +22,14 @@ public class PlayerController : MonoBehaviour
     
 
     // Start is called before the first frame update
-    void Awake(){
+    void Awake()
+    {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         gun.enabled = false;
     }
 
-    private void OnMouseDown()
-    {
-        Debug.Log("OnMouseDown");
-    }
-    // Update is called once per frame
+    
     void FixedUpdate() {
         rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
         //direction.x = joystick.Horizontal;
@@ -38,12 +37,14 @@ public class PlayerController : MonoBehaviour
         direction.x = Input.GetAxis("Horizontal");
         direction.y = Input.GetAxis("Vertical");
         bool stay = direction.y == 0 && direction.x == 0;
-            
+        
+        
 
         if (Input.GetButton("Fire1"))
         {
             gun.enabled = true;
-            if (GunPosChange.transform.rotation.z > 0.386 && GunPosChange.transform.rotation.z < 0.922)
+            var pos = GunPosChange.transform.rotation.z;
+            if (pos > 0.386 && pos < 0.922)
             {
                 State = stay ? States.idle_up : States.up;
                 position = States.idle_up;
@@ -51,7 +52,7 @@ public class PlayerController : MonoBehaviour
                 lamp.sortingOrder = 0;
                 lamp.flipX = true;
             }
-            else if (GunPosChange.transform.rotation.z > -0.922 && GunPosChange.transform.rotation.z <= -0.386)
+            else if (pos > -0.922 && pos <= -0.386)
             {
                 State = stay ? States.idle_down : States.down;
                 position = States.idle_down;
@@ -59,7 +60,7 @@ public class PlayerController : MonoBehaviour
                 lamp.sortingOrder = 2;
                 lamp.flipX = false;
             }
-            else if (GunPosChange.transform.rotation.z > -0.386 && GunPosChange.transform.rotation.z <= 0.386)
+            else if (pos > -0.386 && pos <= 0.386)
             {
                 State = stay ? States.idle_right : States.right;
                 position = States.idle_right;
@@ -67,7 +68,7 @@ public class PlayerController : MonoBehaviour
                 lamp.sortingOrder = 0;
                 lamp.flipX = false;
             }
-            else if (!(GunPosChange.transform.rotation.z > -0.922 && GunPosChange.transform.rotation.z <= 0.922))
+            else if (!(pos > -0.922 && pos <= 0.922))
             {
                 State = stay ? States.idle_left : States.left;
                 position = States.idle_left;
@@ -109,6 +110,22 @@ public class PlayerController : MonoBehaviour
                 lamp.sortingOrder = 0;
                 lamp.flipX = true;
             }
+            if(position == States.idle_up || position == States.up)
+                light.rotation = Quaternion.Lerp(light.rotation, 
+                    Quaternion.Euler(0f, 0f, 90f), 
+                    lightSpeed * Time.fixedDeltaTime);
+            else if(position == States.idle_down || position == States.down)
+                light.rotation = Quaternion.Lerp(light.rotation, 
+                    Quaternion.Euler(0f, 0f, 270f), 
+                    lightSpeed * Time.fixedDeltaTime);
+            else if(position == States.idle_left || position == States.left)
+                light.rotation = Quaternion.Lerp(light.rotation, 
+                    Quaternion.Euler(0f, 0f, 180f), 
+                    lightSpeed * Time.fixedDeltaTime);
+            else if(position == States.idle_right || position == States.right)
+                light.rotation = Quaternion.Lerp(light.rotation, 
+                    Quaternion.Euler(0f, 0f, 0f), 
+                    lightSpeed * Time.fixedDeltaTime);
             
         }
     }
