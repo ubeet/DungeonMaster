@@ -1,3 +1,4 @@
+using System.Data.SqlTypes;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,16 +6,21 @@ public class GUIManager : MonoBehaviour
 {
     [SerializeField] Slider slider;
     [SerializeField] GameObject pauseScreen;
+    [SerializeField] Text moneyNumber;
 
     public void SetMaxHealth(int health)
     {
         slider.maxValue = health;
-        slider.value = health;
     }
     
     public void SetHealth(int health)
     {
         slider.value = health;
+    }
+    
+    public void SetMoney(int money)
+    {
+        moneyNumber.text = money.ToString();
     }
 
     public void Pause()

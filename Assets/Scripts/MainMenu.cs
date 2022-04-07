@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -8,14 +9,25 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private Text versionField;
     
-    public void StartGame()
+    public void NewGame()
     {
+        SaveSystem.DeleteData();
         SceneManager.LoadScene(1);
+        Time.timeScale = 1;
     }
     
+    public void ContinueGame()
+    {
+        if (File.Exists(SaveSystem.path))
+        {
+            SceneManager.LoadScene(1);
+            Time.timeScale = 1;
+        }
+    }
+
     public void Settings()
     {
-        SceneManager.LoadScene(2);
+        //loading settings screen
     }
     
     public void ExitGame()

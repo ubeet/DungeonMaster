@@ -11,7 +11,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private string playerTag;
     [SerializeField] private float movingSpeed;
 
-    private void Awake()
+    private void Start()
     {
         transform = GetComponent<Transform>();
         if (playerTransform == null)

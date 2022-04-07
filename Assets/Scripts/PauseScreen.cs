@@ -12,7 +12,7 @@ public class PauseScreen : MonoBehaviour
     
     public void Settings()
     {
-        SceneManager.LoadScene(2);
+        //loading settings screen
     }
     
     public void Resume()
