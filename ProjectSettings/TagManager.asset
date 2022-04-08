@@ -41,6 +41,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: light off
+    uniqueID: 899387633
+    locked: 0
+  - name: light on
+    uniqueID: 2168499209
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

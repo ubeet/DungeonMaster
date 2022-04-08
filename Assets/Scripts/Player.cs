@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     {
         if (File.Exists(SaveSystem.path))
         {
-            PlayerData data = SaveSystem.LoadData();
+            PlayerData data = SaveSystem.LoadPlayerData();
             currentHealth = data.health;
             currentMoney = data.money;
             GUI.SetMaxHealth(maxHealth);
@@ -61,6 +61,6 @@ public class Player : MonoBehaviour
 
     public void SaveGame()
     {
-        SaveSystem.SaveData(this);
+        SaveSystem.SavePlayerData(this);
     }
 }

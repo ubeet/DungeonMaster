@@ -15,7 +15,6 @@ public class Ammo : MonoBehaviour
     {
         random = Random.Range(-10, 10) / 300f;
         Invoke("DestroyAmmo", destroyTime);
-        
     }
 
     private void OnTriggerEnter2D(Collider2D other)

@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
     
     public void ContinueGame()
     {
-        if (File.Exists(SaveSystem.path))
+        if (File.Exists(SaveSystem.path) && File.Exists(SaveSystem.worldPath))      
         {
             SceneManager.LoadScene(1);
             Time.timeScale = 1;

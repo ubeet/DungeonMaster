@@ -9,10 +9,10 @@ public class GunControl : MonoBehaviour
     public SpriteRenderer gun;
     public GameObject ammo;
     public Transform shutDir;
-    private float timeShot = 0;
     public float speed;
+    
     private float startTime = 0;
-
+    private float timeShot = 0;
     
     void FixedUpdate()
     {

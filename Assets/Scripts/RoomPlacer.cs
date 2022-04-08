@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 
@@ -7,23 +8,57 @@ public class RoomPlacer : MonoBehaviour
 {
     public Room[] roomPrefabs;
     public Room startRoom;
-    public GameObject corVert;
-    public GameObject corHor;
+    public Corridor corVert;
+    public Corridor corHor;
 
     private Room[,] spawnedRooms;
-    
-    
+    private List<Corridor> spawnedCorridors;
+
+
     private void Start()
     {
-        spawnedRooms = new Room[11, 11];
-        spawnedRooms[5, 5] = startRoom;
-        for (int i = 0; i < 6; i++)
+        if (File.Exists(SaveSystem.worldPath))
         {
-            PlaceOneRoom();
+            WorldData data = SaveSystem.LoadWorldData();
+            List<Corridor> corridorsToSpawn = data.spawnedCorridors;
+            Room[,] roomsToSpawn = data.spawnedRooms;
+            for (int i = 0; i < roomsToSpawn.GetLength(0); i++)
+            {
+                for (int j = 0; j < roomsToSpawn.GetLength(1); j++)
+                {
+                    if (roomsToSpawn[i, j] != null)
+                        Instantiate(roomsToSpawn[i, j]);
+                }
+            }
+
+            foreach (Corridor cor in corridorsToSpawn)
+                Instantiate(cor);
         }
+            
+        else
+        {
+            spawnedCorridors = new List<Corridor>();
+            spawnedRooms = new Room[11, 11];
+            spawnedRooms[5, 5] = startRoom;
+            for (int i = 0; i < 6; i++)
+            {
+                PlaceOneRoom();
+            }
+        }
+
     }
 
-    
+    public Room[,] GetSpawnedRooms()
+    {
+        return spawnedRooms;
+    }
+
+    public List<Corridor> GetSpawnedCorridors()
+    {
+        return spawnedCorridors;
+    }
+
+
     private void PlaceOneRoom()
     {
         HashSet<Vector2Int> vacantPlaces = new HashSet<Vector2Int>();
@@ -46,22 +81,19 @@ public class RoomPlacer : MonoBehaviour
 
         Room newRoom = Instantiate(roomPrefabs[Random.Range(0, roomPrefabs.Length)]);
         
-        Vector2Int position = vacantPlaces.ElementAt(Random.Range(0, vacantPlaces.Count));
-        ConnectToRooms(newRoom, position);
-        newRoom.transform.position = new Vector3((position.x - 5) * 28, (position.y - 5) * 24, 0);
-        spawnedRooms[position.x, position.y] = newRoom;
-        /*int limit = 500;
+        
+        int limit = 25;
         while (limit-- > 0)
         {
             Vector2Int position = vacantPlaces.ElementAt(Random.Range(0, vacantPlaces.Count));
             if (ConnectToRooms(newRoom, position))
             {
-                newRoom.transform.position = new Vector3((position.x - 5) * 36, (position.y - 5) * 27, 0);
+                newRoom.transform.position = new Vector3((position.x - 5) * 28, (position.y - 5) * 24, 0);
                 spawnedRooms[position.x, position.y] = newRoom;
                 break;
             }
         }
-        */
+        
     }
 
     private bool ConnectToRooms(Room room, Vector2Int pos)
@@ -79,39 +111,46 @@ public class RoomPlacer : MonoBehaviour
         if (neighbours.Count == 0) return false;
         
         Vector2Int selectedDirections = neighbours[Random.Range(0, neighbours.Count)];
-        Room selectedRoom = spawnedRooms[pos.x + selectedDirections.x, pos.y + selectedDirections.y];
+        int x = pos.x + selectedDirections.x;
+        int y = pos.y + selectedDirections.y;
+        
+        Room selectedRoom = spawnedRooms[x, y];
         if (selectedDirections == Vector2Int.up)
         {
             room.doorU.SetActive(false);
             selectedRoom.doorD.SetActive(false);
-            Instantiate(corVert, new Vector3((pos.x - 5) * 28, (pos.y - 5) * 24, 0), Quaternion.identity);
-            //GameObject corridorU = Instantiate(corVert);
-            //corridorU.transform.position = room.transform.position;
+            Corridor cor = Instantiate(corVert, new Vector3((pos.x - 5) * 28, (pos.y - 5) * 24, 0), Quaternion.identity);
+            spawnedCorridors.Add(cor);
         }
         else if (selectedDirections == Vector2Int.right)
         {
             room.doorR.SetActive(false);
             selectedRoom.doorL.SetActive(false);
-            Instantiate(corHor, new Vector3((pos.x - 5) * 28, (pos.y - 5) * 24, 0), Quaternion.identity);            //GameObject corridorL = Instantiate(corHor);
-            //GameObject corridorR = Instantiate(corHor);
-            //corridorR.transform.position = room.transform.position;
+            Corridor cor = Instantiate(corHor, new Vector3((pos.x - 5) * 28, (pos.y - 5) * 24, 0), Quaternion.identity);            
+            spawnedCorridors.Add(cor);
         }
         else if (selectedDirections == Vector2Int.down)
         {
             room.doorD.SetActive(false);
             selectedRoom.doorU.SetActive(false);
-            Instantiate(corVert, new Vector3((pos.x - 5) * 28, (pos.y - 5) * 24 - 24, 0), Quaternion.identity);
-            //GameObject corridorD = Instantiate(corVert);
-            //corridorD.transform.position = new Vector3(room.transform.position.x - 36, room.transform.position.y, room.transform.position.z);
+            Corridor cor = Instantiate(corVert, new Vector3((pos.x - 5) * 28, (pos.y - 5) * 24 - 24, 0), Quaternion.identity);
+            spawnedCorridors.Add(cor);
         }
         else if (selectedDirections == Vector2Int.left)
         {
             room.doorL.SetActive(false);
             selectedRoom.doorR.SetActive(false);
-            Instantiate(corHor, new Vector3((pos.x - 5) * 28 - 28, (pos.y - 5) * 24, 0), Quaternion.identity);            //GameObject corridorL = Instantiate(corHor);
-            //corridorL.transform.position = new Vector3(room.transform.position.x, room.transform.position.y - 27, room.transform.position.z);
+            Corridor cor = Instantiate(corHor, new Vector3((pos.x - 5) * 28 - 28, (pos.y - 5) * 24, 0), Quaternion.identity);            
+            spawnedCorridors.Add(cor);
         }
+        spawnedRooms[x, y] = selectedRoom;
+        spawnedRooms[pos.x, pos.y] = room;
 
         return true;
     }
+    public void SaveGame()
+    {
+        SaveSystem.SaveWorldData(this);
+    }
 }
+
