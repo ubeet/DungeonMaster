@@ -2653,6 +2653,10 @@ MonoBehaviour:
   roomPrefabs:
   - {fileID: 2151488522655726275, guid: 1497c8a3144a08243b3ebde45142d128, type: 3}
   startRoom: {fileID: 1516981408}
+  dungeonSize: 11
+  roomStartX: 5
+  roomStartY: 5
+  roomsAmount: 9
   corVert: {fileID: 4290026318893835123, guid: 95362417958820b47bd42f3e3a241f1f, type: 3}
   corHor: {fileID: 7496207074371997399, guid: cbf5ee927b5804e4ca9014a914b0bd7b, type: 3}
 --- !u!4 &1321722811

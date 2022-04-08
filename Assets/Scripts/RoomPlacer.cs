@@ -8,6 +8,11 @@ public class RoomPlacer : MonoBehaviour
 {
     public Room[] roomPrefabs;
     public Room startRoom;
+    public int dungeonSize;
+    public int roomStartX;
+    public int roomStartY;
+    public int roomsAmount;
+    
     public Corridor corVert;
     public Corridor corHor;
 
@@ -63,11 +68,11 @@ public class RoomPlacer : MonoBehaviour
             
         else
         {
-            spawnedRooms = new Room[11,11];
+            spawnedRooms = new Room[dungeonSize,dungeonSize];
             dungeonEls = new string[spawnedRooms.GetLength(0) * 2 - 1, spawnedRooms.GetLength(1) * 2 - 1];
-            dungeonEls[10, 10] = startRoom.gameObject.tag;
-            spawnedRooms[5,5] = startRoom;
-            for (int i = 0; i < 8; i++)
+            dungeonEls[roomStartX*2, roomStartY*2] = startRoom.gameObject.tag;
+            spawnedRooms[roomStartX, roomStartY] = startRoom;
+            for (int i = 0; i < roomsAmount; i++)
             {
                 PlaceOneRoom();
             }
