@@ -7,6 +7,10 @@ TagManager:
   - stop
   - don't stop
   - bortik
+  - CorHor
+  - CorVert
+  - Room
+  - StartRoom
   layers:
   - Default
   - TransparentFX

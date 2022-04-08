@@ -2652,11 +2652,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomPrefabs:
   - {fileID: 2151488522655726275, guid: 1497c8a3144a08243b3ebde45142d128, type: 3}
-  - {fileID: 2151488522655726275, guid: 1497c8a3144a08243b3ebde45142d128, type: 3}
-  startRoom: {fileID: 1806183261}
+  startRoom: {fileID: 1516981408}
   corVert: {fileID: 4290026318893835123, guid: 95362417958820b47bd42f3e3a241f1f, type: 3}
   corHor: {fileID: 7496207074371997399, guid: cbf5ee927b5804e4ca9014a914b0bd7b, type: 3}
-  GUI: {fileID: 1624679363}
 --- !u!4 &1321722811
 Transform:
   m_ObjectHideFlags: 0
@@ -2746,6 +2744,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1351957561}
   m_CullTransparentMesh: 1
+--- !u!114 &1516981408 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2151488522655726275, guid: 1497c8a3144a08243b3ebde45142d128, type: 3}
+  m_PrefabInstance: {fileID: 2151488524087546270}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9175533fe6b1b479b9a71fa2fb706ff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1519520833
 GameObject:
   m_ObjectHideFlags: 0
@@ -3333,17 +3342,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1798698898}
   m_CullTransparentMesh: 1
---- !u!114 &1806183261 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2151488522655726275, guid: 1497c8a3144a08243b3ebde45142d128, type: 3}
-  m_PrefabInstance: {fileID: 2151488524087546270}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9175533fe6b1b479b9a71fa2fb706ff0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2040157613
 GameObject:
   m_ObjectHideFlags: 0
@@ -3659,11 +3657,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2151488522655726274, guid: 1497c8a3144a08243b3ebde45142d128, type: 3}
       propertyPath: m_Name
-      value: Room1_4
+      value: StartRoom
       objectReference: {fileID: 0}
     - target: {fileID: 2151488522655726274, guid: 1497c8a3144a08243b3ebde45142d128, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151488522655726274, guid: 1497c8a3144a08243b3ebde45142d128, type: 3}
+      propertyPath: m_TagString
+      value: StartRoom
       objectReference: {fileID: 0}
     - target: {fileID: 2151488522655726275, guid: 1497c8a3144a08243b3ebde45142d128, type: 3}
       propertyPath: doorD
@@ -3716,6 +3718,10 @@ PrefabInstance:
     - target: {fileID: 2151488523098809345, guid: 1497c8a3144a08243b3ebde45142d128, type: 3}
       propertyPath: m_SortingLayerID
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151488523395353467, guid: 1497c8a3144a08243b3ebde45142d128, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2151488523541383710, guid: 1497c8a3144a08243b3ebde45142d128, type: 3}
       propertyPath: m_SortingLayer

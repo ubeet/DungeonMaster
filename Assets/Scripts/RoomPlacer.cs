@@ -12,7 +12,7 @@ public class RoomPlacer : MonoBehaviour
     public Corridor corHor;
 
     private Room[,] spawnedRooms;
-    private List<Corridor> spawnedCorridors;
+    private string[,] dungeonEls;
 
 
     private void Start()
@@ -20,27 +20,54 @@ public class RoomPlacer : MonoBehaviour
         if (File.Exists(SaveSystem.worldPath))
         {
             WorldData data = SaveSystem.LoadWorldData();
-            List<Corridor> corridorsToSpawn = data.spawnedCorridors;
-            Room[,] roomsToSpawn = data.spawnedRooms;
-            for (int i = 0; i < roomsToSpawn.GetLength(0); i++)
+            string[,] dungeonPos = data.DungeonPositions;
+            int maxX = dungeonPos.GetLength(0);
+            int maxY = dungeonPos.GetLength(1);
+            for (int x = 0; x < dungeonPos.GetLength(0); x++)
             {
-                for (int j = 0; j < roomsToSpawn.GetLength(1); j++)
+                for (int y = 0; y < dungeonPos.GetLength(1); y++)
                 {
-                    if (roomsToSpawn[i, j] != null)
-                        Instantiate(roomsToSpawn[i, j]);
+                    Vector3 roomPos = new Vector3((x-10) * 14, (y-10) * 12, 0);
+                    if (dungeonPos[x, y] != null)
+                    {
+                        
+                        
+                        if (dungeonPos[x, y] == "Room")
+                        {
+                            Room room = Instantiate(roomPrefabs[Random.Range(0, roomPrefabs.Length)]);
+                            if(x - 1 > 0 && dungeonPos[x - 1, y] == corHor.gameObject.tag) room.doorL.SetActive(false);
+                            if(x + 1 < maxX && dungeonPos[x + 1, y] == corHor.gameObject.tag) room.doorR.SetActive(false);
+                            if(y + 1 < maxY && dungeonPos[x, y + 1] == corVert.gameObject.tag) room.doorU.SetActive(false);
+                            if(y - 1 > 0 && dungeonPos[x, y - 1] == corVert.gameObject.tag) room.doorD.SetActive(false);
+                            room.transform.position = roomPos;
+                        }else if (dungeonPos[x, y] == startRoom.gameObject.tag)
+                        {
+                            Room room = startRoom;
+                            room.doorL.SetActive(false);
+                            room.transform.position = roomPos;
+                        }else if (dungeonPos[x, y] == corVert.gameObject.tag)
+                        {
+                            Corridor cor = Instantiate(corVert);
+                            cor.transform.position = new Vector3((x-10) * 14, (y-11) * 12, 0);
+                        }else if (dungeonPos[x, y] == corHor.gameObject.tag)
+                        {
+                            Corridor cor = Instantiate(corHor);
+                            cor.transform.position = new Vector3((x-11) * 14, (y-10) * 12, 0);
+                        }
+                            
+                    }
                 }
             }
-
-            foreach (Corridor cor in corridorsToSpawn)
-                Instantiate(cor);
+            
         }
             
         else
         {
-            spawnedCorridors = new List<Corridor>();
-            spawnedRooms = new Room[11, 11];
-            spawnedRooms[5, 5] = startRoom;
-            for (int i = 0; i < 6; i++)
+            spawnedRooms = new Room[11,11];
+            dungeonEls = new string[spawnedRooms.GetLength(0) * 2 - 1, spawnedRooms.GetLength(1) * 2 - 1];
+            dungeonEls[10, 10] = startRoom.gameObject.tag;
+            spawnedRooms[5,5] = startRoom;
+            for (int i = 0; i < 8; i++)
             {
                 PlaceOneRoom();
             }
@@ -48,15 +75,14 @@ public class RoomPlacer : MonoBehaviour
 
     }
 
-    public Room[,] GetSpawnedRooms()
+    public string[,] GetDungeonEls()
     {
-        return spawnedRooms;
+        return dungeonEls;
     }
 
-    public List<Corridor> GetSpawnedCorridors()
-    {
-        return spawnedCorridors;
-    }
+    
+    
+    
 
 
     private void PlaceOneRoom()
@@ -90,6 +116,7 @@ public class RoomPlacer : MonoBehaviour
             {
                 newRoom.transform.position = new Vector3((position.x - 5) * 28, (position.y - 5) * 24, 0);
                 spawnedRooms[position.x, position.y] = newRoom;
+                dungeonEls[position.x*2, position.y*2] = newRoom.gameObject.tag;
                 break;
             }
         }
@@ -120,28 +147,28 @@ public class RoomPlacer : MonoBehaviour
             room.doorU.SetActive(false);
             selectedRoom.doorD.SetActive(false);
             Corridor cor = Instantiate(corVert, new Vector3((pos.x - 5) * 28, (pos.y - 5) * 24, 0), Quaternion.identity);
-            spawnedCorridors.Add(cor);
+            dungeonEls[x * 2, y * 2 - 1] = corVert.gameObject.tag;
         }
         else if (selectedDirections == Vector2Int.right)
         {
             room.doorR.SetActive(false);
             selectedRoom.doorL.SetActive(false);
             Corridor cor = Instantiate(corHor, new Vector3((pos.x - 5) * 28, (pos.y - 5) * 24, 0), Quaternion.identity);            
-            spawnedCorridors.Add(cor);
+            dungeonEls[x * 2 - 1, y * 2] = corHor.gameObject.tag;
         }
         else if (selectedDirections == Vector2Int.down)
         {
             room.doorD.SetActive(false);
             selectedRoom.doorU.SetActive(false);
             Corridor cor = Instantiate(corVert, new Vector3((pos.x - 5) * 28, (pos.y - 5) * 24 - 24, 0), Quaternion.identity);
-            spawnedCorridors.Add(cor);
+            dungeonEls[x * 2, y * 2 + 1] = corVert.gameObject.tag;
         }
         else if (selectedDirections == Vector2Int.left)
         {
             room.doorL.SetActive(false);
             selectedRoom.doorR.SetActive(false);
             Corridor cor = Instantiate(corHor, new Vector3((pos.x - 5) * 28 - 28, (pos.y - 5) * 24, 0), Quaternion.identity);            
-            spawnedCorridors.Add(cor);
+            dungeonEls[x * 2 + 1, y * 2] = corHor.gameObject.tag;
         }
         spawnedRooms[x, y] = selectedRoom;
         spawnedRooms[pos.x, pos.y] = room;

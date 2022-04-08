@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem 
 {
+    
     public static string path = Application.persistentDataPath + "Save.data";
     public static string worldPath = Application.persistentDataPath + "WorldSave.data";
     
@@ -22,9 +24,17 @@ public static class SaveSystem
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream stream = new FileStream(worldPath, FileMode.Create);
-    
-            WorldData data = new WorldData(rooms);
             
+            WorldData data = new WorldData(rooms);
+            try
+            {
+                bf.Serialize(stream, data);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e.Message);
+                throw;
+            }
             bf.Serialize(stream, data);
             stream.Close();
         }
@@ -35,15 +45,16 @@ public static class SaveSystem
             {
                 BinaryFormatter bf = new BinaryFormatter(); 
                 FileStream stream = new FileStream(path, FileMode.Open);
+                
                 PlayerData data = bf.Deserialize(stream) as PlayerData;
+                
                 stream.Close();
                 return data;
             }
-            else
-            {
-                Debug.LogError("Player save file not found in " + path);
-                return null; 
-            }
+            
+            Debug.LogError("Player save file not found in " + path);
+            return null; 
+            
         }
     
     
@@ -54,15 +65,16 @@ public static class SaveSystem
         {
             BinaryFormatter bf = new BinaryFormatter(); 
             FileStream stream = new FileStream(worldPath, FileMode.Open);
+            
             WorldData data = bf.Deserialize(stream) as WorldData;
+            
             stream.Close();
             return data;
         }
-        else
-        {
-            Debug.LogError("World save file not found in " + worldPath);
-            return null; 
-        }
+        
+        Debug.LogError("World save file not found in " + worldPath);
+        return null; 
+        
     }
     
 

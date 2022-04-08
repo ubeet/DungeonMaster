@@ -1028,7 +1028,7 @@ MonoBehaviour:
   - {x: -8.265724, y: 5.434785, z: 0}
   m_ShapePathHash: -1812629019
   m_Mesh: {fileID: 0}
-  m_InstanceId: 80390
+  m_InstanceId: 40664
 --- !u!1 &4827804838054898807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1748,7 +1748,7 @@ GameObject:
   - component: {fileID: 7496207074371997399}
   m_Layer: 0
   m_Name: CorridorHorizontal
-  m_TagString: Untagged
+  m_TagString: CorHor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3368,4 +3368,4 @@ MonoBehaviour:
   - {x: -8.265724, y: -2.565215, z: 0}
   m_ShapePathHash: 779838677
   m_Mesh: {fileID: 0}
-  m_InstanceId: 80380
+  m_InstanceId: 40654

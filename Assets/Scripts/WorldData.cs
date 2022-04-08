@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class WorldData : MonoBehaviour
+public class WorldData
 {
-    public List<Corridor> spawnedCorridors;
-    public Room[,] spawnedRooms;
+    public string[,] DungeonPositions;
 
     public WorldData(RoomPlacer rooms)
     {
-        spawnedCorridors = rooms.GetSpawnedCorridors();
-        spawnedRooms = rooms.GetSpawnedRooms();
+        DungeonPositions = rooms.GetDungeonEls();
     }
 }
