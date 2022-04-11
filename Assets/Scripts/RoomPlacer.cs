@@ -35,8 +35,6 @@ public class RoomPlacer : MonoBehaviour
                     Vector3 roomPos = new Vector3((x-10) * 14, (y-10) * 12, 0);
                     if (dungeonPos[x, y] != null)
                     {
-                        
-                        
                         if (dungeonPos[x, y] == "Room")
                         {
                             Room room = Instantiate(roomPrefabs[Random.Range(0, roomPrefabs.Length)]);
@@ -48,7 +46,7 @@ public class RoomPlacer : MonoBehaviour
                         }else if (dungeonPos[x, y] == startRoom.gameObject.tag)
                         {
                             Room room = startRoom;
-                            room.doorL.SetActive(false);
+                            room.doorD.SetActive(false);
                             room.transform.position = roomPos;
                         }else if (dungeonPos[x, y] == corVert.gameObject.tag)
                         {
@@ -57,9 +55,8 @@ public class RoomPlacer : MonoBehaviour
                         }else if (dungeonPos[x, y] == corHor.gameObject.tag)
                         {
                             Corridor cor = Instantiate(corHor);
-                            cor.transform.position = new Vector3((x-11) * 14, (y-10) * 12, 0);
+                            cor.transform.position = new Vector3((x - 11) * 14, (y - 10) * 12, 0);
                         }
-                            
                     }
                 }
             }

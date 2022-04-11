@@ -11736,8 +11736,8 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: -8, y: -8}
-        - {x: -8, y: 1}
-        - {x: 2, y: 1}
+        - {x: -8, y: -2}
+        - {x: 2, y: -2}
         - {x: 2, y: 8}
         - {x: 8, y: 8}
         - {x: 8, y: -8}
@@ -11765,8 +11765,8 @@ TextureImporter:
       - - {x: -8, y: -8}
         - {x: -8, y: 8}
         - {x: -2, y: 8}
-        - {x: -2, y: 1}
-        - {x: 8, y: 1}
+        - {x: -2, y: -2}
+        - {x: 8, y: -2}
         - {x: 8, y: -8}
       tessellationDetail: 0
       bones: []
