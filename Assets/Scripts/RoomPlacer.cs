@@ -25,34 +25,34 @@ public class RoomPlacer : MonoBehaviour
         if (File.Exists(SaveSystem.worldPath))
         {
             WorldData data = SaveSystem.LoadWorldData();
-            string[,] dungeonPos = data.DungeonPositions;
-            int maxX = dungeonPos.GetLength(0);
-            int maxY = dungeonPos.GetLength(1);
-            for (int x = 0; x < dungeonPos.GetLength(0); x++)
+            dungeonEls = data.DungeonPositions;
+            int maxX = dungeonEls.GetLength(0);
+            int maxY = dungeonEls.GetLength(1);
+            for (int x = 0; x < dungeonEls.GetLength(0); x++)
             {
-                for (int y = 0; y < dungeonPos.GetLength(1); y++)
+                for (int y = 0; y < dungeonEls.GetLength(1); y++)
                 {
                     Vector3 roomPos = new Vector3((x-10) * 14, (y-10) * 12, 0);
-                    if (dungeonPos[x, y] != null)
+                    if (dungeonEls[x, y] != null)
                     {
-                        if (dungeonPos[x, y] == "Room")
+                        if (dungeonEls[x, y] == "Room")
                         {
                             Room room = Instantiate(roomPrefabs[Random.Range(0, roomPrefabs.Length)]);
-                            if(x - 1 > 0 && dungeonPos[x - 1, y] == corHor.gameObject.tag) room.doorL.SetActive(false);
-                            if(x + 1 < maxX && dungeonPos[x + 1, y] == corHor.gameObject.tag) room.doorR.SetActive(false);
-                            if(y + 1 < maxY && dungeonPos[x, y + 1] == corVert.gameObject.tag) room.doorU.SetActive(false);
-                            if(y - 1 > 0 && dungeonPos[x, y - 1] == corVert.gameObject.tag) room.doorD.SetActive(false);
+                            if(x - 1 > 0 && dungeonEls[x - 1, y] == corHor.gameObject.tag) room.doorL.SetActive(false);
+                            if(x + 1 < maxX && dungeonEls[x + 1, y] == corHor.gameObject.tag) room.doorR.SetActive(false);
+                            if(y + 1 < maxY && dungeonEls[x, y + 1] == corVert.gameObject.tag) room.doorU.SetActive(false);
+                            if(y - 1 > 0 && dungeonEls[x, y - 1] == corVert.gameObject.tag) room.doorD.SetActive(false);
                             room.transform.position = roomPos;
-                        }else if (dungeonPos[x, y] == startRoom.gameObject.tag)
+                        }else if (dungeonEls[x, y] == startRoom.gameObject.tag)
                         {
                             Room room = startRoom;
                             room.doorD.SetActive(false);
                             room.transform.position = roomPos;
-                        }else if (dungeonPos[x, y] == corVert.gameObject.tag)
+                        }else if (dungeonEls[x, y] == corVert.gameObject.tag)
                         {
                             Corridor cor = Instantiate(corVert);
                             cor.transform.position = new Vector3((x-10) * 14, (y-11) * 12, 0);
-                        }else if (dungeonPos[x, y] == corHor.gameObject.tag)
+                        }else if (dungeonEls[x, y] == corHor.gameObject.tag)
                         {
                             Corridor cor = Instantiate(corHor);
                             cor.transform.position = new Vector3((x - 11) * 14, (y - 10) * 12, 0);

@@ -1528,7 +1528,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050883219}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.42, y: 9, z: 0}
+  m_LocalPosition: {x: -1.5, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 261145555}
@@ -1658,6 +1658,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1156193069 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2302285929441808384, guid: 2485571e17f7e2f4784af8d5e2a34f47, type: 3}
+  m_PrefabInstance: {fileID: 2302285930064003995}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9175533fe6b1b479b9a71fa2fb706ff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1207090823
 GameObject:
   m_ObjectHideFlags: 0
@@ -1768,7 +1779,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomPrefabs:
   - {fileID: 2151488522655726275, guid: 1497c8a3144a08243b3ebde45142d128, type: 3}
-  startRoom: {fileID: 2302285929441808384, guid: 2485571e17f7e2f4784af8d5e2a34f47, type: 3}
+  startRoom: {fileID: 1156193069}
   dungeonSize: 11
   roomStartX: 5
   roomStartY: 5
