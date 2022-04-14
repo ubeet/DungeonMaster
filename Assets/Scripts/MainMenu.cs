@@ -1,35 +1,37 @@
-using System.Globalization;
+using System;
 using System.IO;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using static System.DateTime;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private Text versionField;
+    [SerializeField] GameObject warningScreen;
     
+    private void Start()
+    {
+        
+    }
+
     public void NewGame()
     {
         SaveSystem.DeleteData();
         SceneManager.LoadScene(1);
         Time.timeScale = 1;
     }
-    
+
     public void ContinueGame()
     {
-        if (File.Exists(SaveSystem.path) && File.Exists(SaveSystem.worldPath))      
+        if (File.Exists(SaveSystem.PlayerPath) && File.Exists(SaveSystem.WorldPath))      
         {
             SceneManager.LoadScene(1);
             Time.timeScale = 1;
         }
+        else
+        {
+            warningScreen.SetActive(true);
+        }
     }
 
-    public void Settings()
-    {
-        //loading settings screen
-    }
-    
     public void ExitGame()
     {
         Application.Quit();

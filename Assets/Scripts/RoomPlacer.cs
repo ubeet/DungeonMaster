@@ -21,7 +21,7 @@ public class RoomPlacer : MonoBehaviour
 
     private void Start()
     {
-        if (File.Exists(SaveSystem.worldPath))
+        if (File.Exists(SaveSystem.WorldPath))
         {
             WorldData data = SaveSystem.LoadWorldData();
             dungeonEls = data.DungeonPositions;

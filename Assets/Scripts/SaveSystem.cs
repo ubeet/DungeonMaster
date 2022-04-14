@@ -6,13 +6,13 @@ using System.Runtime.Serialization.Formatters.Binary;
 public static class SaveSystem 
 {
     
-    public static string path = Application.persistentDataPath + "Save.data";
-    public static string worldPath = Application.persistentDataPath + "WorldSave.data";
-    
+    public static readonly string PlayerPath = Application.persistentDataPath + "PlayerSave.data";
+    public static readonly string WorldPath = Application.persistentDataPath + "WorldSave.data";
+
     public static void SavePlayerData(Player player)
     {
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream stream = new FileStream(path, FileMode.Create);
+        FileStream stream = new FileStream(PlayerPath, FileMode.Create);
 
         PlayerData data = new PlayerData(player);
         
@@ -23,7 +23,7 @@ public static class SaveSystem
     public static void SaveWorldData(RoomPlacer rooms)
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream stream = new FileStream(worldPath, FileMode.Create);
+            FileStream stream = new FileStream(WorldPath, FileMode.Create);
             
             WorldData data = new WorldData(rooms);
             try
@@ -38,13 +38,13 @@ public static class SaveSystem
             bf.Serialize(stream, data);
             stream.Close();
         }
-    
+
     public static PlayerData LoadPlayerData()
         {
-            if (File.Exists(path))
+            if (File.Exists(PlayerPath))
             {
                 BinaryFormatter bf = new BinaryFormatter(); 
-                FileStream stream = new FileStream(path, FileMode.Open);
+                FileStream stream = new FileStream(PlayerPath, FileMode.Open);
                 
                 PlayerData data = bf.Deserialize(stream) as PlayerData;
                 
@@ -52,19 +52,17 @@ public static class SaveSystem
                 return data;
             }
             
-            Debug.LogError("Player save file not found in " + path);
+            Debug.LogError("Player save file not found in " + PlayerPath);
             return null; 
             
         }
-    
-    
-    
+
     public static WorldData LoadWorldData()
     {
-        if (File.Exists(path))
+        if (File.Exists(PlayerPath))
         {
             BinaryFormatter bf = new BinaryFormatter(); 
-            FileStream stream = new FileStream(worldPath, FileMode.Open);
+            FileStream stream = new FileStream(WorldPath, FileMode.Open);
             
             WorldData data = bf.Deserialize(stream) as WorldData;
             
@@ -72,17 +70,16 @@ public static class SaveSystem
             return data;
         }
         
-        Debug.LogError("World save file not found in " + worldPath);
+        Debug.LogError("World save file not found in " + WorldPath);
         return null; 
         
     }
     
-
     public static void DeleteData()
     {
-        if (File.Exists(path))
-            File.Delete(path);
-        if (File.Exists(worldPath))
-            File.Delete(worldPath);
+        if (File.Exists(PlayerPath))
+            File.Delete(PlayerPath);
+        if (File.Exists(WorldPath))
+            File.Delete(WorldPath);
     }
 }

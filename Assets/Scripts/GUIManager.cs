@@ -1,12 +1,15 @@
-using System.Data.SqlTypes;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GUIManager : MonoBehaviour
 {
     [SerializeField] Slider slider;
     [SerializeField] GameObject pauseScreen;
+    [SerializeField] GameObject settingsScreen;
+    [SerializeField] GameObject deathScreen;
     [SerializeField] Text moneyNumber;
+    [SerializeField] GameObject[] HUD;
 
     public void SetMaxHealth(int health)
     {
@@ -29,12 +32,39 @@ public class GUIManager : MonoBehaviour
         pauseScreen.SetActive(true);
     }
     
+    public void Resume()
+    {
+        Time.timeScale = 1;
+        pauseScreen.SetActive(false);
+    }
+    
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+    
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!deathScreen.activeSelf && Input.GetKeyDown(KeyCode.Escape))
         {
             Time.timeScale = 0;
             pauseScreen.SetActive(true);
         }
-    } 
+        
+        switch (PlayerPrefs.GetInt("hudScale"))
+        {
+            case 0:
+                foreach (var element in HUD)
+                    element.transform.localScale = new Vector3(0.75f,0.75f,1);
+                break;
+            case 1:
+                foreach (var element in HUD)
+                    element.transform.localScale = new Vector3(1,1,1);
+                break;
+            case 2:
+                foreach (var element in HUD)
+                    element.transform.localScale = new Vector3(1.25f,1.25f,1);
+                break;
+        }
+    }
 }

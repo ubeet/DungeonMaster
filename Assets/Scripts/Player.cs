@@ -7,10 +7,12 @@ public class Player : MonoBehaviour
     public int currentHealth;
     public int currentMoney;
     [SerializeField] GUIManager GUI;
+    [SerializeField] GameObject player;
+    [SerializeField] GameObject deathScreen;
 
     private void Start()
     {
-        if (File.Exists(SaveSystem.path))
+        if (File.Exists(SaveSystem.PlayerPath))
         {
             PlayerData data = SaveSystem.LoadPlayerData();
             currentHealth = data.health;
@@ -43,9 +45,9 @@ public class Player : MonoBehaviour
     
     private void TakeDamage(int damage)
     {
-        if (currentHealth <= 0) Die();
         currentHealth -= damage;
         GUI.SetHealth(currentHealth);
+        if (currentHealth <= 0) Die();
     }
     
     private void TakeMoney(int coins)
@@ -56,7 +58,9 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        //DeathScreen
+        SaveSystem.DeleteData();
+        player.SetActive(false);
+        deathScreen.SetActive(true);
     }
 
     public void SaveGame()
