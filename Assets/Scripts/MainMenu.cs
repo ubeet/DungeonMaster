@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour
     public void NewGame()
     {
         SaveSystem.DeleteData();
-        SceneManager.LoadScene(1);
+        SceneTransition.SwitchScene(1);
         Time.timeScale = 1;
     }
 
@@ -23,7 +23,7 @@ public class MainMenu : MonoBehaviour
     {
         if (File.Exists(SaveSystem.PlayerPath) && File.Exists(SaveSystem.WorldPath))      
         {
-            SceneManager.LoadScene(1);
+            SceneTransition.SwitchScene(1);
             Time.timeScale = 1;
         }
         else

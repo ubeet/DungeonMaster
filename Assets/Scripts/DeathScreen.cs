@@ -7,12 +7,12 @@ public class DeathScreen : MonoBehaviour
     
     public void MainMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneTransition.SwitchScene(0);
     }
 
     public void Restart()
     {
-        SceneManager.LoadScene(1);
+        SceneTransition.SwitchScene(1);
         Time.timeScale = 1;
     }
 }

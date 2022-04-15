@@ -46,13 +46,15 @@ public class GUIManager : MonoBehaviour
     
     public void MainMenu()
     {
-        SceneManager.LoadScene(0);
+        Time.timeScale = 1;
+        SceneTransition.SwitchScene(0);
     }
     
     public void Update()
     {
         if (!deathScreen.activeSelf && Input.GetKeyDown(KeyCode.Escape))
         {
+            
             Time.timeScale = 0;
             pauseScreen.SetActive(true);
         }
