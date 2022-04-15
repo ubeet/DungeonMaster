@@ -25,8 +25,10 @@ public class RoomPlacer : MonoBehaviour
         {
             WorldData data = SaveSystem.LoadWorldData();
             dungeonEls = data.DungeonPositions;
+            
             int maxX = dungeonEls.GetLength(0);
             int maxY = dungeonEls.GetLength(1);
+            
             for (int x = 0; x < dungeonEls.GetLength(0); x++)
             {
                 for (int y = 0; y < dungeonEls.GetLength(1); y++)

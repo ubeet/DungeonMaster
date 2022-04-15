@@ -4,8 +4,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] int maxHealth = 100;
-    public int currentHealth;
-    public int currentMoney;
+    [SerializeField] public int currentHealth;
+    [SerializeField] public int currentMoney;
     [SerializeField] GUIManager GUI;
     [SerializeField] GameObject player;
     [SerializeField] GameObject deathScreen;

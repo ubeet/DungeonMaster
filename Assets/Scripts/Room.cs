@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
-    public GameObject doorU;
-    public GameObject doorL;
-    public GameObject doorR;
-    public GameObject doorD;
+    [SerializeField] public GameObject doorU;
+    [SerializeField] public GameObject doorL;
+    [SerializeField] public GameObject doorR;
+    [SerializeField] public GameObject doorD;
     
     void Start()
     {

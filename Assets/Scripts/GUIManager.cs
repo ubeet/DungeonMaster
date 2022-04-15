@@ -6,6 +6,7 @@ public class GUIManager : MonoBehaviour
 {
     [SerializeField] Slider slider;
     [SerializeField] GameObject pauseScreen;
+    [SerializeField] GameObject mapScreen;
     [SerializeField] GameObject settingsScreen;
     [SerializeField] GameObject deathScreen;
     [SerializeField] Text moneyNumber;
@@ -32,6 +33,11 @@ public class GUIManager : MonoBehaviour
         pauseScreen.SetActive(true);
     }
     
+    public void Map()
+    {
+        mapScreen.SetActive(true);
+    }
+    
     public void Resume()
     {
         Time.timeScale = 1;
@@ -50,6 +56,10 @@ public class GUIManager : MonoBehaviour
             Time.timeScale = 0;
             pauseScreen.SetActive(true);
         }
+        else if(Input.GetKeyDown(KeyCode.Tab))
+            mapScreen.SetActive(true);
+        else if(Input.GetKeyUp(KeyCode.Tab))
+            mapScreen.SetActive(false);
         
         switch (PlayerPrefs.GetInt("hudScale"))
         {

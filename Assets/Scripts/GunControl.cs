@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class GunControl : MonoBehaviour
 {
-    public float offset;
-    public SpriteRenderer gun;
-    public GameObject ammo;
-    public Transform shutDir;
-    public float speed;
+    [SerializeField] private float offset;
+    [SerializeField] private SpriteRenderer gun;
+    [SerializeField] private GameObject ammo;
+    [SerializeField] private Transform shutDir;
+    [SerializeField] private float speed;
     
     private float startTime = 0;
     private float timeShot = 0;

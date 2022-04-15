@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 5f;
-    public SpriteRenderer lamp;
-    public Transform light;
-    public float lightSpeed;
-    public GameObject GunPosChange;
-    //public Joystick joystick;
-    public Renderer gun;
+    [SerializeField] float speed = 5f;
+    [SerializeField] SpriteRenderer lamp;
+    [SerializeField] Transform light;
+    [SerializeField] float lightSpeed;
+    [SerializeField] GameObject GunPosChange;
+    //Joystick joystick;
+    [SerializeField] Renderer gun;
     
     private Rigidbody2D rb;
     private Vector2 direction;

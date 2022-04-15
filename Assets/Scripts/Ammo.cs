@@ -1,15 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-using System.Linq;
 using Random = UnityEngine.Random;
 
 public class Ammo : MonoBehaviour
 {
-    public float speed;
-    public float destroyTime;
+    [SerializeField] private float speed;
+    [SerializeField] private float destroyTime;
     private float random;
     void Start()
     {
