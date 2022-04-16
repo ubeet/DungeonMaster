@@ -917,6 +917,8 @@ MonoBehaviour:
   ammo: {fileID: 8736205419951053868, guid: 3d209b951e4994125badf8235b10affa, type: 3}
   shotDir: {fileID: 1751736888}
   speed: 0.2
+  animator: {fileID: 261145560}
+  GunPosChange: {fileID: 597749087}
 --- !u!1 &261145554
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,8 +1101,7 @@ MonoBehaviour:
   lamp: {fileID: 1519520835}
   light: {fileID: 318504743}
   lightSpeed: 13
-  GunPosChange: {fileID: 597749086}
-  gun: {fileID: 431994520}
+  GunPosChange: {fileID: 597749087}
 --- !u!114 &261145562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1602,7 +1603,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &431994518
 Transform:
   m_ObjectHideFlags: 0
@@ -1636,6 +1637,8 @@ MonoBehaviour:
   ammo: {fileID: 5090741749744719863, guid: 36bf0e4cd371b4e00b6d0bd80703d457, type: 3}
   shotDir: {fileID: 219222832}
   speed: 0.6
+  animator: {fileID: 261145560}
+  GunPosChange: {fileID: 597749087}
 --- !u!212 &431994520
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1788,7 +1791,9 @@ MonoBehaviour:
   gun: {fileID: 455182435}
   ammo: {fileID: 5090741749744719863, guid: 36bf0e4cd371b4e00b6d0bd80703d457, type: 3}
   shotDir: {fileID: 1499879762}
-  speed: 5
+  speed: 2
+  animator: {fileID: 261145560}
+  GunPosChange: {fileID: 597749087}
 --- !u!1 &489449080
 GameObject:
   m_ObjectHideFlags: 0

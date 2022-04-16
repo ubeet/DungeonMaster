@@ -6,9 +6,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] SpriteRenderer lamp;
     [SerializeField] Transform light;
     [SerializeField] float lightSpeed;
-    [SerializeField] GameObject GunPosChange;
-    //Joystick joystick;
-    [SerializeField] Renderer gun;
+    [SerializeField] Transform GunPosChange;
     
     private Rigidbody2D rb;
     private Vector2 direction;
@@ -19,10 +17,12 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        gun.enabled = false;
     }
     
-    void FixedUpdate() {
+    void FixedUpdate()
+    {
+
+
         //direction.x = joystick.Horizontal;
         //direction.y = joystick.Vertical;
         direction.x = Input.GetAxis("Horizontal");
@@ -30,48 +30,9 @@ public class PlayerController : MonoBehaviour
         
         rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
         
-        bool stay = direction.y == 0 && direction.x == 0;
-        if (Input.GetButton("Fire1"))
+        
+        if(!Input.GetButton("Fire1"))
         {
-            gun.enabled = true;
-            var pos = GunPosChange.transform.rotation.z;
-            
-            if (pos > 0.386 && pos < 0.922)
-            {
-                State = stay ? States.idle_up : States.up;
-                position = States.idle_up;
-                gun.sortingOrder = 0;
-                lamp.sortingOrder = 0;
-                lamp.flipX = true;
-            }
-            else if (pos > -0.922 && pos <= -0.386)
-            {
-                State = stay ? States.idle_down : States.down;
-                position = States.idle_down;
-                gun.sortingOrder = 2;
-                lamp.sortingOrder = 2;
-                lamp.flipX = false;
-            }
-            else if (pos > -0.386 && pos <= 0.386)
-            {
-                State = stay ? States.idle_right : States.right;
-                position = States.idle_right;
-                gun.sortingOrder = 2;
-                lamp.sortingOrder = 0;
-                lamp.flipX = false;
-            }
-            else if (!(pos > -0.922 && pos <= 0.922))
-            {
-                State = stay ? States.idle_left : States.left;
-                position = States.idle_left;
-                gun.sortingOrder = 0;
-                lamp.sortingOrder = 2;
-                lamp.flipX = true;
-            }
-        }
-        else
-        {
-            gun.enabled = false;
             if(direction.y == 0 && direction.x == 0)
                 State = position;
             else if (direction.x > 0)
@@ -103,19 +64,19 @@ public class PlayerController : MonoBehaviour
                 lamp.flipX = true;
             }
         }
-        if(position == States.idle_up || position == States.up)
+        if(State == States.idle_up || State == States.up)
             light.rotation = Quaternion.Lerp(light.rotation, 
                 Quaternion.Euler(0f, 0f, 90f), 
                 lightSpeed * Time.fixedDeltaTime);
-        else if(position == States.idle_down || position == States.down)
+        else if(State == States.idle_down || State == States.down)
             light.rotation = Quaternion.Lerp(light.rotation, 
                 Quaternion.Euler(0f, 0f, 270f), 
                 lightSpeed * Time.fixedDeltaTime);
-        else if(position == States.idle_left || position == States.left)
+        else if(State == States.idle_left || State == States.left)
             light.rotation = Quaternion.Lerp(light.rotation, 
                 Quaternion.Euler(0f, 0f, 180f), 
                 lightSpeed * Time.fixedDeltaTime);
-        else if(position == States.idle_right || position == States.right)
+        else if(State == States.idle_right || State == States.right)
             light.rotation = Quaternion.Lerp(light.rotation, 
                 Quaternion.Euler(0f, 0f, 0f), 
                 lightSpeed * Time.fixedDeltaTime);
