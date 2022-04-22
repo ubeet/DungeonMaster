@@ -12,14 +12,6 @@ public class SceneTransition : MonoBehaviour
     private Animator animator;
     private AsyncOperation asyncSceneLoading;
     private static bool shouldPlayAnim = false;
-
-    public static void SwitchScene(int sceneIndex)
-    {
-        _instance.animator.SetTrigger("In");
-        _instance.asyncSceneLoading = SceneManager.LoadSceneAsync(sceneIndex);
-        _instance.asyncSceneLoading.allowSceneActivation = false;
-        
-    }
     
     private void Start()
     {
@@ -28,13 +20,20 @@ public class SceneTransition : MonoBehaviour
         if (shouldPlayAnim) _instance.animator.SetTrigger("Out");
     }
 
+    public static void SwitchScene(int sceneIndex)
+    {
+        _instance.animator.SetTrigger("In");
+        _instance.asyncSceneLoading = SceneManager.LoadSceneAsync(sceneIndex);
+        _instance.asyncSceneLoading.allowSceneActivation = false;
+    }
+    
     public void OnAnimationOver()
     {
         shouldPlayAnim = true;
         _instance.asyncSceneLoading.allowSceneActivation = true;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (asyncSceneLoading != null)
             loadingProgress.text = Mathf.RoundToInt(asyncSceneLoading.progress * 100) + "%";

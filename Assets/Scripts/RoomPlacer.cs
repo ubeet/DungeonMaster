@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class RoomPlacer : MonoBehaviour
 {
@@ -11,85 +13,131 @@ public class RoomPlacer : MonoBehaviour
     public int roomStartX;
     public int roomStartY;
     public int roomsAmount;
+    public Corridor LeftHor;
+    public Corridor RightHor;
+    public Corridor CenterHor;
+    public Corridor TopVert;
+    public Corridor DownVert;
+    public Corridor CenterVert;
     
-    public Corridor corVert;
-    public Corridor corHor;
 
     private Room[,] spawnedRooms;
-    private string[,] dungeonEls;
 
 
     private void Start()
     {
+        spawnedRooms = new Room[dungeonSize,dungeonSize];
         if (File.Exists(SaveSystem.WorldPath))
         {
             WorldData data = SaveSystem.LoadWorldData();
-            dungeonEls = data.DungeonPositions;
-            
-            int maxX = dungeonEls.GetLength(0);
-            int maxY = dungeonEls.GetLength(1);
-            
-            for (int x = 0; x < dungeonEls.GetLength(0); x++)
+
+            for (int i = 0; i < spawnedRooms.GetLength(0); i++)
             {
-                for (int y = 0; y < dungeonEls.GetLength(1); y++)
+                for (int j = 0; j < spawnedRooms.GetLength(1); j++)
                 {
-                    Vector3 roomPos = new Vector3((x-10) * 14, (y-10) * 12, 0);
-                    if (dungeonEls[x, y] != null)
+                    if (data.roomTag != null)
                     {
-                        if (dungeonEls[x, y] == "Room")
+                        Room room = null;
+                        if (data.roomTag[i, j] == startRoom.tag)
                         {
-                            Room room = Instantiate(roomPrefabs[Random.Range(0, roomPrefabs.Length)]);
-                            if(x - 1 > 0 && dungeonEls[x - 1, y] == corHor.gameObject.tag) room.doorL.SetActive(false);
-                            if(x + 1 < maxX && dungeonEls[x + 1, y] == corHor.gameObject.tag) room.doorR.SetActive(false);
-                            if(y + 1 < maxY && dungeonEls[x, y + 1] == corVert.gameObject.tag) room.doorU.SetActive(false);
-                            if(y - 1 > 0 && dungeonEls[x, y - 1] == corVert.gameObject.tag) room.doorD.SetActive(false);
-                            room.transform.position = roomPos;
-                        }else if (dungeonEls[x, y] == startRoom.gameObject.tag)
-                        {
-                            Room room = startRoom;
-                            room.doorD.SetActive(false);
-                            room.transform.position = roomPos;
-                        }else if (dungeonEls[x, y] == corVert.gameObject.tag)
-                        {
-                            Corridor cor = Instantiate(corVert);
-                            cor.transform.position = new Vector3((x-10) * 14, (y-11) * 12, 0);
-                        }else if (dungeonEls[x, y] == corHor.gameObject.tag)
-                        {
-                            Corridor cor = Instantiate(corHor);
-                            cor.transform.position = new Vector3((x - 11) * 14, (y - 10) * 12, 0);
+                            room = Instantiate(startRoom,
+                                new Vector3(data.position[i, j, 0], data.position[i, j, 1], data.position[i, j, 2]),
+                                Quaternion.identity);
+                            
                         }
+
+                        foreach (var el in roomPrefabs)
+                        {
+                            if (el.tag == data.roomTag[i, j])
+                            {
+                                room = Instantiate(el,
+                                    new Vector3(data.position[i, j, 0], data.position[i, j, 1], data.position[i, j, 2]),
+                                    Quaternion.identity);
+                                continue;
+                            }
+                        }
+
+                        if (room != null)
+                        {
+                            if(!data.doorU[i, j])
+                                if (room.doorU != null)
+                                    room.doorU.SetActive(false);
+                            if(!data.doorR[i, j])
+                                if (room.doorR != null)
+                                    room.doorR.SetActive(false);
+                            if(!data.doorD[i, j])
+                                if (room.doorD != null)
+                                    room.doorD.SetActive(false);
+                            if(!data.doorL[i, j])
+                                if (room.doorL != null)
+                                    room.doorL.SetActive(false);
+                        }
+                        
+                        spawnedRooms[i, j] = room;
                     }
                 }
             }
-            
+            //int maxX = dungeonEls.GetLength(0);
+            //int maxY = dungeonEls.GetLength(1);
+            //
+            //for (int x = 0; x < dungeonEls.GetLength(0); x++)
+            //{
+            //    for (int y = 0; y < dungeonEls.GetLength(1); y++)
+            //    {
+            //        Vector3 roomPos = new Vector3((x-10) * 14, (y-10) * 12, 0);
+            //        if (dungeonEls[x, y] != null)
+            //        {
+            //            if (dungeonEls[x, y] == "Room")
+            //            {
+            //                Room room = Instantiate(roomPrefabs[Random.Range(0, roomPrefabs.Length)]);
+            //                if(x - 1 > 0 && dungeonEls[x - 1, y] == corHor.gameObject.tag) room.doorL.SetActive(false);
+            //                if(x + 1 < maxX && dungeonEls[x + 1, y] == corHor.gameObject.tag) room.doorR.SetActive(false);
+            //                if(y + 1 < maxY && dungeonEls[x, y + 1] == corVert.gameObject.tag) room.doorU.SetActive(false);
+            //                if(y - 1 > 0 && dungeonEls[x, y - 1] == corVert.gameObject.tag) room.doorD.SetActive(false);
+            //                room.transform.position = roomPos;
+            //            }else if (dungeonEls[x, y] == startRoom.gameObject.tag)
+            //            {
+            //                Room room = startRoom;
+            //                room.doorD.SetActive(false);
+            //                room.transform.position = roomPos;
+            //            }else if (dungeonEls[x, y] == corVert.gameObject.tag)
+            //            {
+            //                Corridor cor = Instantiate(corVert);
+            //                cor.transform.position = new Vector3((x-10) * 14, (y-11) * 12, 0);
+            //            }else if (dungeonEls[x, y] == corHor.gameObject.tag)
+            //            {
+            //                Corridor cor = Instantiate(corHor);
+            //                cor.transform.position = new Vector3((x - 11) * 14, (y - 10) * 12, 0);
+            //            }
+            //        }
+            //    }
+            //}
+
+
+
         }
             
         else
         {
-            spawnedRooms = new Room[dungeonSize,dungeonSize];
-            dungeonEls = new string[spawnedRooms.GetLength(0) * 2 - 1, spawnedRooms.GetLength(1) * 2 - 1];
-            dungeonEls[roomStartX*2, roomStartY*2] = startRoom.gameObject.tag;
             spawnedRooms[roomStartX, roomStartY] = startRoom;
             for (int i = 0; i < roomsAmount; i++)
             {
                 PlaceOneRoom();
             }
         }
+        SetCorridors();
 
     }
-
-    public string[,] GetDungeonEls()
+    
+    public Room[,] GetSpawnedRooms()
     {
-        return dungeonEls;
+        return spawnedRooms;
     }
-
     
-    
-    
-
-
     private void PlaceOneRoom()
     {
+        int maxX = spawnedRooms.GetLength(0) - 1;
+        int maxY = spawnedRooms.GetLength(1) - 1;
         HashSet<Vector2Int> vacantPlaces = new HashSet<Vector2Int>();
         for (int x = 0; x < spawnedRooms.GetLength(0); x++)
         {
@@ -97,9 +145,6 @@ public class RoomPlacer : MonoBehaviour
             {
                 if (spawnedRooms[x, y] == null) continue;
                 
-                int maxX = spawnedRooms.GetLength(0) - 1;
-                int maxY = spawnedRooms.GetLength(1) - 1;
-
                 if (x > 0 && spawnedRooms[x - 1, y] == null) vacantPlaces.Add(new Vector2Int(x - 1, y));
                 if (y > 0 && spawnedRooms[x, y - 1] == null) vacantPlaces.Add(new Vector2Int(x, y - 1));
                 if (x < maxX && spawnedRooms[x + 1, y] == null) vacantPlaces.Add(new Vector2Int(x + 1, y));
@@ -107,19 +152,23 @@ public class RoomPlacer : MonoBehaviour
 
             }
         }
-
         Room newRoom = Instantiate(roomPrefabs[Random.Range(0, roomPrefabs.Length)]);
         
         
-        int limit = 25;
-        while (limit-- > 0)
+        for (int limit = 0; limit < 25;limit++)
         {
             Vector2Int position = vacantPlaces.ElementAt(Random.Range(0, vacantPlaces.Count));
+            if (position.x + 1 <= maxX && spawnedRooms[position.x + 1, position.y]?.tag == "BiggestRoom" ||
+                position.x - 1 >= 0 && spawnedRooms[position.x - 1, position.y]?.tag == "BiggestRoom")
+            {
+                Destroy(newRoom.gameObject);
+                newRoom = Instantiate(roomPrefabs[0]);
+            }
+
             if (ConnectToRooms(newRoom, position))
             {
-                newRoom.transform.position = new Vector3((position.x - 5) * 28, (position.y - 5) * 24, 0);
+                newRoom.transform.position = new Vector3((position.x - 5) * 29, (position.y - 5) * 24, 0);
                 spawnedRooms[position.x, position.y] = newRoom;
-                dungeonEls[position.x*2, position.y*2] = newRoom.gameObject.tag;
                 break;
             }
         }
@@ -149,34 +198,80 @@ public class RoomPlacer : MonoBehaviour
         {
             room.doorU.SetActive(false);
             selectedRoom.doorD.SetActive(false);
-            Corridor cor = Instantiate(corVert, new Vector3((pos.x - 5) * 28, (pos.y - 5) * 24, 0), Quaternion.identity);
-            dungeonEls[x * 2, y * 2 - 1] = corVert.gameObject.tag;
+            
         }
         else if (selectedDirections == Vector2Int.right)
         {
             room.doorR.SetActive(false);
             selectedRoom.doorL.SetActive(false);
-            Corridor cor = Instantiate(corHor, new Vector3((pos.x - 5) * 28, (pos.y - 5) * 24, 0), Quaternion.identity);            
-            dungeonEls[x * 2 - 1, y * 2] = corHor.gameObject.tag;
+            
         }
         else if (selectedDirections == Vector2Int.down)
         {
             room.doorD.SetActive(false);
             selectedRoom.doorU.SetActive(false);
-            Corridor cor = Instantiate(corVert, new Vector3((pos.x - 5) * 28, (pos.y - 5) * 24 - 24, 0), Quaternion.identity);
-            dungeonEls[x * 2, y * 2 + 1] = corVert.gameObject.tag;
+            
         }
         else if (selectedDirections == Vector2Int.left)
         {
             room.doorL.SetActive(false);
             selectedRoom.doorR.SetActive(false);
-            Corridor cor = Instantiate(corHor, new Vector3((pos.x - 5) * 28 - 28, (pos.y - 5) * 24, 0), Quaternion.identity);            
-            dungeonEls[x * 2 + 1, y * 2] = corHor.gameObject.tag;
+            
         }
         spawnedRooms[x, y] = selectedRoom;
         spawnedRooms[pos.x, pos.y] = room;
 
         return true;
+    }
+
+    public void SetCorridors()
+    {
+        int maxX = spawnedRooms.GetLength(0);
+        int maxY = spawnedRooms.GetLength(1);
+        for (int i = 0; i < spawnedRooms.GetLength(0); i++)
+        {
+            for (int j = 0; j < spawnedRooms.GetLength(1); j++)
+            {
+                if (spawnedRooms[i, j] != null && spawnedRooms[i, j].doorR != null)
+                {
+                    if (i + 1 < maxX && !spawnedRooms[i, j].doorR.activeInHierarchy)
+                    {
+                        Vector3 pos = spawnedRooms[i, j].doorR.transform.position;
+                        float lenght = spawnedRooms[i + 1, j].doorL.transform.position.x -
+                                       spawnedRooms[i, j].doorR.transform.position.x - 18;
+                        for (int k = 0; k <= lenght + 1; k++)
+                        {
+                            if(k == 0)
+                                Instantiate(LeftHor, new Vector3(pos.x + k, pos.y, pos.z), Quaternion.identity);
+                            else if(k == lenght + 1)
+                                Instantiate(RightHor, new Vector3(pos.x + k, pos.y, pos.z), Quaternion.identity);
+                            else
+                                Instantiate(CenterHor, new Vector3(pos.x + k, pos.y, pos.z), Quaternion.identity);
+                        }
+                    }
+                }
+
+                if (spawnedRooms[i, j] != null && spawnedRooms[i, j].doorU != null)
+                {
+                    if (j + 1  <= maxX && !spawnedRooms[i, j].doorU.activeInHierarchy)
+                    {
+                        Vector3 pos = spawnedRooms[i, j].doorU.transform.position;
+                        float lenght = spawnedRooms[i, j + 1].doorD.transform.position.y -
+                                       spawnedRooms[i, j].doorU.transform.position.y - 17;
+                        Instantiate(DownVert, new Vector3(pos.x, pos.y, pos.z), Quaternion.identity);
+                        for (int k = 0; k <= lenght + 1; k++)
+                        {
+                            if(k == lenght + 1)
+                                Instantiate(TopVert, new Vector3(pos.x, pos.y + k, pos.z), Quaternion.identity);
+                            else
+                                Instantiate(CenterVert, new Vector3(pos.x, pos.y + k, pos.z), Quaternion.identity);
+                        }
+                    }
+                }
+
+                
+            }
+        }
     }
     public void SaveGame()
     {

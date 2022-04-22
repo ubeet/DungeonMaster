@@ -21,10 +21,6 @@ public class PlayerController : MonoBehaviour
     
     void FixedUpdate()
     {
-
-
-        //direction.x = joystick.Horizontal;
-        //direction.y = joystick.Vertical;
         direction.x = Input.GetAxis("Horizontal");
         direction.y = Input.GetAxis("Vertical");
         

@@ -6,7 +6,7 @@ public class Ammo : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float destroyTime;
     private float random;
-    void Start()
+    private void Start()
     {
         random = Random.Range(-10, 10) / 300f;
         Invoke("DestroyAmmo", destroyTime);
@@ -18,7 +18,7 @@ public class Ammo : MonoBehaviour
             Destroy(gameObject);
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         transform.Translate((Vector2.right + new Vector2(0, random)) * speed * Time.fixedDeltaTime);
     }

@@ -1940,7 +1940,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2151488523056861551}
-  - component: {fileID: 2151488523056861550}
   m_Layer: 0
   m_Name: BottomDoor
   m_TagString: Untagged
@@ -1967,18 +1966,6 @@ Transform:
   m_Father: {fileID: 2151488522655726273}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!156049354 &2151488523056861550
-Grid:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2151488523056861553}
-  m_Enabled: 1
-  m_CellSize: {x: 1, y: 1, z: 1}
-  m_CellGap: {x: 0, y: 0, z: 0}
-  m_CellLayout: 0
-  m_CellSwizzle: 0
 --- !u!1 &2151488523098809347
 GameObject:
   m_ObjectHideFlags: 0
@@ -2750,7 +2737,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2151488523395353464}
-  - component: {fileID: 2235506654684003481}
   m_Layer: 0
   m_Name: LeftDoor
   m_TagString: Untagged
@@ -2777,18 +2763,6 @@ Transform:
   m_Father: {fileID: 2151488522655726273}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!156049354 &2235506654684003481
-Grid:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2151488523395353467}
-  m_Enabled: 1
-  m_CellSize: {x: 1, y: 1, z: 1}
-  m_CellGap: {x: 0, y: 0, z: 0}
-  m_CellLayout: 0
-  m_CellSwizzle: 0
 --- !u!1 &2151488523411374150
 GameObject:
   m_ObjectHideFlags: 0
@@ -7966,7 +7940,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2151488523864277108}
-  - component: {fileID: 2151488523864277111}
   m_Layer: 0
   m_Name: TopDoor
   m_TagString: Untagged
@@ -7993,18 +7966,6 @@ Transform:
   m_Father: {fileID: 2151488522655726273}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!156049354 &2151488523864277111
-Grid:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2151488523864277110}
-  m_Enabled: 1
-  m_CellSize: {x: 1, y: 1, z: 1}
-  m_CellGap: {x: 0, y: 0, z: 0}
-  m_CellLayout: 0
-  m_CellSwizzle: 0
 --- !u!1 &2151488523874307162
 GameObject:
   m_ObjectHideFlags: 0
@@ -10504,7 +10465,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2151488524377132154}
-  - component: {fileID: 2151488524377132157}
   m_Layer: 0
   m_Name: RightDoor
   m_TagString: Untagged
@@ -10531,18 +10491,6 @@ Transform:
   m_Father: {fileID: 2151488522655726273}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!156049354 &2151488524377132157
-Grid:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2151488524377132156}
-  m_Enabled: 1
-  m_CellSize: {x: 1, y: 1, z: 1}
-  m_CellGap: {x: 0, y: 0, z: 0}
-  m_CellLayout: 0
-  m_CellSwizzle: 0
 --- !u!1 &2151488524558720128
 GameObject:
   m_ObjectHideFlags: 0

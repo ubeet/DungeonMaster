@@ -11,7 +11,14 @@ public class Settings : MonoBehaviour
     [SerializeField] GameObject previousScreen;
     [SerializeField] Dropdown dropdown;
     [SerializeField] Toggle toggle;
-
+    private void Start()
+    {
+        Screen.fullScreen = Convert.ToBoolean(PlayerPrefs.GetInt("fullscreen"));
+        audioMixer.SetFloat("volume",PlayerPrefs.GetFloat("volume"));
+        toggle.GetComponent<Toggle>().isOn = Convert.ToBoolean(PlayerPrefs.GetInt("fullscreen"));
+        slider.value = PlayerPrefs.GetFloat("volume");
+        dropdown.value = PlayerPrefs.GetInt("hudScale");
+    }
     public void SetVolume(float volume)
     {
         audioMixer.SetFloat("volume", volume);
@@ -29,14 +36,14 @@ public class Settings : MonoBehaviour
         PlayerPrefs.SetInt("fullscreen", Convert.ToInt32(isFull));
     }
 
-    public void Save()
+    private void Save()
     {
         PlayerPrefs.Save();
         settingsScreen.SetActive(false);
         previousScreen.SetActive(true);
     }
     
-    public void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -45,12 +52,5 @@ public class Settings : MonoBehaviour
         }
     }
 
-    public void Start()
-    {
-        Screen.fullScreen = Convert.ToBoolean(PlayerPrefs.GetInt("fullscreen"));
-        audioMixer.SetFloat("volume",PlayerPrefs.GetFloat("volume"));
-        toggle.GetComponent<Toggle>().isOn = Convert.ToBoolean(PlayerPrefs.GetInt("fullscreen"));
-        slider.value = PlayerPrefs.GetFloat("volume");
-        dropdown.value = PlayerPrefs.GetInt("hudScale");
-    }
+    
 }

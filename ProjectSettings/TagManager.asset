@@ -11,6 +11,8 @@ TagManager:
   - CorVert
   - Room
   - StartRoom
+  - BiggestRoom
+  - NormalRoom
   layers:
   - Default
   - TransparentFX

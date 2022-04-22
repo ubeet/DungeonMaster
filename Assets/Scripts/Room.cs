@@ -7,14 +7,5 @@ public class Room : MonoBehaviour
     [SerializeField] public GameObject doorR;
     [SerializeField] public GameObject doorD;
     
-    void Start()
-    {
-        
-    }
-
     
-    void Update()
-    {
-        
-    }
 }

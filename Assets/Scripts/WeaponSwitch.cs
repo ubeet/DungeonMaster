@@ -6,7 +6,7 @@ public class WeaponSwitch : MonoBehaviour
 {
     public int weaponSwitch = 1;
     private static GameObject gb;
-    void Start()
+    private void Start()
     {
         SwitchWeapon();
     }
@@ -31,9 +31,7 @@ public class WeaponSwitch : MonoBehaviour
         foreach (Transform weapon in transform)
         {
             if (i == weaponSwitch)
-            {
                 weapon.gameObject.SetActive(true);
-            }
             else
                 weapon.gameObject.SetActive(false);
             i++;
