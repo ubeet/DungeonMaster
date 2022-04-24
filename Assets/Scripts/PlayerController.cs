@@ -6,27 +6,25 @@ public class PlayerController : MonoBehaviour
     [SerializeField] SpriteRenderer lamp;
     [SerializeField] Transform light;
     [SerializeField] float lightSpeed;
-    [SerializeField] Transform GunPosChange;
-    
+
     private Rigidbody2D rb;
     private Vector2 direction;
     private Animator animator;
     private States position = States.idle_down;
     
-    void Awake()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
     
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         direction.x = Input.GetAxis("Horizontal");
         direction.y = Input.GetAxis("Vertical");
         
         rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
-        
-        
+
         if(!Input.GetButton("Fire1"))
         {
             if(direction.y == 0 && direction.x == 0)
@@ -78,8 +76,6 @@ public class PlayerController : MonoBehaviour
                 lightSpeed * Time.fixedDeltaTime);
     }
 
-    
-
     private States State
     {
         get { return (States) animator.GetInteger("state"); }
@@ -97,5 +93,4 @@ public class PlayerController : MonoBehaviour
         idle_left,
         idle_right
     }
-
 }

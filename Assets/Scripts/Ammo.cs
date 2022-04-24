@@ -9,12 +9,12 @@ public class Ammo : MonoBehaviour
     private void Start()
     {
         random = Random.Range(-10, 10) / 300f;
-        Invoke("DestroyAmmo", destroyTime);
+        Invoke(nameof(DestroyAmmo), destroyTime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag != "Player" && other.gameObject.tag != "bortik")
+        if(!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("bortik") && !other.isTrigger)
             Destroy(gameObject);
     }
 

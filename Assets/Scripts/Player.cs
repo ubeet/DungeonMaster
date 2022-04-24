@@ -50,6 +50,12 @@ public class Player : MonoBehaviour
         if (currentHealth <= 0) Die();
     }
     
+    private void TakeHealing(int health)
+    {
+        currentHealth += health;
+        GUI.SetHealth(currentHealth);
+    }
+    
     private void TakeMoney(int coins)
     {
         currentMoney += coins;
@@ -62,6 +68,14 @@ public class Player : MonoBehaviour
         player.SetActive(false);
         deathScreen.SetActive(true);
     }
+
+    /*public static void UseBuff(Item buff)
+    {
+        if(buff.name == "coin")
+            TakeMoney(buff.number);
+        if(buff.name == "health")
+            TakeHealing(buff.number);
+    }*/
 
     public void SaveGame()
     {
