@@ -968,7 +968,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261145554}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -2957,7 +2957,7 @@ Transform:
   m_GameObject: {fileID: 727582545}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.38, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1.1311803}
+  m_LocalScale: {x: 1, y: 1, z: 1.1311803}
   m_Children: []
   m_Father: {fileID: 261145555}
   m_RootOrder: 3
@@ -3515,7 +3515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &928821890
 Animator:
   serializedVersion: 3
@@ -4607,7 +4607,7 @@ MonoBehaviour:
   - {fileID: 426593540442997275, guid: 6f25ebf51683941208e5d1323f7c5112, type: 3}
   - {fileID: 426593540442997275, guid: a4c7dfb4c53d798468f4c0e1f76bbcf1, type: 3}
   - {fileID: 426593540442997275, guid: b33c812190f5c724c8e157c69ddc3509, type: 3}
-  - {fileID: 7553371307854427272, guid: a9e2c5512a38e454095d527201257813, type: 3}
+  - {fileID: 3958175887590395006, guid: a9e2c5512a38e454095d527201257813, type: 3}
   startRoom: {fileID: 1156193069}
   dungeonSize: 11
   roomStartX: 5

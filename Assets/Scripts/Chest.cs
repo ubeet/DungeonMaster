@@ -25,6 +25,7 @@ public class Chest : Interactable
     private void HideItem()
     {
         receivedItemSprite.sprite = null;
+        
     }
     
     private void ShowItem()
