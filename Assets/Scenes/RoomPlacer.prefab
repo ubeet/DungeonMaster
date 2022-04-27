@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1128517105165981053
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1128517105165981055}
+  - component: {fileID: 1128517105165981054}
+  m_Layer: 0
+  m_Name: RoomPlacer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1128517105165981055
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128517105165981053}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.638173, y: 4.666222, z: -20.517405}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1128517105165981054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128517105165981053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9b97885a8de44f83bfd535feacecb51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefabs:
+  - {fileID: 2151488522655726275, guid: 1497c8a3144a08243b3ebde45142d128, type: 3}
+  - {fileID: 2151488522655726275, guid: d40aa260183e1f848b7b86a7ac357d27, type: 3}
+  - {fileID: 426593540442997275, guid: 6f25ebf51683941208e5d1323f7c5112, type: 3}
+  - {fileID: 426593540442997275, guid: a4c7dfb4c53d798468f4c0e1f76bbcf1, type: 3}
+  - {fileID: 426593540442997275, guid: b33c812190f5c724c8e157c69ddc3509, type: 3}
+  - {fileID: 3958175887590395006, guid: a9e2c5512a38e454095d527201257813, type: 3}
+  startRoom: {fileID: 0}
+  dungeonSize: 11
+  roomStartX: 5
+  roomStartY: 5
+  roomsAmount: 9
+  LeftHor: {fileID: 2677499821369615085, guid: 07b42fb11dd6f41fbbecdc9529233551, type: 3}
+  RightHor: {fileID: 7520890815335130786, guid: 5bc39509d40f24c15aa00e1902928c20, type: 3}
+  CenterHor: {fileID: 6237406899030622681, guid: 59d44fcc309364cdeb3758f1cc407026, type: 3}
+  TopVert: {fileID: 7740219274463417467, guid: 05afc5ad977504099954578fcca4f521, type: 3}
+  DownVert: {fileID: 1681882475403685284, guid: 414b1019053104eb7bef5e103d7c83c9, type: 3}
+  CenterVert: {fileID: 1729332290080730663, guid: b26d3666126d9473fbc8b0087013005e, type: 3}
