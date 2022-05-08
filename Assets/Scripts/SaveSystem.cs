@@ -17,7 +17,9 @@ public static class SaveSystem
         PlayerData data = new PlayerData(player);
         
         bf.Serialize(stream, data);
+        
         stream.Close();
+        Debug.LogError("ццццPlayer save file not found in " + PlayerPath);
     }
     
     public static void SaveWorldData(RoomPlacer rooms)
@@ -29,6 +31,7 @@ public static class SaveSystem
             try
             {
                 bf.Serialize(stream, data);
+                Debug.LogError("Player save file not found in " + PlayerPath);
             }
             catch (Exception e)
             {
@@ -59,9 +62,9 @@ public static class SaveSystem
 
     public static WorldData LoadWorldData()
     {
-        if (File.Exists(PlayerPath))
+        if (File.Exists(WorldPath))
         {
-            BinaryFormatter bf = new BinaryFormatter(); 
+            BinaryFormatter bf = new BinaryFormatter();
             FileStream stream = new FileStream(WorldPath, FileMode.Open);
             
             WorldData data = bf.Deserialize(stream) as WorldData;
@@ -71,7 +74,7 @@ public static class SaveSystem
         }
         
         Debug.LogError("World save file not found in " + WorldPath);
-        return null; 
+        return null;
         
     }
     

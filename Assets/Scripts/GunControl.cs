@@ -53,6 +53,7 @@ public class GunControl : MonoBehaviour
                 position = States.idle_left;
                 gun.sortingOrder = 0;
             }
+            
             Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - circle.transform.position;
             float rotateZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
             circle.transform.rotation = Quaternion.Euler(0f, 0f, rotateZ + offset);

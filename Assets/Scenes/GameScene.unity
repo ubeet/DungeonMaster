@@ -6428,6 +6428,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1938547118}
   m_CullTransparentMesh: 1
+--- !u!114 &2012890826 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1128517105165981054, guid: 103a505aae6cd41d099be6e03c467af9, type: 3}
+  m_PrefabInstance: {fileID: 1377850797}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9b97885a8de44f83bfd535feacecb51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2040157613
 GameObject:
   m_ObjectHideFlags: 0
@@ -6660,7 +6671,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2012890826}
           m_TargetAssemblyTypeName: RoomPlacer, Assembly-CSharp
           m_MethodName: SaveGame
           m_Mode: 1

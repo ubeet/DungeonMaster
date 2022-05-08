@@ -50,10 +50,8 @@ public class RoomPlacer : MonoBehaviour
                         {
                             if (el.tag == data.roomTag[i, j])
                             {
-                                room = Instantiate(el,
-                                    new Vector3(data.position[i, j, 0], data.position[i, j, 1], data.position[i, j, 2]),
-                                    Quaternion.identity);
-                                continue;
+                                room = Instantiate(el, new Vector3(data.position[i, j, 0], data.position[i, j, 1], data.position[i, j, 2]), Quaternion.identity);
+                                break;
                             }
                         }
 
@@ -61,60 +59,35 @@ public class RoomPlacer : MonoBehaviour
                         {
                             if(!data.doorU[i, j])
                                 if (room.doorU != null)
+                                {
+                                    Debug.Log("up"); 
                                     room.doorU.SetActive(false);
+                                }
+                                    
                             if(!data.doorR[i, j])
                                 if (room.doorR != null)
+                                {
+                                    Debug.Log("right"); 
                                     room.doorR.SetActive(false);
+                                }
                             if(!data.doorD[i, j])
                                 if (room.doorD != null)
+                                {
+                                    Debug.Log("down"); 
                                     room.doorD.SetActive(false);
+                                }
                             if(!data.doorL[i, j])
                                 if (room.doorL != null)
+                                {
+                                    Debug.Log("left"); 
                                     room.doorL.SetActive(false);
+                                }
                         }
                         
                         spawnedRooms[i, j] = room;
                     }
                 }
             }
-            //int maxX = dungeonEls.GetLength(0);
-            //int maxY = dungeonEls.GetLength(1);
-            //
-            //for (int x = 0; x < dungeonEls.GetLength(0); x++)
-            //{
-            //    for (int y = 0; y < dungeonEls.GetLength(1); y++)
-            //    {
-            //        Vector3 roomPos = new Vector3((x-10) * 14, (y-10) * 12, 0);
-            //        if (dungeonEls[x, y] != null)
-            //        {
-            //            if (dungeonEls[x, y] == "Room")
-            //            {
-            //                Room room = Instantiate(roomPrefabs[Random.Range(0, roomPrefabs.Length)]);
-            //                if(x - 1 > 0 && dungeonEls[x - 1, y] == corHor.gameObject.tag) room.doorL.SetActive(false);
-            //                if(x + 1 < maxX && dungeonEls[x + 1, y] == corHor.gameObject.tag) room.doorR.SetActive(false);
-            //                if(y + 1 < maxY && dungeonEls[x, y + 1] == corVert.gameObject.tag) room.doorU.SetActive(false);
-            //                if(y - 1 > 0 && dungeonEls[x, y - 1] == corVert.gameObject.tag) room.doorD.SetActive(false);
-            //                room.transform.position = roomPos;
-            //            }else if (dungeonEls[x, y] == startRoom.gameObject.tag)
-            //            {
-            //                Room room = startRoom;
-            //                room.doorD.SetActive(false);
-            //                room.transform.position = roomPos;
-            //            }else if (dungeonEls[x, y] == corVert.gameObject.tag)
-            //            {
-            //                Corridor cor = Instantiate(corVert);
-            //                cor.transform.position = new Vector3((x-10) * 14, (y-11) * 12, 0);
-            //            }else if (dungeonEls[x, y] == corHor.gameObject.tag)
-            //            {
-            //                Corridor cor = Instantiate(corHor);
-            //                cor.transform.position = new Vector3((x - 11) * 14, (y - 10) * 12, 0);
-            //            }
-            //        }
-            //    }
-            //}
-
-
-
         }
             
         else
@@ -126,14 +99,10 @@ public class RoomPlacer : MonoBehaviour
             }
         }
         SetCorridors();
+    }
 
-    }
-    
-    public Room[,] GetSpawnedRooms()
-    {
-        return spawnedRooms;
-    }
-    
+    public Room[,] GetSpawnedRooms() => spawnedRooms;
+
     private void PlaceOneRoom()
     {
         int maxX = spawnedRooms.GetLength(0) - 1;
@@ -153,7 +122,6 @@ public class RoomPlacer : MonoBehaviour
             }
         }
         Room newRoom = Instantiate(roomPrefabs[Random.Range(0, roomPrefabs.Length)]);
-        
         
         for (int limit = 0; limit < 25;limit++)
         {

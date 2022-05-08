@@ -11,7 +11,9 @@ public class RoomClosing : MonoBehaviour
     public GameObject triggers;
     private bool isClosed;
 
-    private void Start()
+    
+
+    public void Start()
     {
         if (doorU.activeInHierarchy) doorU = null;
         if (doorR.activeInHierarchy) doorR = null;

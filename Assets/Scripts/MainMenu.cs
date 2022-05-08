@@ -28,6 +28,7 @@ public class MainMenu : MonoBehaviour
         }
         else
         {
+            Debug.LogError(SaveSystem.WorldPath);
             warningScreen.SetActive(true);
         }
     }
