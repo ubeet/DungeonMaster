@@ -59,29 +59,24 @@ public class RoomPlacer : MonoBehaviour
                         {
                             if(!data.doorU[i, j])
                                 if (room.doorU != null)
-                                {
-                                    Debug.Log("up"); 
                                     room.doorU.SetActive(false);
-                                }
-                                    
+
                             if(!data.doorR[i, j])
                                 if (room.doorR != null)
-                                {
-                                    Debug.Log("right"); 
                                     room.doorR.SetActive(false);
-                                }
+                                
                             if(!data.doorD[i, j])
                                 if (room.doorD != null)
-                                {
-                                    Debug.Log("down"); 
                                     room.doorD.SetActive(false);
-                                }
+                                
                             if(!data.doorL[i, j])
                                 if (room.doorL != null)
-                                {
-                                    Debug.Log("left"); 
                                     room.doorL.SetActive(false);
-                                }
+                            
+                            if (!data.triggers[i, j])
+                                if (room.triggers != null)
+                                    room.triggers.SetActive(false);
+                            
                         }
                         
                         spawnedRooms[i, j] = room;

@@ -7,6 +7,7 @@ public class WorldData
     public bool[,] doorD;
     public bool[,] doorL;
     public string[,] roomTag;
+    public bool[,] triggers;
 
     public WorldData(RoomPlacer rooms)
     {
@@ -18,6 +19,7 @@ public class WorldData
         doorD = new bool[room.GetLength(0), room.GetLength(1)];
         doorR = new bool[room.GetLength(0), room.GetLength(1)];
         roomTag = new string[room.GetLength(0), room.GetLength(1)];
+        triggers = new bool[room.GetLength(0), room.GetLength(1)];
         
         for (int i = 0; i < room.GetLength(0); i++)
         {
@@ -35,6 +37,7 @@ public class WorldData
                     doorL[i, j] = roomData.doorL;
                     doorR[i, j] = roomData.doorR;
                     roomTag[i, j] = roomData.roomTag;
+                    triggers[i, j] = roomData.triggers;
                 }
                 
             }

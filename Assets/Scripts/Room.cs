@@ -6,6 +6,6 @@ public class Room : MonoBehaviour
     [SerializeField] public GameObject doorL;
     [SerializeField] public GameObject doorR;
     [SerializeField] public GameObject doorD;
-    
-    
+    [SerializeField] public GameObject triggers;
+
 }

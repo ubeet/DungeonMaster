@@ -46,7 +46,7 @@ public class RoomClosing : MonoBehaviour
                 if(doorR != null) doorR.SetActive(false);
                 if(doorD != null) doorD.SetActive(false);
                 if(doorL != null) doorL.SetActive(false);
-                Destroy(triggers);
+                triggers.SetActive(false);
             }
         }
         

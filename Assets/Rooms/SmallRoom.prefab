@@ -792,6 +792,7 @@ MonoBehaviour:
   doorL: {fileID: 2151488523395353467}
   doorR: {fileID: 2151488524377132156}
   doorD: {fileID: 2151488523056861553}
+  triggers: {fileID: 544444276989027017}
 --- !u!1 &2151488522785221210
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class RoomData
     public bool doorD;
     public bool doorL;
     public string roomTag;
+    public bool triggers;
 
     public RoomData(Room room)
     {
@@ -22,11 +23,13 @@ public class RoomData
         position[2] = room.gameObject.transform.position.z;
         
         roomTag = room.tag;
+        
+        if (room.triggers != null) triggers = room.triggers.activeInHierarchy;
 
-        if(room.doorU != null) doorU = room.doorU.activeInHierarchy;
-        if(room.doorR != null) doorR = room.doorR.activeInHierarchy;
-        if(room.doorD != null) doorD = room.doorD.activeInHierarchy;
-        if(room.doorL != null) doorL = room.doorL.activeInHierarchy;
+        if (room.doorU != null) doorU = room.doorU.activeInHierarchy;
+        if (room.doorR != null) doorR = room.doorR.activeInHierarchy;
+        if (room.doorD != null) doorD = room.doorD.activeInHierarchy;
+        if (room.doorL != null) doorL = room.doorL.activeInHierarchy;
 
     }
 
