@@ -13,6 +13,8 @@ TagManager:
   - StartRoom
   - BiggestRoom
   - NormalRoom
+  - Coin
+  - Medicine
   layers:
   - Default
   - TransparentFX

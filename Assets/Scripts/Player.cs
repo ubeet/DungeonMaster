@@ -3,13 +3,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] int maxHealth = 100;
-    [SerializeField] public int currentHealth;
-    [SerializeField] public int currentMoney;
     [SerializeField] GUIManager GUI;
     [SerializeField] GameObject player;
     [SerializeField] GameObject deathScreen;
-
+    public int currentHealth;
+    public int currentMoney;
+    
+    private System.Random rand = new System.Random();
+    private int maxHealth = 100;
+    
     private void Start()
     {
         if (File.Exists(SaveSystem.PlayerPath))
@@ -52,7 +54,10 @@ public class Player : MonoBehaviour
     
     private void TakeHealing(int health)
     {
-        currentHealth += health;
+        if (currentHealth + health <= maxHealth)
+            currentHealth += health;
+        else
+            currentHealth = maxHealth;
         GUI.SetHealth(currentHealth);
     }
     
@@ -76,6 +81,27 @@ public class Player : MonoBehaviour
         if(buff.name == "health")
             TakeHealing(buff.number);
     }*/
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.name == "Coin")
+        {
+            TakeMoney(rand.Next(1, 6));
+            Destroy(other.gameObject);
+        }
+
+        if (other.name == "Bandage")
+        {
+            TakeHealing(10);
+            Destroy(other.gameObject);
+        }
+        
+        if (other.name == "Medicine")
+        {
+            TakeHealing(20);
+            Destroy(other.gameObject);
+        }
+    }
 
     public void SaveGame()
     {

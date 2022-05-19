@@ -19,7 +19,7 @@ public static class SaveSystem
         bf.Serialize(stream, data);
         
         stream.Close();
-        Debug.LogError("ццццPlayer save file not found in " + PlayerPath);
+        Debug.LogError("Player save file not found in " + PlayerPath);
     }
     
     public static void SaveWorldData(RoomPlacer rooms)

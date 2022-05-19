@@ -4,33 +4,17 @@ using Random = System.Random;
 
 public class Chest : Interactable
 {
-    [SerializeField] Item[] contents;
-    [SerializeField] SpriteRenderer receivedItemSprite;
-    [SerializeField] private float hideTime;
-
-    private Item item;
-    private bool isOpen;
-    private Animator anim;
+    [SerializeField] GameObject[] contents;
+    
     private readonly Random rand = new Random();
+    private GameObject loot;
+    private Animator anim;
+    private bool isOpen;
     
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        item = contents[rand.Next(0, contents.Length)];
-        item.number = rand.Next(1, 11);
-        //if (isOpen)
-            //anim.Play("idle_opened");
-    }
-
-    private void HideItem()
-    {
-        receivedItemSprite.sprite = null;
-        
-    }
-    
-    private void ShowItem()
-    {
-        receivedItemSprite.sprite = item.itemSprite;
+        loot = contents[rand.Next(contents.Length)];
     }
 
     private void Update()
@@ -40,9 +24,7 @@ public class Chest : Interactable
             if (!isOpen)
             {
                 anim.Play("open");
-                Invoke(nameof(ShowItem), 1);
-                Invoke(nameof(HideItem), hideTime);
-                //Player.UseBuff(item);
+                Instantiate(loot, transform.position, Quaternion.identity);
                 isOpen = true;
             }
         }

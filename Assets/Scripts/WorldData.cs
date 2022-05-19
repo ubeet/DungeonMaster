@@ -2,10 +2,10 @@
 public class WorldData
 {
     public float[,,] position;
-    public bool[,] doorU;
-    public bool[,] doorR;
-    public bool[,] doorD;
-    public bool[,] doorL;
+    public bool[,] wallN;
+    public bool[,] wallE;
+    public bool[,] wallS;
+    public bool[,] wallW;
     public string[,] roomTag;
     public bool[,] triggers;
 
@@ -14,10 +14,10 @@ public class WorldData
         Room[,] room = rooms.GetSpawnedRooms();
         
         position = new float[room.GetLength(0), room.GetLength(1), 3];
-        doorU = new bool[room.GetLength(0), room.GetLength(1)];
-        doorL = new bool[room.GetLength(0), room.GetLength(1)];
-        doorD = new bool[room.GetLength(0), room.GetLength(1)];
-        doorR = new bool[room.GetLength(0), room.GetLength(1)];
+        wallN = new bool[room.GetLength(0), room.GetLength(1)];
+        wallW = new bool[room.GetLength(0), room.GetLength(1)];
+        wallS = new bool[room.GetLength(0), room.GetLength(1)];
+        wallE = new bool[room.GetLength(0), room.GetLength(1)];
         roomTag = new string[room.GetLength(0), room.GetLength(1)];
         triggers = new bool[room.GetLength(0), room.GetLength(1)];
         
@@ -32,10 +32,10 @@ public class WorldData
                     {
                         position[i, j, k] = roomData.position[k];
                     }
-                    doorD[i, j] = roomData.doorD;
-                    doorU[i, j] = roomData.doorU;
-                    doorL[i, j] = roomData.doorL;
-                    doorR[i, j] = roomData.doorR;
+                    wallN[i, j] = roomData.wallN;
+                    wallE[i, j] = roomData.wallE;
+                    wallS[i, j] = roomData.wallS;
+                    wallW[i, j] = roomData.wallW;
                     roomTag[i, j] = roomData.roomTag;
                     triggers[i, j] = roomData.triggers;
                 }
