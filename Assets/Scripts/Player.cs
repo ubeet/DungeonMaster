@@ -73,14 +73,6 @@ public class Player : MonoBehaviour
         player.SetActive(false);
         deathScreen.SetActive(true);
     }
-
-    /*public static void UseBuff(Item buff)
-    {
-        if(buff.name == "coin")
-            TakeMoney(buff.number);
-        if(buff.name == "health")
-            TakeHealing(buff.number);
-    }*/
     
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -90,7 +82,7 @@ public class Player : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-        if (other.tag == "Bandage")
+        if (other.tag == "Potion")
         {
             TakeHealing(10);
             Destroy(other.gameObject);

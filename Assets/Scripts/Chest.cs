@@ -24,7 +24,8 @@ public class Chest : Interactable
             if (!isOpen)
             {
                 anim.Play("open");
-                Instantiate(loot, transform.position, Quaternion.identity);
+                var position = transform.position;
+                Instantiate(loot, new Vector3(position.x - 2, position.y, position.z), Quaternion.identity);
                 isOpen = true;
             }
         }

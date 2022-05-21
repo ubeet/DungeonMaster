@@ -15,6 +15,7 @@ TagManager:
   - NormalRoom
   - Coin
   - Medicine
+  - Potion
   layers:
   - Default
   - TransparentFX
