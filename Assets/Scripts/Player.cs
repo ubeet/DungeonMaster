@@ -84,19 +84,19 @@ public class Player : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.name == "Coin")
+        if (other.tag == "Coin")
         {
             TakeMoney(rand.Next(1, 6));
             Destroy(other.gameObject);
         }
 
-        if (other.name == "Bandage")
+        if (other.tag == "Bandage")
         {
             TakeHealing(10);
             Destroy(other.gameObject);
         }
         
-        if (other.name == "Medicine")
+        if (other.tag == "Medicine")
         {
             TakeHealing(20);
             Destroy(other.gameObject);

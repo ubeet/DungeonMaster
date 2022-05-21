@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8796603874466723050}
   - component: {fileID: 8615119899058577592}
   - component: {fileID: 1976696520948383008}
+  - component: {fileID: -2474832513426003317}
   m_Layer: 0
   m_Name: Medicine
   m_TagString: Medicine
@@ -109,3 +110,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6, y: 4.44}
   m_EdgeRadius: 0
+--- !u!50 &-2474832513426003317
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4613002490827102679}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
