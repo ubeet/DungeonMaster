@@ -4629,7 +4629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallN: {fileID: 0}
   wallE: {fileID: 0}
-  wallS: {fileID: 0}
+  wallS: {fileID: 536094494965103492}
   wallW: {fileID: 0}
   triggers: {fileID: 0}
 --- !u!1 &3768692497502444426

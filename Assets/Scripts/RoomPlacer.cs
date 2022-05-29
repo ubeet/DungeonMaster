@@ -120,7 +120,7 @@ public class RoomPlacer : MonoBehaviour
                 Destroy(newRoom.gameObject);
                 newRoom = Instantiate(roomPrefabs[0]);
             }
-
+            
             if (ConnectToRooms(newRoom, position))
             {
                 newRoom.transform.position = new Vector3((position.x - 5) * 29, (position.y - 5) * 24, 0);
@@ -133,8 +133,13 @@ public class RoomPlacer : MonoBehaviour
 
     private bool ConnectToRooms(Room room, Vector2Int pos)
     {
+        
         int maxX = spawnedRooms.GetLength(0) - 1;
         int maxY = spawnedRooms.GetLength(1) - 1;
+        
+        Debug.LogWarning(room.wallN != null);
+        Debug.LogWarning(pos.y < maxY);
+        Debug.LogWarning(spawnedRooms[pos.x, pos.y + 1]?.wallS != null);
         
         List<Vector2Int> neighbours = new List<Vector2Int>();
         
@@ -152,21 +157,25 @@ public class RoomPlacer : MonoBehaviour
         Room selectedRoom = spawnedRooms[x, y];
         if (selectedDirections == Vector2Int.up)
         {
+            Debug.LogWarning("SSSSSSS");
             room.wallN.SetActive(false);
             selectedRoom.wallS.SetActive(false);
         }
         else if (selectedDirections == Vector2Int.right)
         {
+            Debug.LogWarning("AAAAA");
             room.wallE.SetActive(false);
             selectedRoom.wallW.SetActive(false);
         }
         else if (selectedDirections == Vector2Int.down)
         {
+            Debug.LogWarning("CCCC");
             room.wallS.SetActive(false);
             selectedRoom.wallN.SetActive(false);
         }
         else if (selectedDirections == Vector2Int.left)
         {
+            Debug.LogWarning("xxx");
             room.wallW.SetActive(false);
             selectedRoom.wallE.SetActive(false);
         }

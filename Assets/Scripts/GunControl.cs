@@ -8,6 +8,7 @@ public class GunControl : MonoBehaviour
     [SerializeField] private GameObject ammo;
     [SerializeField] private Transform shotDir;
     [SerializeField] private float speed;
+    [SerializeField] private int count;
     [SerializeField] private Animator animator;
     [SerializeField] private Transform GunPosChange;
     
@@ -60,7 +61,12 @@ public class GunControl : MonoBehaviour
             
             if (timeShot <= 0)
             {
-                Instantiate(ammo, shotDir.position, circle.transform.rotation);
+                for (int i = count / -2; i <= count / 2; i++)
+                {
+                    if (count % 2 == 0 && i != 0 || count % 2 != 0)
+                        Instantiate(ammo, shotDir.position, Quaternion.Euler(0f, 0f, rotateZ + offset + i * 7));
+                }
+                
                 timeShot = startTime;
             }
             if (circle.transform.rotation.z >= -0.707 && circle.transform.rotation.z <= 0.707)
