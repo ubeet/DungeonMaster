@@ -78,8 +78,8 @@ public class PlayerController : MonoBehaviour
 
     private States State
     {
-        get { return (States) animator.GetInteger("state"); }
-        set{ animator.SetInteger("state", (int)value); }
+        get => (States) animator.GetInteger("state");
+        set => animator.SetInteger("state", (int)value);
     }
 
     public enum States

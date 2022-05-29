@@ -11,6 +11,7 @@ public class GunControl : MonoBehaviour
     [SerializeField] private int count;
     [SerializeField] private Animator animator;
     [SerializeField] private Transform GunPosChange;
+    [SerializeField] public Transform goal;
     
     private float startTime = 0;
     private float timeShot = 0;
@@ -20,11 +21,21 @@ public class GunControl : MonoBehaviour
     
     private void FixedUpdate()
     {
-        if (Input.GetButton("Fire1"))
+        if (/*animator.gameObject.layer == LayerMask.NameToLayer("Enemy") ||*/ Input.GetButton("Fire1"))
         {
             gun.enabled = true;
-            direction.x = Input.GetAxis("Horizontal");
-            direction.y = Input.GetAxis("Vertical");
+
+            /*if (animator.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                var goalPosition = goal.position;
+                direction.x = goalPosition.x;
+                direction.y = goalPosition.y;
+            }
+            else
+            {*/
+                direction.x = Input.GetAxis("Horizontal");
+                direction.y = Input.GetAxis("Vertical");
+            //}
 
             bool stay = direction.y == 0 && direction.x == 0;
             

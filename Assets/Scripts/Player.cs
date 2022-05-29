@@ -76,19 +76,19 @@ public class Player : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Coin")
+        if (other.CompareTag("Coin"))
         {
             TakeMoney(rand.Next(1, 6));
             Destroy(other.gameObject);
         }
 
-        if (other.tag == "Potion")
+        if (other.CompareTag("Potion"))
         {
             TakeHealing(10);
             Destroy(other.gameObject);
         }
         
-        if (other.tag == "Medicine")
+        if (other.CompareTag("Medicine"))
         {
             TakeHealing(20);
             Destroy(other.gameObject);
