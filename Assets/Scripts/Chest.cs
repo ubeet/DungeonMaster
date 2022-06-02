@@ -1,5 +1,5 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using Random = System.Random;
 
 public class Chest : Interactable
@@ -9,12 +9,19 @@ public class Chest : Interactable
     private readonly Random rand = new Random();
     private GameObject loot;
     private Animator anim;
+    private Vector3 position;
     private bool isOpen;
     
-    private void Awake()
+    private void Start()
     {
         anim = GetComponent<Animator>();
         loot = contents[rand.Next(contents.Length)];
+        position = transform.position;
+    }
+    private IEnumerator Wait(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Instantiate(loot, new Vector3(position.x - 2, position.y, position.z), Quaternion.identity);
     }
 
     private void Update()
@@ -24,8 +31,7 @@ public class Chest : Interactable
             if (!isOpen)
             {
                 anim.Play("open");
-                var position = transform.position;
-                Instantiate(loot, new Vector3(position.x - 2, position.y, position.z), Quaternion.identity);
+                StartCoroutine(Wait(0.8f));
                 isOpen = true;
             }
         }

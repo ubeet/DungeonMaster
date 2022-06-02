@@ -16,6 +16,7 @@ TagManager:
   - Coin
   - Medicine
   - Potion
+  - Enemy
   layers:
   - Default
   - TransparentFX

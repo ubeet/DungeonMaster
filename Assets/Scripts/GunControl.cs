@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GunControl : MonoBehaviour
@@ -11,31 +12,35 @@ public class GunControl : MonoBehaviour
     [SerializeField] private int count;
     [SerializeField] private Animator animator;
     [SerializeField] private Transform GunPosChange;
-    [SerializeField] public Transform goal;
     
     private float startTime = 0;
     private float timeShot = 0;
+    private Vector3 goalPosition;
     private Vector2 direction;
     private States position = States.idle_down;
 
-    
+    private void Start()
+    {
+        goalPosition = GetComponent<Vector3>();
+    }
+
     private void FixedUpdate()
     {
-        if (/*animator.gameObject.layer == LayerMask.NameToLayer("Enemy") ||*/ Input.GetButton("Fire1"))
+        if (animator.gameObject.CompareTag("Enemy") || Input.GetButton("Fire1"))
         {
             gun.enabled = true;
-
-            /*if (animator.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            
+            if (animator.gameObject.CompareTag("Enemy"))
             {
-                var goalPosition = goal.position;
+                goalPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
                 direction.x = goalPosition.x;
                 direction.y = goalPosition.y;
             }
             else
-            {*/
+            {
                 direction.x = Input.GetAxis("Horizontal");
                 direction.y = Input.GetAxis("Vertical");
-            //}
+            }
 
             bool stay = direction.y == 0 && direction.x == 0;
             
@@ -65,19 +70,22 @@ public class GunControl : MonoBehaviour
                 position = States.idle_left;
                 gun.sortingOrder = 0;
             }
+
+            Vector3 difference;
             
-            Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - circle.transform.position;
+            if (animator.gameObject.CompareTag("Enemy"))
+                difference = goalPosition - circle.transform.position;
+            else
+                difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - circle.transform.position;
+            
             float rotateZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
             circle.transform.rotation = Quaternion.Euler(0f, 0f, rotateZ + offset);
             
             if (timeShot <= 0)
             {
                 for (int i = count / -2; i <= count / 2; i++)
-                {
                     if (count % 2 == 0 && i != 0 || count % 2 != 0)
                         Instantiate(ammo, shotDir.position, Quaternion.Euler(0f, 0f, rotateZ + offset + i * 7));
-                }
-                
                 timeShot = startTime;
             }
             if (circle.transform.rotation.z >= -0.707 && circle.transform.rotation.z <= 0.707)
@@ -98,7 +106,7 @@ public class GunControl : MonoBehaviour
         set{ animator.SetInteger("state", (int)value); }
     }
 
-    public enum States
+    private enum States
     {
         up,
         down,

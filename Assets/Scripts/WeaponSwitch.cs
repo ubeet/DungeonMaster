@@ -14,7 +14,7 @@ public class WeaponSwitch : MonoBehaviour
     private void Update()
     {
         int curWeapon = weaponSwitch;
-        if (Input.GetKeyUp(KeyCode.LeftCommand))
+        if (Input.GetKeyUp(KeyCode.Q))
         {
             if (weaponSwitch >= transform.childCount - 1)
                 weaponSwitch = 0;

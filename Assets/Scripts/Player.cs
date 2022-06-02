@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     
     private System.Random rand = new System.Random();
     private int maxHealth = 100;
+    private int damage;
     
     private void Start()
     {
@@ -45,7 +46,7 @@ public class Player : MonoBehaviour
             TakeMoney(2);
     }
     
-    private void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         GUI.SetHealth(currentHealth);

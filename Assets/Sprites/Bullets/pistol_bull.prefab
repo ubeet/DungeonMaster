@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8736205419951053871}
   - component: {fileID: 8736205419951053870}
   m_Layer: 0
-  m_Name: ak69bull
+  m_Name: pistol_bull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,6 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   destroyTime: 3
+  damage: 5
+  isEnemy: 0
 --- !u!70 &8736205419951053840
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

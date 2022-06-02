@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8736205419951053871}
   - component: {fileID: 8736205419951053870}
   m_Layer: 0
-  m_Name: ak69bull 1
+  m_Name: ak69_bull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,7 +99,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  destroyTime: 0.3
+  destroyTime: 3
+  damage: 7
+  isEnemy: 0
 --- !u!70 &8736205419951053840
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
