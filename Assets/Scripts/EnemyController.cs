@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
     
-    private void FixedUpdate()
+    private void Update()
     {
         goalPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
         agent.SetDestination(goalPosition);
@@ -35,34 +35,13 @@ public class EnemyController : MonoBehaviour
             agent.SetDestination(goalPosition);
             rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
         }
+        
         else
         {
             agent.SetDestination(-goalPosition);
             rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
         }
-
-        if(direction.y == 0 && direction.x == 0)
-            State = state;
-        else if (direction.x > 0)
-        {
-            State = States.right;
-            state = States.right;
-        }
-        else if (direction.x < 0)
-        {
-            State = States.left;
-            state = States.left;
-        }
-        else if (direction.y < 0)
-        {
-            State = States.down;
-            state = States.down;
-        }
-        else if (direction.y > 0)
-        {
-            State = States.up;
-            state = States.up;
-        }
+        
     }
     
     private States State

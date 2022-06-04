@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8615119899058577592}
   - component: {fileID: 1976696520948383008}
   - component: {fileID: -2474832513426003317}
+  - component: {fileID: -5548137463743458489}
   m_Layer: 0
   m_Name: Potion
   m_TagString: Potion
@@ -131,3 +132,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-5548137463743458489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4613002490827102679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a4d1c0a893c41a882177098483317d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMedicine: 1
+  cost: 10

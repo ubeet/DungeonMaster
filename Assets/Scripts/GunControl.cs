@@ -3,46 +3,54 @@ using UnityEngine;
 
 public class GunControl : MonoBehaviour
 {
-    [SerializeField] private GameObject circle;
     [SerializeField] private float offset;
     [SerializeField] private SpriteRenderer gun;
     [SerializeField] private GameObject ammo;
-    [SerializeField] private Transform shotDir;
     [SerializeField] private float speed;
     [SerializeField] private int count;
-    [SerializeField] private Animator animator;
-    [SerializeField] private Transform GunPosChange;
     
+    private GameObject circle;
+    private Transform shotDir;
+    private Animator animator;
+    private Transform GunPosChange;
     private float startTime = 0;
     private float timeShot = 0;
     private Vector3 goalPosition;
+    private Vector3 difference;
     private Vector2 direction;
     private States position = States.idle_down;
 
     private void Start()
     {
-        goalPosition = GetComponent<Vector3>();
+        Initialize();
     }
-
+    public void Initialize()
+    {
+        circle = transform.parent.gameObject;
+        shotDir = transform.GetChild(0);
+        animator = transform.parent.parent.gameObject.GetComponent<Animator>();
+        GunPosChange = circle.GetComponent<Transform>();
+    }
     private void FixedUpdate()
     {
         if (animator.gameObject.CompareTag("Enemy") || Input.GetButton("Fire1"))
         {
-            gun.enabled = true;
             
+            gun.enabled = true;
+            bool stay;
+                
             if (animator.gameObject.CompareTag("Enemy"))
             {
                 goalPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-                direction.x = goalPosition.x;
-                direction.y = goalPosition.y;
+                stay = false;
             }
             else
             {
                 direction.x = Input.GetAxis("Horizontal");
                 direction.y = Input.GetAxis("Vertical");
+                stay = direction.y == 0 && direction.x == 0;
             }
 
-            bool stay = direction.y == 0 && direction.x == 0;
             
             var pos = GunPosChange.rotation.z;
             
@@ -71,12 +79,11 @@ public class GunControl : MonoBehaviour
                 gun.sortingOrder = 0;
             }
 
-            Vector3 difference;
-            
+
+            var shotPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if (animator.gameObject.CompareTag("Enemy"))
-                difference = goalPosition - circle.transform.position;
-            else
-                difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - circle.transform.position;
+                shotPos = goalPosition;
+            difference = shotPos - circle.transform.position;
             
             float rotateZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
             circle.transform.rotation = Quaternion.Euler(0f, 0f, rotateZ + offset);

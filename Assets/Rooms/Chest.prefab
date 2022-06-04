@@ -116,7 +116,6 @@ MonoBehaviour:
   contents:
   - {fileID: 4613002490827102679, guid: add4265dade26a642a31e1797f9da3ef, type: 3}
   - {fileID: 4613002490827102679, guid: ec69aa008f050fa4c8b959d0fd7b7386, type: 3}
-  receivedItemSprite: {fileID: 0}
 --- !u!95 &4277632042603319832
 Animator:
   serializedVersion: 3
@@ -149,7 +148,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.07545258}
+  m_Offset: {x: 0, y: -0.10876888}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -160,7 +159,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.14909485}
+  m_Size: {x: 0.3, y: 0.21582744}
   m_EdgeRadius: 0
 --- !u!61 &4277632042603319837
 BoxCollider2D:

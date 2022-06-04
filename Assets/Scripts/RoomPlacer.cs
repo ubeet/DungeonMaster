@@ -157,25 +157,22 @@ public class RoomPlacer : MonoBehaviour
         Room selectedRoom = spawnedRooms[x, y];
         if (selectedDirections == Vector2Int.up)
         {
-            Debug.LogWarning("SSSSSSS");
+            
             room.wallN.SetActive(false);
             selectedRoom.wallS.SetActive(false);
         }
         else if (selectedDirections == Vector2Int.right)
         {
-            Debug.LogWarning("AAAAA");
             room.wallE.SetActive(false);
             selectedRoom.wallW.SetActive(false);
         }
         else if (selectedDirections == Vector2Int.down)
         {
-            Debug.LogWarning("CCCC");
             room.wallS.SetActive(false);
             selectedRoom.wallN.SetActive(false);
         }
         else if (selectedDirections == Vector2Int.left)
         {
-            Debug.LogWarning("xxx");
             room.wallW.SetActive(false);
             selectedRoom.wallE.SetActive(false);
         }

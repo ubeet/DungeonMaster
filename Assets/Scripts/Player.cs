@@ -4,17 +4,20 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] GUIManager GUI;
-    [SerializeField] GameObject player;
     [SerializeField] GameObject deathScreen;
     public int currentHealth;
     public int currentMoney;
     
+    private GameObject player;
     private System.Random rand = new System.Random();
     private int maxHealth = 100;
     private int damage;
+    public int pHealing = 10;
+    public int mHealing = 20;
     
     private void Start()
     {
+        player = transform.parent.gameObject;
         if (File.Exists(SaveSystem.PlayerPath))
         {
             PlayerData data = SaveSystem.LoadPlayerData();
@@ -53,7 +56,7 @@ public class Player : MonoBehaviour
         if (currentHealth <= 0) Die();
     }
     
-    private void TakeHealing(int health)
+    public void TakeHealing(int health)
     {
         if (currentHealth + health <= maxHealth)
             currentHealth += health;
@@ -62,7 +65,7 @@ public class Player : MonoBehaviour
         GUI.SetHealth(currentHealth);
     }
     
-    private void TakeMoney(int coins)
+    public void TakeMoney(int coins)
     {
         currentMoney += coins;
         GUI.SetMoney(currentMoney);
@@ -77,21 +80,21 @@ public class Player : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Coin"))
+        if (other.CompareTag("Coin") && other.GetComponent<Item>().isMedicine)
         {
             TakeMoney(rand.Next(1, 6));
             Destroy(other.gameObject);
         }
 
-        if (other.CompareTag("Potion"))
+        if (other.CompareTag("Potion") && other.GetComponent<Item>().isMedicine)
         {
-            TakeHealing(10);
+            TakeHealing(pHealing);
             Destroy(other.gameObject);
         }
         
-        if (other.CompareTag("Medicine"))
+        if (other.CompareTag("Medicine") && other.GetComponent<Item>().isMedicine)
         {
-            TakeHealing(20);
+            TakeHealing(mHealing);
             Destroy(other.gameObject);
         }
     }

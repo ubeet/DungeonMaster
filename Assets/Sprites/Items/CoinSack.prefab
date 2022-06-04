@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8796603874466723050}
   - component: {fileID: 8615119899058577592}
   - component: {fileID: 1128427667234726714}
+  - component: {fileID: -6404613382687005523}
   m_Layer: 0
   m_Name: CoinSack
   m_TagString: Coin
@@ -100,7 +101,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 16, y: 16}
+    oldSize: {x: 0.16, y: 0.16}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -109,3 +110,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.13954985, y: 0.16131744}
   m_EdgeRadius: 0
+--- !u!114 &-6404613382687005523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4613002490827102679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a4d1c0a893c41a882177098483317d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMedicine: 1
+  cost: 10
