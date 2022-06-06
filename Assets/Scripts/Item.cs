@@ -6,4 +6,5 @@ public class Item : MonoBehaviour
 {
     public bool isMedicine;
     public int cost;
+    public bool isInInventory;
 }

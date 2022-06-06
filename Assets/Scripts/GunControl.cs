@@ -28,84 +28,91 @@ public class GunControl : MonoBehaviour
     {
         circle = transform.parent.gameObject;
         shotDir = transform.GetChild(0);
-        animator = transform.parent.parent.gameObject.GetComponent<Animator>();
+        if(transform.parent.parent.gameObject.TryGetComponent<Animator>(out animator))
+            animator.transform.parent.gameObject.GetComponentInParent<Animator>();
+        else
+            animator = new GameObject().AddComponent<Animator>();
+           
         GunPosChange = circle.GetComponent<Transform>();
     }
     private void FixedUpdate()
     {
-        if (animator.gameObject.CompareTag("Enemy") || Input.GetButton("Fire1"))
+        if (gameObject.GetComponent<Item>().isInInventory)
         {
-            
-            gun.enabled = true;
-            bool stay;
-                
-            if (animator.gameObject.CompareTag("Enemy"))
+            if (animator.gameObject.CompareTag("Enemy") && animator.gameObject.GetComponent<Enemy>().AI || Input.GetButton("Fire1"))
             {
-                goalPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-                stay = false;
+                gun.enabled = true;
+                bool stay;
+
+                if (animator.gameObject.CompareTag("Enemy"))
+                {
+                    goalPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+                    stay = false;
+                }
+                else
+                {
+                    direction.x = Input.GetAxis("Horizontal");
+                    direction.y = Input.GetAxis("Vertical");
+                    stay = direction.y == 0 && direction.x == 0;
+                }
+
+
+                var pos = GunPosChange.rotation.z;
+
+                if (pos > 0.386 && pos < 0.922)
+                {
+                    State = stay ? States.idle_up : States.up;
+                    position = States.idle_up;
+                    gun.sortingOrder = 0;
+                }
+                else if (pos > -0.922 && pos <= -0.386)
+                {
+                    State = stay ? States.idle_down : States.down;
+                    position = States.idle_down;
+                    gun.sortingOrder = 2;
+                }
+                else if (pos > -0.386 && pos <= 0.386)
+                {
+                    State = stay ? States.idle_right : States.right;
+                    position = States.idle_right;
+                    gun.sortingOrder = 2;
+                }
+                else if (!(pos > -0.922 && pos <= 0.922))
+                {
+                    State = stay ? States.idle_left : States.left;
+                    position = States.idle_left;
+                    gun.sortingOrder = 0;
+                }
+
+
+                var shotPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                if (animator.gameObject.CompareTag("Enemy"))
+                    shotPos = goalPosition;
+                difference = shotPos - circle.transform.position;
+
+                float rotateZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+                circle.transform.rotation = Quaternion.Euler(0f, 0f, rotateZ + offset);
+
+                if (timeShot <= 0)
+                {
+                    for (int i = count / -2; i <= count / 2; i++)
+                        if (count % 2 == 0 && i != 0 || count % 2 != 0)
+                            Instantiate(ammo, shotDir.position, Quaternion.Euler(0f, 0f, rotateZ + offset + i * 7));
+                    timeShot = startTime;
+                }
+
+                if (circle.transform.rotation.z >= -0.707 && circle.transform.rotation.z <= 0.707)
+                    gun.flipY = true;
+                else
+                    gun.flipY = false;
             }
             else
-            {
-                direction.x = Input.GetAxis("Horizontal");
-                direction.y = Input.GetAxis("Vertical");
-                stay = direction.y == 0 && direction.x == 0;
-            }
+                gun.enabled = false;
 
-            
-            var pos = GunPosChange.rotation.z;
-            
-            if (pos > 0.386 && pos < 0.922)
-            {
-                State = stay ? States.idle_up : States.up;
-                position = States.idle_up;
-                gun.sortingOrder = 0;
-            }
-            else if (pos > -0.922 && pos <= -0.386)
-            {
-                State = stay ? States.idle_down : States.down;
-                position = States.idle_down;
-                gun.sortingOrder = 2;
-            }
-            else if (pos > -0.386 && pos <= 0.386)
-            {
-                State = stay ? States.idle_right : States.right;
-                position = States.idle_right;
-                gun.sortingOrder = 2;
-            }
-            else if (!(pos > -0.922 && pos <= 0.922))
-            {
-                State = stay ? States.idle_left : States.left;
-                position = States.idle_left;
-                gun.sortingOrder = 0;
-            }
-
-
-            var shotPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (animator.gameObject.CompareTag("Enemy"))
-                shotPos = goalPosition;
-            difference = shotPos - circle.transform.position;
-            
-            float rotateZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-            circle.transform.rotation = Quaternion.Euler(0f, 0f, rotateZ + offset);
-            
-            if (timeShot <= 0)
-            {
-                for (int i = count / -2; i <= count / 2; i++)
-                    if (count % 2 == 0 && i != 0 || count % 2 != 0)
-                        Instantiate(ammo, shotDir.position, Quaternion.Euler(0f, 0f, rotateZ + offset + i * 7));
-                timeShot = startTime;
-            }
-            if (circle.transform.rotation.z >= -0.707 && circle.transform.rotation.z <= 0.707)
-                gun.flipY = true;
-            else
-                gun.flipY = false;
+            timeShot -= Time.fixedDeltaTime;
+            startTime = speed;
         }
-        else
-            gun.enabled = false;
-        
-        timeShot -= Time.fixedDeltaTime;
-        startTime = speed;
-        
+
     }
     private States State
     {

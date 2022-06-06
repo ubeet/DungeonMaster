@@ -5,15 +5,21 @@ using UnityEngine.Serialization;
 
 public class RoomClosing : MonoBehaviour
 {
-    public GameObject wallN;
-    public GameObject wallE;
-    public GameObject wallS;
-    public GameObject wallW;
-    public GameObject triggers;
+    private GameObject wallN;
+    private GameObject wallE;
+    private GameObject wallS;
+    private GameObject wallW;
+    private GameObject triggers;
     private bool isClosed;
 
     public void Start()
     {
+        var thisRoom = transform.parent.parent;
+        wallN = thisRoom.GetChild(thisRoom.childCount - 5).gameObject;
+        wallE = thisRoom.GetChild(thisRoom.childCount - 4).gameObject;
+        wallS = thisRoom.GetChild(thisRoom.childCount - 3).gameObject;
+        wallW = thisRoom.GetChild(thisRoom.childCount - 2).gameObject;
+        triggers = transform.parent.gameObject;
         if (wallN.activeInHierarchy) wallN = null;
         if (wallE.activeInHierarchy) wallE = null;
         if (wallS.activeInHierarchy) wallS = null;

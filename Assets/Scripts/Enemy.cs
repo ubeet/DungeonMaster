@@ -5,6 +5,8 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private GameObject loot;
     [SerializeField] private GameObject enemy;
+
+    internal bool AI = false;
     private Vector3 position;
     private int currentHealth;
     

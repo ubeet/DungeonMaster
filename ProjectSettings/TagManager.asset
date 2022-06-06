@@ -17,6 +17,7 @@ TagManager:
   - Medicine
   - Potion
   - Enemy
+  - ShopRoom
   layers:
   - Default
   - TransparentFX

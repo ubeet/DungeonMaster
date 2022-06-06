@@ -46,15 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d2747d27666449dc93317f77980059e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  circle: {fileID: 0}
   offset: 0
   gun: {fileID: 7806809882315763203}
   ammo: {fileID: 8736205419951053868, guid: 6ca7c6d544577f647906c26e870eb56b, type: 3}
-  shotDir: {fileID: 7806809882658474923}
   speed: 0.6
   count: 1
-  animator: {fileID: 0}
-  GunPosChange: {fileID: 0}
 --- !u!212 &7806809882315763203
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -118,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0a4d1c0a893c41a882177098483317d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTakeble: 0
+  isMedicine: 0
   cost: 10
 --- !u!1 &7806809882658474932
 GameObject:

@@ -9,6 +9,7 @@ public class RoomPlacer : MonoBehaviour
 {
     public Room[] roomPrefabs;
     public Room startRoom;
+    public Room shopRoom;
     public int dungeonSize;
     public int roomStartX;
     public int roomStartY;
@@ -19,7 +20,7 @@ public class RoomPlacer : MonoBehaviour
     public Corridor TopVert;
     public Corridor DownVert;
     public Corridor CenterVert;
-    
+
     private Room[,] spawnedRooms;
     
     private void Start()
@@ -27,6 +28,7 @@ public class RoomPlacer : MonoBehaviour
         spawnedRooms = new Room[dungeonSize,dungeonSize];
         if (File.Exists(SaveSystem.WorldPath))
         {
+            var qu = Quaternion.Euler(-90f, 0f, 0f);
             WorldData data = SaveSystem.LoadWorldData();
 
             for (int i = 0; i < spawnedRooms.GetLength(0); i++)
@@ -36,11 +38,19 @@ public class RoomPlacer : MonoBehaviour
                     if (data.roomTag != null)
                     {
                         Room room = null;
+                        if (data.roomTag[i, j] == shopRoom.tag)
+                        {
+                            room = Instantiate(shopRoom,
+                                new Vector3(data.position[i, j, 0], data.position[i, j, 1], data.position[i, j, 2]),
+                                Quaternion.identity);
+                            room.gameObject.transform.localRotation = qu;
+                        }
                         if (data.roomTag[i, j] == startRoom.tag)
                         {
                             room = Instantiate(startRoom,
                                 new Vector3(data.position[i, j, 0], data.position[i, j, 1], data.position[i, j, 2]),
                                 Quaternion.identity);
+                            room.gameObject.transform.localRotation = qu;
                         }
 
                         foreach (var el in roomPrefabs)
@@ -48,9 +58,11 @@ public class RoomPlacer : MonoBehaviour
                             if (el.tag == data.roomTag[i, j])
                             {
                                 room = Instantiate(el, new Vector3(data.position[i, j, 0], data.position[i, j, 1], data.position[i, j, 2]), Quaternion.identity);
+                                room.gameObject.transform.localRotation = qu;
                                 break;
                             }
                         }
+                        
 
                         if (room != null)
                         {
@@ -86,6 +98,7 @@ public class RoomPlacer : MonoBehaviour
             spawnedRooms[roomStartX, roomStartY] = startRoom;
             for (int i = 0; i < roomsAmount; i++)
                 PlaceOneRoom();
+            PlaceOneRoom(shopRoom);
         }
         SetCorridors();
     }
@@ -110,6 +123,45 @@ public class RoomPlacer : MonoBehaviour
             }
         }
         Room newRoom = Instantiate(roomPrefabs[Random.Range(0, roomPrefabs.Length)]);
+        
+        for (int limit = 0; limit < 25;limit++)
+        {
+            Vector2Int position = vacantPlaces.ElementAt(Random.Range(0, vacantPlaces.Count));
+            if (position.x + 1 <= maxX && spawnedRooms[position.x + 1, position.y]?.tag == "BiggestRoom" ||
+                position.x - 1 >= 0 && spawnedRooms[position.x - 1, position.y]?.tag == "BiggestRoom")
+            {
+                Destroy(newRoom.gameObject);
+                newRoom = Instantiate(roomPrefabs[0]);
+            }
+            
+            if (ConnectToRooms(newRoom, position))
+            {
+                newRoom.transform.position = new Vector3((position.x - 5) * 29, (position.y - 5) * 24, 0);
+                spawnedRooms[position.x, position.y] = newRoom;
+                break;
+            }
+        }
+        
+    }
+    
+    private void PlaceOneRoom(Room room)
+    {
+        int maxX = spawnedRooms.GetLength(0) - 1;
+        int maxY = spawnedRooms.GetLength(1) - 1;
+        HashSet<Vector2Int> vacantPlaces = new HashSet<Vector2Int>();
+        for (int x = 0; x < spawnedRooms.GetLength(0); x++)
+        {
+            for (int y = 0; y < spawnedRooms.GetLength(1); y++)
+            {
+                if (spawnedRooms[x, y] == null) continue;
+                
+                if (x > 0 && spawnedRooms[x - 1, y] == null) vacantPlaces.Add(new Vector2Int(x - 1, y));
+                if (y > 0 && spawnedRooms[x, y - 1] == null) vacantPlaces.Add(new Vector2Int(x, y - 1));
+                if (x < maxX && spawnedRooms[x + 1, y] == null) vacantPlaces.Add(new Vector2Int(x + 1, y));
+                if (y < maxY && spawnedRooms[x, y + 1] == null) vacantPlaces.Add(new Vector2Int(x, y + 1));
+            }
+        }
+        Room newRoom = Instantiate(room);
         
         for (int limit = 0; limit < 25;limit++)
         {

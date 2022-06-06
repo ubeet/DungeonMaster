@@ -5768,7 +5768,7 @@ GameObject:
   - component: {fileID: 3421745903161827335}
   m_Layer: 0
   m_Name: ShopRoom
-  m_TagString: Room
+  m_TagString: ShopRoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9933,8 +9933,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Items:
-  - {fileID: -803917966597724558, guid: ec69aa008f050fa4c8b959d0fd7b7386, type: 3}
-  - {fileID: -5548137463743458489, guid: 623609248a6082b498101a886348a96c, type: 3}
+  - {fileID: 6711744425725328733, guid: 063dbcb5f93a740b4b85a3843a6d0cea, type: 3}
+  - {fileID: -5630857812804618695, guid: f0b84ba4d9db24dbba2451389711938d, type: 3}
 --- !u!70 &3088861177031458212
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

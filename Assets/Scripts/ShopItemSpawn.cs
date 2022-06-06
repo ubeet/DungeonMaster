@@ -20,30 +20,37 @@ public class ShopItemSpawn : Interactable
         price.text = obj.cost.ToString();
         isMedicine = obj.isMedicine;
         obj.isMedicine = false;
+        obj.isInInventory = false;
         obj.gameObject.transform.SetParent(childPoint);
         obj.gameObject.transform.localPosition = new Vector3(0, 0, 0);
     }
 
     private void FixedUpdate()
     {
-        playerObj = other.gameObject.GetComponent<Player>();
-        if (Input.GetKeyUp(KeyCode.E) && playerInRange && playerObj.currentMoney >= obj.cost)
+        if (playerInRange)
         {
-            if (isMedicine)
+            playerObj = other.gameObject.GetComponent<Player>();
+            if (Input.GetKeyUp(KeyCode.E) && playerObj.currentMoney >= obj.cost)
             {
-                playerObj.TakeHealing(obj.tag.Equals("Medicine") ? playerObj.mHealing : playerObj.pHealing);
+    
+                if (isMedicine)
+                    playerObj.TakeHealing(obj.tag.Equals("Medicine") ? playerObj.mHealing : playerObj.pHealing);
+                else
+                {
+                    var gunCircle = other.gameObject.transform.GetChild(1);
+                    var newGun = Instantiate(obj);
+                    newGun.gameObject.transform.SetParent(gunCircle);
+                    newGun.isInInventory = true;
+                    newGun.gameObject.transform.localPosition = new Vector3(0.3f, 0, 0);
+                    newGun.gameObject.transform.localScale = new Vector3(2.02f, 2.02f, 1);
+                    var e = Quaternion.Euler(0f, 0f, 180f);
+                    newGun.gameObject.transform.localRotation = e;
+                    newGun.gameObject.SetActive(false);
+                }
+                playerObj.TakeMoney(-obj.cost);
+                Destroy(obj.gameObject);
             }
-            else
-            {
-                var gunCircle = other.gameObject.transform.GetChild(1);
-                var newGun = Instantiate(obj);
-                newGun.gameObject.transform.SetParent(gunCircle);
-                newGun.gameObject.transform.localPosition = new Vector3(0, 0, 0);
-            }
-            playerObj.TakeMoney(-obj.cost);
-            Destroy(obj.gameObject);
         }
-
     }
 
     

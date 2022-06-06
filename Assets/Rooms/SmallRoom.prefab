@@ -3018,7 +3018,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8162497259004381685}
-  m_RootOrder: 8
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1839735485 &2399208795930197694
 Tilemap:
@@ -4007,7 +4007,7 @@ Transform:
   - {fileID: 5178304339461756752}
   - {fileID: 8693734134601423982}
   m_Father: {fileID: 8162497259004381685}
-  m_RootOrder: 4
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1983411367278235783
 GameObject:
@@ -9057,7 +9057,7 @@ Transform:
   - {fileID: 6925061180340135919}
   - {fileID: 879504498183676863}
   m_Father: {fileID: 8162497259004381685}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7293084650228110799
 GameObject:
@@ -9092,7 +9092,7 @@ Transform:
   - {fileID: 2606230302943136279}
   - {fileID: 2815515211429935154}
   m_Father: {fileID: 8162497259004381685}
-  m_RootOrder: 6
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7319352166945195856
 GameObject:
@@ -11130,7 +11130,7 @@ Transform:
   - {fileID: 5447853234073475929}
   - {fileID: 7107048241756968887}
   m_Father: {fileID: 8162497259004381685}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8109323562863157809
 GameObject:
@@ -11163,13 +11163,13 @@ Transform:
   - {fileID: 9096525064525652084}
   - {fileID: 7289074324789627966}
   - {fileID: 3192263349003279277}
+  - {fileID: 5323990091703936773}
+  - {fileID: 5617682544478459586}
+  - {fileID: 8159614202346336990}
   - {fileID: 3660993118355930255}
   - {fileID: 1166296507946655524}
   - {fileID: 4197485215267687250}
   - {fileID: 796467573312519571}
-  - {fileID: 5323990091703936773}
-  - {fileID: 5617682544478459586}
-  - {fileID: 8159614202346336990}
   - {fileID: 6273061632614487631}
   m_Father: {fileID: 7361514034134182774}
   m_RootOrder: 0
@@ -11218,7 +11218,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8162497259004381685}
-  m_RootOrder: 7
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1839735485 &8714197534227313933
 Tilemap:
@@ -11724,7 +11724,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8162497259004381685}
-  m_RootOrder: 9
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1839735485 &6493928119100661889
 Tilemap:

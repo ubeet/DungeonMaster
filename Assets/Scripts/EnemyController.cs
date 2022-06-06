@@ -11,7 +11,6 @@ public class EnemyController : MonoBehaviour
     private Vector3 goalPosition;
     private Vector2 direction;
     private Animator animator;
-    private States state = States.down;
 
     void Start () 
     {
@@ -25,36 +24,28 @@ public class EnemyController : MonoBehaviour
     
     private void Update()
     {
-        goalPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-        agent.SetDestination(goalPosition);
-
-        direction.x = goalPosition.x;
-        direction.y = goalPosition.y;
-        if (Vector3.Distance(goalPosition, rb.position) > distance)
+        if (GetComponent<Enemy>().AI)
         {
+            goalPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
             agent.SetDestination(goalPosition);
-            rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
+
+            direction.x = goalPosition.x;
+            direction.y = goalPosition.y;
+            if (Vector3.Distance(goalPosition, rb.position) > distance)
+            {
+                agent.SetDestination(goalPosition);
+                rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
+            }
+        
+            else
+            {
+                agent.SetDestination(-goalPosition);
+                rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
+            }
         }
         
-        else
-        {
-            agent.SetDestination(-goalPosition);
-            rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
-        }
         
     }
     
-    private States State
-    {
-        get => (States) animator.GetInteger("state");
-        set => animator.SetInteger("state", (int)value);
-    }
     
-    public enum States
-    {
-        up,
-        down,
-        left,
-        right,
-    }
 }
