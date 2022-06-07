@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   destroyTime: 3
-  damage: 5
+  damage: 100
   isEnemy: 0
 --- !u!70 &8736205419951053840
 CapsuleCollider2D:

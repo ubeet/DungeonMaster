@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 public class RoomPlacer : MonoBehaviour
@@ -52,6 +53,7 @@ public class RoomPlacer : MonoBehaviour
                                 Quaternion.identity);
                             room.gameObject.transform.localRotation = qu;
                         }
+                        
 
                         foreach (var el in roomPrefabs)
                         {
@@ -95,7 +97,10 @@ public class RoomPlacer : MonoBehaviour
         }
         else
         {
-            spawnedRooms[roomStartX, roomStartY] = startRoom;
+            
+            var start = Instantiate(startRoom);
+            start.transform.position = new Vector3((roomStartX - 5) * 29, (roomStartY - 5) * 24, 0);
+            spawnedRooms[roomStartX, roomStartY] = start;
             for (int i = 0; i < roomsAmount; i++)
                 PlaceOneRoom();
             PlaceOneRoom(shopRoom);
@@ -138,6 +143,7 @@ public class RoomPlacer : MonoBehaviour
             {
                 newRoom.transform.position = new Vector3((position.x - 5) * 29, (position.y - 5) * 24, 0);
                 spawnedRooms[position.x, position.y] = newRoom;
+                newRoom.GetComponent<NavMeshSurface2d>().BuildNavMesh();
                 break;
             }
         }
@@ -177,6 +183,7 @@ public class RoomPlacer : MonoBehaviour
             {
                 newRoom.transform.position = new Vector3((position.x - 5) * 29, (position.y - 5) * 24, 0);
                 spawnedRooms[position.x, position.y] = newRoom;
+                newRoom.GetComponent<NavMeshSurface2d>().BuildNavMesh();
                 break;
             }
         }

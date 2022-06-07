@@ -39,7 +39,7 @@ public class GunControl : MonoBehaviour
     {
         if (gameObject.GetComponent<Item>().isInInventory)
         {
-            if (animator.gameObject.CompareTag("Enemy") && animator.gameObject.GetComponent<Enemy>().AI || Input.GetButton("Fire1"))
+            if (animator.gameObject.CompareTag("Enemy") && animator.gameObject.GetComponent<Enemy>().AI || Input.GetButton("Fire1") && animator.gameObject.CompareTag("Player"))
             {
                 gun.enabled = true;
                 bool stay;

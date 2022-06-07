@@ -4,7 +4,6 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private GameObject loot;
-    [SerializeField] private GameObject enemy;
 
     internal bool AI = false;
     private Vector3 position;
@@ -26,7 +25,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        Destroy(enemy);
+        Destroy(transform.parent.parent.gameObject);
         position = transform.position;
         Instantiate(loot, new Vector3(position.x, position.y, position.z), Quaternion.identity);
     }

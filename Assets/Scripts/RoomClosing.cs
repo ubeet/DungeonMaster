@@ -10,15 +10,19 @@ public class RoomClosing : MonoBehaviour
     private GameObject wallS;
     private GameObject wallW;
     private GameObject triggers;
+    private EnemySpawn spawn;
     private bool isClosed;
 
     public void Start()
     {
         var thisRoom = transform.parent.parent;
+        
+        spawn = thisRoom.GetChild(thisRoom.childCount - 6).GetComponent<EnemySpawn>();
         wallN = thisRoom.GetChild(thisRoom.childCount - 5).gameObject;
         wallE = thisRoom.GetChild(thisRoom.childCount - 4).gameObject;
         wallS = thisRoom.GetChild(thisRoom.childCount - 3).gameObject;
-        wallW = thisRoom.GetChild(thisRoom.childCount - 2).gameObject;
+        wallW = thisRoom.GetChild(thisRoom.childCount - 2).gameObject; 
+        
         triggers = transform.parent.gameObject;
         if (wallN.activeInHierarchy) wallN = null;
         if (wallE.activeInHierarchy) wallE = null;
@@ -34,23 +38,17 @@ public class RoomClosing : MonoBehaviour
             if(wallE != null) wallE.SetActive(true);
             if(wallS != null) wallS.SetActive(true);
             if(wallW != null) wallW.SetActive(true);
+            spawn.AIEnable();
+            isClosed = true;
         }
-
-        isClosed = true;
     }
 
-    private void Update()
+    internal void RoomOpening()
     {
-        if (isClosed)
-        {
-            if (Input.GetKeyDown(KeyCode.B))
-            {
-                if(wallN != null) wallN.SetActive(false);
-                if(wallE != null) wallE.SetActive(false);
-                if(wallS != null) wallS.SetActive(false);
-                if(wallW != null) wallW.SetActive(false);
-                triggers.SetActive(false);
-            }
-        }
+        if(wallN != null) wallN.SetActive(false);
+        if(wallE != null) wallE.SetActive(false);
+        if(wallS != null) wallS.SetActive(false);
+        if(wallW != null) wallW.SetActive(false);
+        triggers.SetActive(false);
     }
 }    
