@@ -116,6 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMedicine: 0
   cost: 10
+  isInInventory: 0
 --- !u!1 &7806809882658474932
 GameObject:
   m_ObjectHideFlags: 0

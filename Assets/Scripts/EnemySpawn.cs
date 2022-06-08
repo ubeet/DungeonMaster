@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemySpawn : MonoBehaviour
 {
     [SerializeField] private GameObject enemyGO;
+    [SerializeField] private GameObject winScreen;
+    
     private RoomClosing room;
     private void Start()
     {
@@ -29,14 +31,23 @@ public class EnemySpawn : MonoBehaviour
     internal void AIEnable()
     {
         for (int i = 0; i < transform.childCount; i++)
-        {
             transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<Enemy>().AI = true;
-        }
+    }
+    
+    internal void IconEnable()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+            transform.GetChild(i).GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(true);
     }
     
     private void Update()
     {
         Debug.Log(transform.childCount);
-        if(transform.childCount == 0) room.RoomOpening();
+        if (transform.childCount == 0)
+        {
+            if(room.CompareTag("BiggestRoom"))
+                winScreen.SetActive(true);
+            room.RoomOpening();
+        }
     }
 }

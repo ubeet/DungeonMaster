@@ -11,22 +11,25 @@ public class RoomPlacer : MonoBehaviour
     public Room[] roomPrefabs;
     public Room startRoom;
     public Room shopRoom;
+    public Room chestRoom;
+    public Room finalRoom;
     public int dungeonSize;
     public int roomStartX;
     public int roomStartY;
     public int roomsAmount;
-    public Corridor LeftHor;
-    public Corridor RightHor;
-    public Corridor CenterHor;
-    public Corridor TopVert;
-    public Corridor DownVert;
-    public Corridor CenterVert;
+    public int chestAmount;
+    public GameObject LeftHor;
+    public GameObject RightHor;
+    public GameObject CenterHor;
+    public GameObject TopVert;
+    public GameObject DownVert;
+    public GameObject CenterVert;
 
     private Room[,] spawnedRooms;
     
     private void Start()
     {
-        spawnedRooms = new Room[dungeonSize,dungeonSize];
+        spawnedRooms = new Room[dungeonSize, dungeonSize];
         if (File.Exists(SaveSystem.WorldPath))
         {
             var qu = Quaternion.Euler(-90f, 0f, 0f);
@@ -39,33 +42,44 @@ public class RoomPlacer : MonoBehaviour
                     if (data.roomTag != null)
                     {
                         Room room = null;
-                        if (data.roomTag[i, j] == shopRoom.tag)
-                        {
-                            room = Instantiate(shopRoom,
-                                new Vector3(data.position[i, j, 0], data.position[i, j, 1], data.position[i, j, 2]),
-                                Quaternion.identity);
-                            room.gameObject.transform.localRotation = qu;
-                        }
-                        if (data.roomTag[i, j] == startRoom.tag)
+                        if (startRoom.CompareTag(data.roomTag[i, j]))
                         {
                             room = Instantiate(startRoom,
-                                new Vector3(data.position[i, j, 0], data.position[i, j, 1], data.position[i, j, 2]),
-                                Quaternion.identity);
+                                new Vector3(data.position[i, j, 0], data.position[i, j, 1],
+                                    data.position[i, j, 2]), Quaternion.identity);
                             room.gameObject.transform.localRotation = qu;
                         }
-                        
-
+                        if (shopRoom.CompareTag(data.roomTag[i, j]))
+                        {
+                            room = Instantiate(shopRoom,
+                                new Vector3(data.position[i, j, 0], data.position[i, j, 1], 
+                                    data.position[i, j, 2]), Quaternion.identity);
+                            room.gameObject.transform.localRotation = qu;
+                        }
+                        if (finalRoom.CompareTag(data.roomTag[i, j]))
+                        {
+                            room = Instantiate(finalRoom,
+                                new Vector3(data.position[i, j, 0], data.position[i, j, 1],
+                                    data.position[i, j, 2]), Quaternion.identity);
+                            room.gameObject.transform.localRotation = qu;
+                        }
+                        if (chestRoom.CompareTag(data.roomTag[i, j]))
+                        {
+                            room = Instantiate(chestRoom,
+                                new Vector3(data.position[i, j, 0], data.position[i, j, 1],
+                                    data.position[i, j, 2]), Quaternion.identity);
+                            room.gameObject.transform.localRotation = qu;
+                        }
                         foreach (var el in roomPrefabs)
                         {
-                            if (el.tag == data.roomTag[i, j])
+                            if (el.CompareTag(data.roomTag[i, j]))
                             {
-                                room = Instantiate(el, new Vector3(data.position[i, j, 0], data.position[i, j, 1], data.position[i, j, 2]), Quaternion.identity);
+                                room = Instantiate(el, new Vector3(data.position[i, j, 0],
+                                    data.position[i, j, 1], data.position[i, j, 2]), Quaternion.identity);
                                 room.gameObject.transform.localRotation = qu;
                                 break;
                             }
                         }
-                        
-
                         if (room != null)
                         {
                             if(!data.wallN[i, j])
@@ -87,9 +101,7 @@ public class RoomPlacer : MonoBehaviour
                             if (!data.triggers[i, j])
                                 if (room.triggers != null)
                                     room.triggers.SetActive(false);
-                            
                         }
-                        
                         spawnedRooms[i, j] = room;
                     }
                 }
@@ -97,13 +109,13 @@ public class RoomPlacer : MonoBehaviour
         }
         else
         {
-            
             var start = Instantiate(startRoom);
             start.transform.position = new Vector3((roomStartX - 5) * 29, (roomStartY - 5) * 24, 0);
             spawnedRooms[roomStartX, roomStartY] = start;
-            for (int i = 0; i < roomsAmount; i++)
-                PlaceOneRoom();
+            for (int i = 0; i < roomsAmount; i++) PlaceOneRoom();
+            for (int i = 0; i < chestAmount; i++) PlaceOneRoom(chestRoom);
             PlaceOneRoom(shopRoom);
+            PlaceOneRoom(finalRoom);
         }
         SetCorridors();
     }
@@ -129,15 +141,15 @@ public class RoomPlacer : MonoBehaviour
         }
         Room newRoom = Instantiate(roomPrefabs[Random.Range(0, roomPrefabs.Length)]);
         
-        for (int limit = 0; limit < 25;limit++)
+        for (int limit = 0; limit < 25; limit++)
         {
             Vector2Int position = vacantPlaces.ElementAt(Random.Range(0, vacantPlaces.Count));
-            if (position.x + 1 <= maxX && spawnedRooms[position.x + 1, position.y]?.tag == "BiggestRoom" ||
+            /*if (position.x + 1 <= maxX && spawnedRooms[position.x + 1, position.y]?.tag == "BiggestRoom" ||
                 position.x - 1 >= 0 && spawnedRooms[position.x - 1, position.y]?.tag == "BiggestRoom")
             {
                 Destroy(newRoom.gameObject);
                 newRoom = Instantiate(roomPrefabs[0]);
-            }
+            }*/
             
             if (ConnectToRooms(newRoom, position))
             {
@@ -147,7 +159,6 @@ public class RoomPlacer : MonoBehaviour
                 break;
             }
         }
-        
     }
     
     private void PlaceOneRoom(Room room)
@@ -172,12 +183,12 @@ public class RoomPlacer : MonoBehaviour
         for (int limit = 0; limit < 25;limit++)
         {
             Vector2Int position = vacantPlaces.ElementAt(Random.Range(0, vacantPlaces.Count));
-            if (position.x + 1 <= maxX && spawnedRooms[position.x + 1, position.y]?.tag == "BiggestRoom" ||
+            /*if (position.x + 1 <= maxX && spawnedRooms[position.x + 1, position.y]?.tag == "BiggestRoom" ||
                 position.x - 1 >= 0 && spawnedRooms[position.x - 1, position.y]?.tag == "BiggestRoom")
             {
                 Destroy(newRoom.gameObject);
                 newRoom = Instantiate(roomPrefabs[0]);
-            }
+            }*/
             
             if (ConnectToRooms(newRoom, position))
             {
@@ -187,7 +198,6 @@ public class RoomPlacer : MonoBehaviour
                 break;
             }
         }
-        
     }
 
     private bool ConnectToRooms(Room room, Vector2Int pos)
@@ -241,7 +251,7 @@ public class RoomPlacer : MonoBehaviour
         return true;
     }
 
-    public void SetCorridors()
+    private void SetCorridors()
     {
         int maxX = spawnedRooms.GetLength(0);
         int maxY = spawnedRooms.GetLength(1);
@@ -285,8 +295,6 @@ public class RoomPlacer : MonoBehaviour
                         }
                     }
                 }
-
-                
             }
         }
     }

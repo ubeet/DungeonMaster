@@ -1,17 +1,15 @@
-using System.IO;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private GameObject loot;
+    [SerializeField] private GameObject[] loot;
 
     internal bool AI = false;
-    private Vector3 position;
-    private int currentHealth;
     
     private int maxHealth = 100;
-    private int damage;
-    
+    private Vector3 position;
+    private int currentHealth;
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -25,8 +23,9 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        System.Random rnd = new System.Random();
         Destroy(transform.parent.parent.gameObject);
         position = transform.position;
-        Instantiate(loot, new Vector3(position.x, position.y, position.z), Quaternion.identity);
+        Instantiate(loot[rnd.Next(0, loot.Length)], new Vector3(position.x, position.y, position.z), Quaternion.identity);
     }
 }

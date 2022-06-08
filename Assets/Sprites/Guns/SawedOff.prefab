@@ -144,5 +144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0a4d1c0a893c41a882177098483317d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMedicine: 0
-  cost: 10
+  isBuff: 0
+  cost: 30
+  isInInventory: 0

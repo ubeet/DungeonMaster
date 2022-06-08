@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae32571a59581064492a4e9013fac7d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInRange: 0
 --- !u!114 &4277632042603319839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,7 +111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa8b82546413c549898fb14e8a4f847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInRange: 0
   contents:
   - {fileID: 4613002490827102679, guid: add4265dade26a642a31e1797f9da3ef, type: 3}
   - {fileID: 4613002490827102679, guid: ec69aa008f050fa4c8b959d0fd7b7386, type: 3}

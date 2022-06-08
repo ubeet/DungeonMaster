@@ -11,9 +11,8 @@ public class EnemyController : MonoBehaviour
     private Vector3 goalPosition;
     private Vector2 direction;
 
-    void Start () 
+    private void Start () 
     {
-        
         rb = GetComponent<Rigidbody2D>();
         goalPosition = GetComponent<Vector3>();
     }
@@ -23,7 +22,8 @@ public class EnemyController : MonoBehaviour
         if (GetComponent<Enemy>().AI)
         {
             agent = GetComponent<NavMeshAgent>();
-            if(!agent.isOnNavMesh) {
+            if(!agent.isOnNavMesh) 
+            {
                 transform.position = transform.position;
                 agent.enabled = false;
                 agent.enabled = true;
@@ -35,21 +35,17 @@ public class EnemyController : MonoBehaviour
 
             direction.x = goalPosition.x;
             direction.y = goalPosition.y;
+            
             if (Vector2.Distance(goalPosition, rb.position) > distance)
             {
                 agent.SetDestination(goalPosition);
                 rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
             }
-        
             else
             {
                 agent.SetDestination(-goalPosition);
                 rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
             }
         }
-        
-        
     }
-    
-    
 }

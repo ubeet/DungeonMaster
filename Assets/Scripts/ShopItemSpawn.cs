@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ShopItemSpawn : Interactable
 {
     [SerializeField] private Item[] Items;
+    
     private Transform childPoint;
     private bool isMedicine;
     private Item obj;
@@ -15,13 +16,12 @@ public class ShopItemSpawn : Interactable
     private void Start()
     {
         childPoint = transform.GetChild(1);
-        obj = Instantiate(Items[Random.Range(0, Items.Length)]);
+        obj = Instantiate(Items[Random.Range(0, Items.Length)], childPoint, true);
         price = transform.GetChild(0).GetChild(0).GetComponent<Text>();
         price.text = obj.cost.ToString();
-        isMedicine = obj.isMedicine;
-        obj.isMedicine = false;
+        isMedicine = obj.isBuff;
+        obj.isBuff = false;
         obj.isInInventory = false;
-        obj.gameObject.transform.SetParent(childPoint);
         obj.gameObject.transform.localPosition = new Vector3(0, 0, 0);
     }
 
@@ -38,8 +38,7 @@ public class ShopItemSpawn : Interactable
                 else
                 {
                     var gunCircle = other.gameObject.transform.GetChild(1);
-                    var newGun = Instantiate(obj);
-                    newGun.gameObject.transform.SetParent(gunCircle);
+                    var newGun = Instantiate(obj, gunCircle, true);
                     newGun.isInInventory = true;
                     newGun.gameObject.transform.localPosition = new Vector3(0.3f, 0, 0);
                     newGun.gameObject.transform.localScale = new Vector3(2.02f, 2.02f, 1);

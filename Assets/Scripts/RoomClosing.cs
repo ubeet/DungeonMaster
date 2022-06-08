@@ -11,7 +11,6 @@ public class RoomClosing : MonoBehaviour
     private GameObject wallW;
     private GameObject triggers;
     private EnemySpawn spawn;
-    private bool isClosed;
 
     public void Start()
     {
@@ -38,8 +37,8 @@ public class RoomClosing : MonoBehaviour
             if(wallE != null) wallE.SetActive(true);
             if(wallS != null) wallS.SetActive(true);
             if(wallW != null) wallW.SetActive(true);
+            spawn.IconEnable();
             spawn.AIEnable();
-            isClosed = true;
         }
     }
 

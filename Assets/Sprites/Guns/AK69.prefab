@@ -63,8 +63,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0a4d1c0a893c41a882177098483317d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMedicine: 0
+  isBuff: 0
   cost: 10
+  isInInventory: 0
 --- !u!212 &732593528031708043
 SpriteRenderer:
   m_ObjectHideFlags: 0

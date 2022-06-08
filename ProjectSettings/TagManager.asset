@@ -18,6 +18,8 @@ TagManager:
   - Potion
   - Enemy
   - ShopRoom
+  - CoinSack
+  - chestRoom
   layers:
   - Default
   - TransparentFX

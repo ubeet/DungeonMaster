@@ -261,7 +261,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c5c22eb83f72494fa7e2c1435ca0468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loot: {fileID: 4613002490827102679, guid: add4265dade26a642a31e1797f9da3ef, type: 3}
+  loot:
+  - {fileID: 4613002490827102679, guid: 623609248a6082b498101a886348a96c, type: 3}
+  - {fileID: 4613002490827102679, guid: 7be8e62d72ad53841b0f0dba8db776f7, type: 3}
 --- !u!195 &2087134826378306697
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -295,12 +297,12 @@ GameObject:
   - component: {fileID: 3264490076881148679}
   - component: {fileID: 3264490076881148678}
   m_Layer: 6
-  m_Name: PlayerIcon
+  m_Name: MapIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3264490076881148679
 Transform:
   m_ObjectHideFlags: 0

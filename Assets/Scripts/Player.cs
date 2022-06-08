@@ -3,17 +3,17 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] GUIManager GUI;
-    [SerializeField] GameObject deathScreen;
+    [SerializeField] private GUIManager GUI;
+    [SerializeField] private GameObject deathScreen;
+    
     public int currentHealth;
     public int currentMoney;
     
     private GameObject player;
-    private System.Random rand = new System.Random();
-    private int maxHealth = 100;
-    private int damage;
+    private readonly System.Random rnd = new System.Random();
+    private const int maxHealth = 100;
     public int pHealing = 10;
-    public int mHealing = 20;
+    public int mHealing = 40;
     
     private void Start()
     {
@@ -41,13 +41,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Update()
+    /*private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)) //for example
             TakeDamage(10);
         if (Input.GetKeyDown(KeyCode.M)) //for example
             TakeMoney(2);
-    }
+    }*/
     
     public void TakeDamage(int damage)
     {
@@ -73,6 +73,7 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
+        Time.timeScale = 0;
         SaveSystem.DeleteData();
         player.SetActive(false);
         deathScreen.SetActive(true);
@@ -80,19 +81,25 @@ public class Player : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Coin") && other.GetComponent<Item>().isMedicine)
+        if (other.CompareTag("Coin") && other.GetComponent<Item>().isBuff)
         {
-            TakeMoney(rand.Next(1, 6));
+            TakeMoney(rnd.Next(1, 4));
+            Destroy(other.gameObject);
+        }
+        
+        if (other.CompareTag("CoinSack") && other.GetComponent<Item>().isBuff)
+        {
+            TakeMoney(rnd.Next(10, 16));
             Destroy(other.gameObject);
         }
 
-        if (other.CompareTag("Potion") && other.GetComponent<Item>().isMedicine)
+        if (other.CompareTag("Potion") && other.GetComponent<Item>().isBuff)
         {
             TakeHealing(pHealing);
             Destroy(other.gameObject);
         }
         
-        if (other.CompareTag("Medicine") && other.GetComponent<Item>().isMedicine)
+        if (other.CompareTag("Medicine") && other.GetComponent<Item>().isBuff)
         {
             TakeHealing(mHealing);
             Destroy(other.gameObject);

@@ -9,6 +9,7 @@ public class GUIManager : MonoBehaviour
     [SerializeField] GameObject mapScreen;
     [SerializeField] GameObject settingsScreen;
     [SerializeField] GameObject deathScreen;
+    [SerializeField] GameObject winScreen;
     [SerializeField] Text moneyNumber;
     [SerializeField] GameObject[] HUD;
 
@@ -52,16 +53,15 @@ public class GUIManager : MonoBehaviour
     
     public void Update()
     {
-        if (!deathScreen.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        if (!deathScreen.activeSelf && !winScreen.activeSelf && Input.GetKeyDown(KeyCode.Escape))
         {
-            
             Time.timeScale = 0;
             pauseScreen.SetActive(true);
         }
-        else if(Input.GetKeyDown(KeyCode.Tab))
+        /*else if(Input.GetKeyDown(KeyCode.Tab))
             mapScreen.SetActive(true);
         else if(Input.GetKeyUp(KeyCode.Tab))
-            mapScreen.SetActive(false);
+            mapScreen.SetActive(false);*/
         
         switch (PlayerPrefs.GetInt("hudScale"))
         {
