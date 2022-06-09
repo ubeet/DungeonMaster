@@ -533,7 +533,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Restart
+  m_Text: New Game
 --- !u!222 &143081152
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -559,7 +559,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1415382631559096611, guid: 7e4c0407a5d324b5b883bfa7a6c73ecb, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1415382631559096611, guid: 7e4c0407a5d324b5b883bfa7a6c73ecb, type: 3}
       propertyPath: m_AnchorMax.x
@@ -956,6 +956,7 @@ GameObject:
   - component: {fileID: 261145557}
   - component: {fileID: 261145562}
   - component: {fileID: 261145563}
+  - component: {fileID: 261145564}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -1198,6 +1199,102 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3739581, y: 0.58259964}
   m_EdgeRadius: 0
+--- !u!82 &261145564
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261145554}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 4698351d6a75588468e607d6c38b35c8, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 7a5730c96e96656419497a23a90db2bb, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &318504742
 GameObject:
   m_ObjectHideFlags: 0
@@ -3894,8 +3991,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1624679366}
-          m_TargetAssemblyTypeName: DeathScreen, Assembly-CSharp
+        - m_Target: {fileID: 1624679363}
+          m_TargetAssemblyTypeName: GUIManager, Assembly-CSharp
           m_MethodName: Restart
           m_Mode: 1
           m_Arguments:
@@ -4199,8 +4296,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1624679366}
-          m_TargetAssemblyTypeName: DeathScreen, Assembly-CSharp
+        - m_Target: {fileID: 1624679363}
+          m_TargetAssemblyTypeName: GUIManager, Assembly-CSharp
           m_MethodName: Restart
           m_Mode: 1
           m_Arguments:
@@ -4306,7 +4403,7 @@ GameObject:
   - component: {fileID: 1252681698}
   m_Layer: 0
   m_Name: WinContainer
-  m_TagString: Untagged
+  m_TagString: winContainer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4324,7 +4421,7 @@ RectTransform:
   m_Children:
   - {fileID: 684499926}
   m_Father: {fileID: 1624679359}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4653,7 +4750,7 @@ PrefabInstance:
     - target: {fileID: 1128517105165981054, guid: 103a505aae6cd41d099be6e03c467af9, type: 3}
       propertyPath: chestRoom
       value: 
-      objectReference: {fileID: 7159058751222334071, guid: d40aa260183e1f848b7b86a7ac357d27, type: 3}
+      objectReference: {fileID: 6606618926196295805, guid: d40aa260183e1f848b7b86a7ac357d27, type: 3}
     - target: {fileID: 1128517105165981054, guid: 103a505aae6cd41d099be6e03c467af9, type: 3}
       propertyPath: finalRoom
       value: 
@@ -4677,19 +4774,19 @@ PrefabInstance:
     - target: {fileID: 1128517105165981054, guid: 103a505aae6cd41d099be6e03c467af9, type: 3}
       propertyPath: roomPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 4957399020857304292, guid: 6f25ebf51683941208e5d1323f7c5112, type: 3}
+      objectReference: {fileID: 4660027702178583002, guid: 1497c8a3144a08243b3ebde45142d128, type: 3}
     - target: {fileID: 1128517105165981054, guid: 103a505aae6cd41d099be6e03c467af9, type: 3}
       propertyPath: roomPrefabs.Array.data[1]
       value: 
-      objectReference: {fileID: 9119984806836041834, guid: a4c7dfb4c53d798468f4c0e1f76bbcf1, type: 3}
+      objectReference: {fileID: 5576484437949283912, guid: 6f25ebf51683941208e5d1323f7c5112, type: 3}
     - target: {fileID: 1128517105165981054, guid: 103a505aae6cd41d099be6e03c467af9, type: 3}
       propertyPath: roomPrefabs.Array.data[2]
       value: 
-      objectReference: {fileID: 4593215615449960922, guid: 1497c8a3144a08243b3ebde45142d128, type: 3}
+      objectReference: {fileID: 4607269370126240812, guid: a4c7dfb4c53d798468f4c0e1f76bbcf1, type: 3}
     - target: {fileID: 1128517105165981054, guid: 103a505aae6cd41d099be6e03c467af9, type: 3}
       propertyPath: roomPrefabs.Array.data[3]
       value: 
-      objectReference: {fileID: 7882235402720937535, guid: b33c812190f5c724c8e157c69ddc3509, type: 3}
+      objectReference: {fileID: 3143838734889675211, guid: b33c812190f5c724c8e157c69ddc3509, type: 3}
     - target: {fileID: 1128517105165981054, guid: 103a505aae6cd41d099be6e03c467af9, type: 3}
       propertyPath: roomPrefabs.Array.data[4]
       value: 
@@ -4805,8 +4902,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1624679366}
-          m_TargetAssemblyTypeName: DeathScreen, Assembly-CSharp
+        - m_Target: {fileID: 1624679363}
+          m_TargetAssemblyTypeName: GUIManager, Assembly-CSharp
           m_MethodName: MainMenu
           m_Mode: 1
           m_Arguments:
@@ -4956,8 +5053,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1624679366}
-          m_TargetAssemblyTypeName: DeathScreen, Assembly-CSharp
+        - m_Target: {fileID: 1624679363}
+          m_TargetAssemblyTypeName: GUIManager, Assembly-CSharp
           m_MethodName: MainMenu
           m_Mode: 1
           m_Arguments:
@@ -5636,7 +5733,6 @@ GameObject:
   - component: {fileID: 1624679361}
   - component: {fileID: 1624679360}
   - component: {fileID: 1624679363}
-  - component: {fileID: 1624679366}
   - component: {fileID: 1624679365}
   m_Layer: 0
   m_Name: GUI
@@ -5660,8 +5756,8 @@ RectTransform:
   - {fileID: 596545260}
   - {fileID: 666900091}
   - {fileID: 997585821}
-  - {fileID: 1252681697}
   - {fileID: 1621962730}
+  - {fileID: 1252681697}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5743,12 +5839,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b217a8c0937fd0048b0b5ff311057ff1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 1010469586}
   pauseScreen: {fileID: 596545259}
-  mapScreen: {fileID: 0}
-  settingsScreen: {fileID: 666900088}
   deathScreen: {fileID: 997585820}
-  winScreen: {fileID: 0}
+  winScreen: {fileID: 1252681696}
   moneyNumber: {fileID: 663702592}
   HUD:
   - {fileID: 1010469583}
@@ -5756,6 +5849,7 @@ MonoBehaviour:
   - {fileID: 103712171}
   - {fileID: 2107401151}
   - {fileID: 456450085}
+  slider: {fileID: 1010469586}
 --- !u!114 &1624679365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5774,19 +5868,107 @@ MonoBehaviour:
   previousScreen: {fileID: 596545259}
   dropdown: {fileID: 767121838}
   toggle: {fileID: 1308895736}
---- !u!114 &1624679366
-MonoBehaviour:
+--- !u!1 &1641816442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7806809882315763214, guid: 04bc26ec5317044b6801b393a96b6ce1, type: 3}
+  m_PrefabInstance: {fileID: 7806809882472945819}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1641816446
+AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624679358}
+  m_GameObject: {fileID: 1641816442}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eed44cf2e21950a42ab3d2cbc1b07c2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deathScreen: {fileID: 997585820}
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1661202016
 GameObject:
   m_ObjectHideFlags: 0

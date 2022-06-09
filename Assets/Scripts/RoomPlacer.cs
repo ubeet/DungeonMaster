@@ -69,6 +69,11 @@ public class RoomPlacer : MonoBehaviour
                                 new Vector3(data.position[i, j, 0], data.position[i, j, 1],
                                     data.position[i, j, 2]), Quaternion.identity);
                             room.gameObject.transform.localRotation = qu;
+                            if (chestRoom.chest.isOpen)
+                            {
+                                room.chest.isOpen = true;
+                                room.chest.OpenChest();
+                            }
                         }
                         foreach (var el in roomPrefabs)
                         {

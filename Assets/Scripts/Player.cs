@@ -8,8 +8,8 @@ public class Player : MonoBehaviour
     
     public int currentHealth;
     public int currentMoney;
-    
-    private GameObject player;
+
+    private AudioSource source;
     private readonly System.Random rnd = new System.Random();
     private const int maxHealth = 100;
     public int pHealing = 10;
@@ -17,7 +17,8 @@ public class Player : MonoBehaviour
     
     private void Start()
     {
-        player = transform.parent.gameObject;
+        source = GetComponent<AudioSource>();
+        
         if (File.Exists(SaveSystem.PlayerPath))
         {
             PlayerData data = SaveSystem.LoadPlayerData();
@@ -75,7 +76,6 @@ public class Player : MonoBehaviour
     {
         Time.timeScale = 0;
         SaveSystem.DeleteData();
-        player.SetActive(false);
         deathScreen.SetActive(true);
     }
     
@@ -85,24 +85,25 @@ public class Player : MonoBehaviour
         {
             TakeMoney(rnd.Next(1, 4));
             Destroy(other.gameObject);
+            source.Play();
         }
-        
         if (other.CompareTag("CoinSack") && other.GetComponent<Item>().isBuff)
         {
             TakeMoney(rnd.Next(10, 16));
             Destroy(other.gameObject);
+            source.Play();
         }
-
         if (other.CompareTag("Potion") && other.GetComponent<Item>().isBuff)
         {
             TakeHealing(pHealing);
             Destroy(other.gameObject);
+            source.Play();
         }
-        
         if (other.CompareTag("Medicine") && other.GetComponent<Item>().isBuff)
         {
             TakeHealing(mHealing);
             Destroy(other.gameObject);
+            source.Play();
         }
     }
 

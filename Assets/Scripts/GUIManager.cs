@@ -4,15 +4,15 @@ using UnityEngine.SceneManagement;
 
 public class GUIManager : MonoBehaviour
 {
-    [SerializeField] Slider slider;
     [SerializeField] GameObject pauseScreen;
-    [SerializeField] GameObject mapScreen;
-    [SerializeField] GameObject settingsScreen;
     [SerializeField] GameObject deathScreen;
     [SerializeField] GameObject winScreen;
     [SerializeField] Text moneyNumber;
     [SerializeField] GameObject[] HUD;
+    [SerializeField] Slider slider;
 
+    private static bool _win;
+    
     public void SetMaxHealth(int health)
     {
         slider.maxValue = health;
@@ -28,17 +28,17 @@ public class GUIManager : MonoBehaviour
         moneyNumber.text = money.ToString();
     }
 
+    public static void SetWin()
+    {
+        _win = true;
+    }
+
     public void Pause()
     {
         Time.timeScale = 0;
         pauseScreen.SetActive(true);
     }
-    
-    public void Map()
-    {
-        mapScreen.SetActive(true);
-    }
-    
+
     public void Resume()
     {
         Time.timeScale = 1;
@@ -51,18 +51,27 @@ public class GUIManager : MonoBehaviour
         SceneTransition.SwitchScene(0);
     }
     
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        SceneTransition.SwitchScene(1);
+    }
+    
+    private void Win()
+    {
+        _win = false;
+        Time.timeScale = 0;
+        winScreen.SetActive(true);
+    }
+    
     public void Update()
     {
-        if (!deathScreen.activeSelf && !winScreen.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !deathScreen.activeInHierarchy && !winScreen.activeInHierarchy)
         {
             Time.timeScale = 0;
             pauseScreen.SetActive(true);
         }
-        /*else if(Input.GetKeyDown(KeyCode.Tab))
-            mapScreen.SetActive(true);
-        else if(Input.GetKeyUp(KeyCode.Tab))
-            mapScreen.SetActive(false);*/
-        
+
         switch (PlayerPrefs.GetInt("hudScale"))
         {
             case 0:
@@ -78,5 +87,7 @@ public class GUIManager : MonoBehaviour
                     element.transform.localScale = new Vector3(1.25f,1.25f,1);
                 break;
         }
+        
+        if (_win) Win();
     }
 }

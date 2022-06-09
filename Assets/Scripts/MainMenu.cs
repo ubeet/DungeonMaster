@@ -6,11 +6,6 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] GameObject warningScreen;
-    
-    private void Start()
-    {
-        
-    }
 
     public void NewGame()
     {

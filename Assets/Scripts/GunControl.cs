@@ -8,11 +8,12 @@ public class GunControl : MonoBehaviour
     [SerializeField] private GameObject ammo;
     [SerializeField] private float speed;
     [SerializeField] private int count;
-    
+
+    private AudioSource source;
     private GameObject circle;
     private Transform shotDir;
     private Animator animator;
-    private Transform GunPosChange;
+    private Transform gunPosChange;
     private float startTime = 0;
     private float timeShot = 0;
     private Vector3 goalPosition;
@@ -24,8 +25,10 @@ public class GunControl : MonoBehaviour
     {
         Initialize();
     }
+    
     public void Initialize()
     {
+        source = GetComponent<AudioSource>();
         circle = transform.parent.gameObject;
         shotDir = transform.GetChild(0);
         if(transform.parent.parent.gameObject.TryGetComponent<Animator>(out animator))
@@ -33,7 +36,7 @@ public class GunControl : MonoBehaviour
         else
             animator = new GameObject().AddComponent<Animator>();
            
-        GunPosChange = circle.GetComponent<Transform>();
+        gunPosChange = circle.GetComponent<Transform>();
     }
     private void FixedUpdate()
     {
@@ -57,7 +60,7 @@ public class GunControl : MonoBehaviour
                 }
 
 
-                var pos = GunPosChange.rotation.z;
+                var pos = gunPosChange.rotation.z;
 
                 if (pos > 0.386 && pos < 0.922)
                 {
@@ -99,6 +102,7 @@ public class GunControl : MonoBehaviour
                         if (count % 2 == 0 && i != 0 || count % 2 != 0)
                             Instantiate(ammo, shotDir.position, Quaternion.Euler(0f, 0f, rotateZ + offset + i * 7));
                     timeShot = startTime;
+                    source.Play();
                 }
 
                 if (circle.transform.rotation.z >= -0.707 && circle.transform.rotation.z <= 0.707)

@@ -5,11 +5,11 @@ using UnityEngine.Serialization;
 
 public class RoomClosing : MonoBehaviour
 {
+    private GameObject triggers;
     private GameObject wallN;
     private GameObject wallE;
     private GameObject wallS;
     private GameObject wallW;
-    private GameObject triggers;
     private EnemySpawn spawn;
 
     public void Start()

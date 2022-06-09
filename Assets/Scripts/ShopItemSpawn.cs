@@ -7,6 +7,7 @@ public class ShopItemSpawn : Interactable
 {
     [SerializeField] private Item[] Items;
     
+    private AudioSource source;
     private Transform childPoint;
     private bool isBuff;
     private Item obj;
@@ -16,7 +17,7 @@ public class ShopItemSpawn : Interactable
     
     private void Start()
     {
-        
+        source = GetComponent<AudioSource>();
         childPoint = transform.GetChild(1);
         obj = Instantiate(Items[Random.Range(0, Items.Length)], childPoint, true);
         price = transform.GetChild(0).GetChild(0).GetComponent<Text>();
@@ -39,7 +40,6 @@ public class ShopItemSpawn : Interactable
             playerObj = other.gameObject.GetComponent<Player>();
             if (Input.GetKeyUp(KeyCode.E) && playerObj.currentMoney >= obj.cost)
             {
-    
                 if (isBuff)
                     playerObj.TakeHealing(obj.tag.Equals("Medicine") ? playerObj.mHealing : playerObj.pHealing);
                 else
@@ -57,6 +57,8 @@ public class ShopItemSpawn : Interactable
                 playerObj.TakeMoney(-obj.cost);
                 Destroy(obj.gameObject);
             }
+            else if (Input.GetKeyUp(KeyCode.E) && playerObj.currentMoney < obj.cost)
+                source.Play();
         }
     }
     

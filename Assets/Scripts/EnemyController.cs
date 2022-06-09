@@ -14,7 +14,6 @@ public class EnemyController : MonoBehaviour
     private void Start () 
     {
         rb = GetComponent<Rigidbody2D>();
-        goalPosition = GetComponent<Vector3>();
     }
     
     private void Update()
@@ -36,16 +35,16 @@ public class EnemyController : MonoBehaviour
             direction.x = goalPosition.x;
             direction.y = goalPosition.y;
             
-            if (Vector2.Distance(goalPosition, rb.position) > distance)
+            /*if (Vector2.Distance(goalPosition, rb.transform.position) > distance)
             {
                 agent.SetDestination(goalPosition);
-                rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
+                rb.MovePosition(rb.transform.position + goalPosition * speed * Time.deltaTime);
             }
             else
             {
                 agent.SetDestination(-goalPosition);
-                rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
-            }
+                rb.MovePosition(rb.transform.position - goalPosition * speed * Time.deltaTime);
+            }*/
         }
     }
 }

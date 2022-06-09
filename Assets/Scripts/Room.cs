@@ -7,5 +7,5 @@ public class Room : MonoBehaviour
     [SerializeField] public GameObject wallS;
     [SerializeField] public GameObject wallW;
     [SerializeField] public GameObject triggers;
-
+    [SerializeField] public Chest chest;
 }

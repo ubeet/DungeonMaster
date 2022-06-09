@@ -1,16 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyGO;
-    [SerializeField] private GameObject winScreen;
+    [SerializeField] private GameObject enemyGO; 
     
+    //private GameObject winScreen;
     private RoomClosing room;
+    private bool isBigRoom;
+    
     private void Start()
     {
+        isBigRoom = transform.parent.parent.CompareTag("BiggestRoom");
         Invoke(nameof(SpawnEnemies), 1);
+    }
+
+    private void Awake()
+    {
+        /*if (isBigRoom)
+        {
+            winScreen = GameObject.FindGameObjectWithTag("winContainer");
+            //winScreen.SetActive(false); 
+        }*/
     }
 
     private void SpawnEnemies()
@@ -45,8 +58,8 @@ public class EnemySpawn : MonoBehaviour
         Debug.Log(transform.childCount);
         if (transform.childCount == 0)
         {
-            if(room.gameObject.CompareTag("BiggestRoom"))
-                winScreen.SetActive(true);
+            if (isBigRoom)
+                GUIManager.SetWin();
             room.RoomOpening();
         }
     }

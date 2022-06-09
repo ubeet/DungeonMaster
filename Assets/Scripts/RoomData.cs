@@ -14,6 +14,7 @@ public class RoomData
     public bool wallW;
     public string roomTag;
     public bool triggers;
+    public bool isOpen;
 
     public RoomData(Room room)
     {
@@ -26,7 +27,8 @@ public class RoomData
         roomTag = room.tag;
         
         if (room.triggers != null) triggers = room.triggers.activeInHierarchy;
-
+        if (room.chest != null) isOpen = room.chest.isOpen;
+        
         if (room.wallN != null) wallN = room.wallN.activeInHierarchy;
         if (room.wallE != null) wallE = room.wallE.activeInHierarchy;
         if (room.wallS != null) wallS = room.wallS.activeInHierarchy;

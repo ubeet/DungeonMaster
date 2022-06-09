@@ -45,7 +45,7 @@ public class Settings : MonoBehaviour
     
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && settingsScreen.activeInHierarchy)
         {
             settingsScreen.SetActive(false);
             previousScreen.SetActive(true);
