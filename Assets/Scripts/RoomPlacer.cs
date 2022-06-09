@@ -101,6 +101,12 @@ public class RoomPlacer : MonoBehaviour
                             if (!data.triggers[i, j])
                                 if (room.triggers != null)
                                     room.triggers.SetActive(false);
+                            var roomChild = room.transform.GetChild(0);
+                            if (!roomChild.GetChild(roomChild.childCount - 1).gameObject.activeInHierarchy)
+                            {
+                                Debug.Log(":asdjasd");
+                                Destroy(room.transform.GetChild(0).GetChild(roomChild.childCount - 6).gameObject);
+                            }
                         }
                         spawnedRooms[i, j] = room;
                     }

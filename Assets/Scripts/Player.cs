@@ -41,13 +41,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    /*private void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)) //for example
             TakeDamage(10);
         if (Input.GetKeyDown(KeyCode.M)) //for example
             TakeMoney(2);
-    }*/
+    }
     
     public void TakeDamage(int damage)
     {

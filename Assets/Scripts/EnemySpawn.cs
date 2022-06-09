@@ -45,7 +45,7 @@ public class EnemySpawn : MonoBehaviour
         Debug.Log(transform.childCount);
         if (transform.childCount == 0)
         {
-            if(room.CompareTag("BiggestRoom"))
+            if(room.gameObject.CompareTag("BiggestRoom"))
                 winScreen.SetActive(true);
             room.RoomOpening();
         }

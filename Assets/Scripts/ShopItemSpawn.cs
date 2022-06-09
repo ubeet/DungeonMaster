@@ -8,21 +8,28 @@ public class ShopItemSpawn : Interactable
     [SerializeField] private Item[] Items;
     
     private Transform childPoint;
-    private bool isMedicine;
+    private bool isBuff;
     private Item obj;
     private Text price;
     private Player playerObj;
+    private Animator animator;
     
     private void Start()
     {
+        
         childPoint = transform.GetChild(1);
         obj = Instantiate(Items[Random.Range(0, Items.Length)], childPoint, true);
         price = transform.GetChild(0).GetChild(0).GetComponent<Text>();
         price.text = obj.cost.ToString();
-        isMedicine = obj.isBuff;
+        isBuff = obj.isBuff;
         obj.isBuff = false;
         obj.isInInventory = false;
         obj.gameObject.transform.localPosition = new Vector3(0, 0, 0);
+        if (!isBuff)
+        {
+            animator = obj.GetComponent<Animator>();
+            State = States.woHands;
+        }
     }
 
     private void FixedUpdate()
@@ -33,7 +40,7 @@ public class ShopItemSpawn : Interactable
             if (Input.GetKeyUp(KeyCode.E) && playerObj.currentMoney >= obj.cost)
             {
     
-                if (isMedicine)
+                if (isBuff)
                     playerObj.TakeHealing(obj.tag.Equals("Medicine") ? playerObj.mHealing : playerObj.pHealing);
                 else
                 {
@@ -45,11 +52,24 @@ public class ShopItemSpawn : Interactable
                     var e = Quaternion.Euler(0f, 0f, 180f);
                     newGun.gameObject.transform.localRotation = e;
                     newGun.gameObject.SetActive(false);
+                    State = States.wHands;
                 }
                 playerObj.TakeMoney(-obj.cost);
                 Destroy(obj.gameObject);
             }
         }
+    }
+    
+    private States State
+    {
+        get => (States) animator.GetInteger("state");
+        set => animator.SetInteger("state", (int)value);
+    }
+
+    public enum States
+    {
+        wHands,
+        woHands
     }
 
     

@@ -4653,11 +4653,11 @@ PrefabInstance:
     - target: {fileID: 1128517105165981054, guid: 103a505aae6cd41d099be6e03c467af9, type: 3}
       propertyPath: chestRoom
       value: 
-      objectReference: {fileID: 6573315965679988529, guid: d40aa260183e1f848b7b86a7ac357d27, type: 3}
+      objectReference: {fileID: 7159058751222334071, guid: d40aa260183e1f848b7b86a7ac357d27, type: 3}
     - target: {fileID: 1128517105165981054, guid: 103a505aae6cd41d099be6e03c467af9, type: 3}
       propertyPath: finalRoom
       value: 
-      objectReference: {fileID: 7952299460496566962, guid: a9e2c5512a38e454095d527201257813, type: 3}
+      objectReference: {fileID: 1584955897006980642, guid: a9e2c5512a38e454095d527201257813, type: 3}
     - target: {fileID: 1128517105165981054, guid: 103a505aae6cd41d099be6e03c467af9, type: 3}
       propertyPath: startRoom
       value: 
@@ -4677,7 +4677,7 @@ PrefabInstance:
     - target: {fileID: 1128517105165981054, guid: 103a505aae6cd41d099be6e03c467af9, type: 3}
       propertyPath: roomPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 2868893293211888254, guid: 6f25ebf51683941208e5d1323f7c5112, type: 3}
+      objectReference: {fileID: 4957399020857304292, guid: 6f25ebf51683941208e5d1323f7c5112, type: 3}
     - target: {fileID: 1128517105165981054, guid: 103a505aae6cd41d099be6e03c467af9, type: 3}
       propertyPath: roomPrefabs.Array.data[1]
       value: 
