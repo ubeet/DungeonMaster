@@ -28,10 +28,6 @@ public class GUIManager : MonoBehaviour
         moneyNumber.text = money.ToString();
     }
 
-    //public static void SetWin()
-    //{
-    //    _win = true;
-    //}
 
     public void Pause()
     {
@@ -88,6 +84,5 @@ public class GUIManager : MonoBehaviour
                 break;
         }
         
-        //if (_win) Win();
     }
 }

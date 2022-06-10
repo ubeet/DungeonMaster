@@ -11,9 +11,14 @@ public class Chest : Interactable
     private GameObject loot;
     private Animator anim;
     private Vector3 position;
-    internal bool isOpen = false;
+    public bool isOpen = false;
     
     private void Start()
+    {
+        Initialize();
+    }
+
+    internal void Initialize()
     {
         anim = GetComponent<Animator>();
         source = GetComponent<AudioSource>();
@@ -30,6 +35,7 @@ public class Chest : Interactable
     {
         anim.Play("open");
         source.Play();
+        isOpen = true;
     }
 
     private void Update()
@@ -40,11 +46,7 @@ public class Chest : Interactable
             {
                 OpenChest();
                 StartCoroutine(Wait(0.8f));
-                isOpen = true;
             }
         }
-
-        //if (isOpen)
-        //    anim.Play("idle_opened");
     }
 }

@@ -16,15 +16,7 @@ public class EnemySpawn : MonoBehaviour
         isBigRoom = transform.parent.parent.CompareTag("BiggestRoom");
         Invoke(nameof(SpawnEnemies), 1);
     }
-
-    private void Awake()
-    {
-        /*if (isBigRoom)
-        {
-            winScreen = GameObject.FindGameObjectWithTag("winContainer");
-            //winScreen.SetActive(false); 
-        }*/
-    }
+    
 
     private void SpawnEnemies()
     {
@@ -61,7 +53,6 @@ public class EnemySpawn : MonoBehaviour
     private void Update()
     {
         if (GameObject.FindWithTag("Player").GetComponent<Player>().isDead) AIDisable();
-        Debug.Log(transform.childCount);
         if (transform.childCount == 0)
         {
             var guiManager = GameObject.FindWithTag("GUI").GetComponent<GUIManager>();

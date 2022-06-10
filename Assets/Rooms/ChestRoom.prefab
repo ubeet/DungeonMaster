@@ -7130,7 +7130,7 @@ MonoBehaviour:
   wallS: {fileID: 5965142775747662526}
   wallW: {fileID: 4263097552638001829}
   triggers: {fileID: 3488920607682021164}
-  chest: {fileID: 0}
+  chest: {fileID: 6363175898911790857}
 --- !u!114 &7078095327679079946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12758,6 +12758,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
+    - target: {fileID: 4277632042603319835, guid: 1eb8261b614a14554a635785bc9bd103, type: 3}
+      propertyPath: m_TagString
+      value: Chest
+      objectReference: {fileID: 0}
     - target: {fileID: 4277632042603319838, guid: 1eb8261b614a14554a635785bc9bd103, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -12804,6 +12808,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1eb8261b614a14554a635785bc9bd103, type: 3}
+--- !u!1 &6363175898911790857 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4277632042603319835, guid: 1eb8261b614a14554a635785bc9bd103, type: 3}
+  m_PrefabInstance: {fileID: 7139253699008120082}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6363175898911790860 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4277632042603319838, guid: 1eb8261b614a14554a635785bc9bd103, type: 3}

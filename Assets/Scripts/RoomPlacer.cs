@@ -69,11 +69,6 @@ public class RoomPlacer : MonoBehaviour
                                 new Vector3(data.position[i, j, 0], data.position[i, j, 1],
                                     data.position[i, j, 2]), Quaternion.identity);
                             room.gameObject.transform.localRotation = qu;
-                            //if (data.isOpen[i, j])
-                            //{
-                            //    room.transform.GetChild(0).GetComponent<Chest>().isOpen = true;
-                            //    room.transform.GetChild(0).GetComponent<Chest>().OpenChest();
-                            //}
                         }
                         foreach (var el in roomPrefabs)
                         {
@@ -106,10 +101,19 @@ public class RoomPlacer : MonoBehaviour
                             if (!data.triggers[i, j])
                                 if (room.triggers != null)
                                     room.triggers.SetActive(false);
+                            if (data.isOpen[i, j])
+                            {
+                                var chest = room.chest.GetComponent<Chest>();
+                                chest.gameObject.transform.position = chest.gameObject.transform.position;
+                                chest.enabled = false;
+                                chest.enabled = true;
+                                chest.Initialize();
+                                chest.OpenChest();
+                            }
+                            
                             var roomChild = room.transform.GetChild(0);
                             if (!roomChild.GetChild(roomChild.childCount - 1).gameObject.activeInHierarchy)
                             {
-                                Debug.Log(":asdjasd");
                                 Destroy(room.transform.GetChild(0).GetChild(roomChild.childCount - 6).gameObject);
                             }
                         }

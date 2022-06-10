@@ -27,8 +27,8 @@ public class RoomData
         roomTag = room.tag;
         
         if (room.triggers != null) triggers = room.triggers.activeInHierarchy;
-        if (room.chest != null) isOpen = room.chest.isOpen;
-        
+        if (room.chest != null) isOpen = room.chest.GetComponent<Chest>().isOpen;
+
         if (room.wallN != null) wallN = room.wallN.activeInHierarchy;
         if (room.wallE != null) wallE = room.wallE.activeInHierarchy;
         if (room.wallS != null) wallS = room.wallS.activeInHierarchy;
