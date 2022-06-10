@@ -6,14 +6,16 @@ public class Player : MonoBehaviour
     [SerializeField] private GUIManager GUI;
     [SerializeField] private GameObject deathScreen;
     
-    public int currentHealth;
-    public int currentMoney;
+    internal int currentHealth;
+    internal int currentMoney;
 
     private AudioSource source;
     private readonly System.Random rnd = new System.Random();
-    private const int maxHealth = 100;
-    public int pHealing = 10;
-    public int mHealing = 40;
+    private int maxHealth = 100;
+
+    internal bool isDead = false;
+    internal int pHealing = 10;
+    internal int mHealing = 40;
     
     private void Start()
     {
@@ -74,9 +76,12 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        Time.timeScale = 0;
         SaveSystem.DeleteData();
+        isDead = true;
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<CapsuleCollider2D>().enabled = false;
         deathScreen.SetActive(true);
+        Time.timeScale = 0;
     }
     
     private void OnTriggerEnter2D(Collider2D other)

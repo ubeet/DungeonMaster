@@ -39,7 +39,7 @@ public class RoomPlacer : MonoBehaviour
             {
                 for (int j = 0; j < spawnedRooms.GetLength(1); j++)
                 {
-                    if (data.roomTag != null)
+                    if (data.roomTag[i, j] != null)
                     {
                         Room room = null;
                         if (startRoom.CompareTag(data.roomTag[i, j]))
@@ -69,11 +69,11 @@ public class RoomPlacer : MonoBehaviour
                                 new Vector3(data.position[i, j, 0], data.position[i, j, 1],
                                     data.position[i, j, 2]), Quaternion.identity);
                             room.gameObject.transform.localRotation = qu;
-                            if (chestRoom.chest.isOpen)
-                            {
-                                room.chest.isOpen = true;
-                                room.chest.OpenChest();
-                            }
+                            //if (data.isOpen[i, j])
+                            //{
+                            //    room.transform.GetChild(0).GetComponent<Chest>().isOpen = true;
+                            //    room.transform.GetChild(0).GetComponent<Chest>().OpenChest();
+                            //}
                         }
                         foreach (var el in roomPrefabs)
                         {

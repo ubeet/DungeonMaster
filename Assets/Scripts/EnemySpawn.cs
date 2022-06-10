@@ -46,6 +46,11 @@ public class EnemySpawn : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
             transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<Enemy>().AI = true;
     }
+    internal void AIDisable()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+            transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<Enemy>().AI = false;
+    }
     
     internal void IconEnable()
     {
@@ -55,11 +60,13 @@ public class EnemySpawn : MonoBehaviour
     
     private void Update()
     {
+        if (GameObject.FindWithTag("Player").GetComponent<Player>().isDead) AIDisable();
         Debug.Log(transform.childCount);
         if (transform.childCount == 0)
         {
-            if (isBigRoom)
-                GUIManager.SetWin();
+            var guiManager = GameObject.FindWithTag("GUI").GetComponent<GUIManager>();
+            if (isBigRoom && !guiManager._win)
+                guiManager.Win();
             room.RoomOpening();
         }
     }

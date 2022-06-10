@@ -11,7 +11,7 @@ public class Chest : Interactable
     private GameObject loot;
     private Animator anim;
     private Vector3 position;
-    internal bool isOpen;
+    internal bool isOpen = false;
     
     private void Start()
     {
@@ -43,5 +43,8 @@ public class Chest : Interactable
                 isOpen = true;
             }
         }
+
+        //if (isOpen)
+        //    anim.Play("idle_opened");
     }
 }

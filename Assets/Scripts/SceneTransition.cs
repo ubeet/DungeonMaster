@@ -15,6 +15,7 @@ public class SceneTransition : MonoBehaviour
     
     private void Start()
     {
+        Time.timeScale = 1;
         animator = GetComponent<Animator>();
         _instance = this;
         if (shouldPlayAnim) _instance.animator.SetTrigger("Out");

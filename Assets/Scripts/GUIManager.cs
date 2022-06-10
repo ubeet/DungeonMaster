@@ -11,7 +11,7 @@ public class GUIManager : MonoBehaviour
     [SerializeField] GameObject[] HUD;
     [SerializeField] Slider slider;
 
-    private static bool _win;
+    internal bool _win = false;
     
     public void SetMaxHealth(int health)
     {
@@ -28,10 +28,10 @@ public class GUIManager : MonoBehaviour
         moneyNumber.text = money.ToString();
     }
 
-    public static void SetWin()
-    {
-        _win = true;
-    }
+    //public static void SetWin()
+    //{
+    //    _win = true;
+    //}
 
     public void Pause()
     {
@@ -47,29 +47,29 @@ public class GUIManager : MonoBehaviour
     
     public void MainMenu()
     {
-        Time.timeScale = 1;
         SceneTransition.SwitchScene(0);
+        Time.timeScale = 1;
     }
     
     public void Restart()
     {
-        Time.timeScale = 1;
         SceneTransition.SwitchScene(1);
+        Time.timeScale = 1;
     }
     
-    private void Win()
+    internal void Win()
     {
-        _win = false;
-        Time.timeScale = 0;
+        _win = true;
         winScreen.SetActive(true);
+        Time.timeScale = 0;
+        
     }
     
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !deathScreen.activeInHierarchy && !winScreen.activeInHierarchy)
         {
-            Time.timeScale = 0;
-            pauseScreen.SetActive(true);
+            Pause();
         }
 
         switch (PlayerPrefs.GetInt("hudScale"))
@@ -88,6 +88,6 @@ public class GUIManager : MonoBehaviour
                 break;
         }
         
-        if (_win) Win();
+        //if (_win) Win();
     }
 }

@@ -31,20 +31,12 @@ public class EnemyController : MonoBehaviour
             agent.updateUpAxis = false;
             goalPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
             agent.SetDestination(goalPosition);
-
-            direction.x = goalPosition.x;
-            direction.y = goalPosition.y;
-            
-            /*if (Vector2.Distance(goalPosition, rb.transform.position) > distance)
-            {
-                agent.SetDestination(goalPosition);
-                rb.MovePosition(rb.transform.position + goalPosition * speed * Time.deltaTime);
-            }
-            else
-            {
-                agent.SetDestination(-goalPosition);
-                rb.MovePosition(rb.transform.position - goalPosition * speed * Time.deltaTime);
-            }*/
+            agent.speed = 2;
+        }
+        else
+        {
+            agent = GetComponent<NavMeshAgent>();
+            agent.speed = 0;
         }
     }
 }

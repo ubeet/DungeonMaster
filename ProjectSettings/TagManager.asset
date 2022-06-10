@@ -21,6 +21,7 @@ TagManager:
   - CoinSack
   - chestRoom
   - winContainer
+  - GUI
   layers:
   - Default
   - TransparentFX
