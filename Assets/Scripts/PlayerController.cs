@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float speed = 5f;
-    [SerializeField] SpriteRenderer lamp;
-    [SerializeField] Transform light;
-    [SerializeField] float lightSpeed;
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private SpriteRenderer lamp;
+    [SerializeField] private Transform light;
+    [SerializeField] private float lightSpeed;
 
     private Rigidbody2D rb;
     private Vector2 direction;

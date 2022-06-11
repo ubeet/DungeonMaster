@@ -4,26 +4,25 @@ using UnityEngine.SceneManagement;
 
 public class GUIManager : MonoBehaviour
 {
-    [SerializeField] GameObject pauseScreen;
-    [SerializeField] GameObject deathScreen;
-    [SerializeField] GameObject winScreen;
-    [SerializeField] Text moneyNumber;
-    [SerializeField] GameObject[] HUD;
-    [SerializeField] Slider slider;
+    [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private GameObject deathScreen;
+    [SerializeField] private GameObject winScreen;
+    [SerializeField] private Text moneyNumber;
+    [SerializeField] private GameObject[] HUD;
+    [SerializeField] private Slider slider;
 
-    internal bool _win = false;
-    
-    public void SetMaxHealth(int health)
+    public bool _win { get; set; } = false;
+    internal void SetMaxHealth(int health)
     {
         slider.maxValue = health;
     }
     
-    public void SetHealth(int health)
+    internal void SetHealth(int health)
     {
         slider.value = health;
     }
     
-    public void SetMoney(int money)
+    internal void SetMoney(int money)
     {
         moneyNumber.text = money.ToString();
     }
@@ -61,7 +60,7 @@ public class GUIManager : MonoBehaviour
         
     }
     
-    public void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !deathScreen.activeInHierarchy && !winScreen.activeInHierarchy)
         {

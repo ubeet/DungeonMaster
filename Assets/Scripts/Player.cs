@@ -6,16 +6,16 @@ public class Player : MonoBehaviour
     [SerializeField] private GUIManager GUI;
     [SerializeField] private GameObject deathScreen;
     
-    internal int currentHealth;
-    internal int currentMoney;
+    public int currentHealth { get; set; }
+    public int currentMoney { get; set; }
 
     private AudioSource source;
     private readonly System.Random rnd = new System.Random();
     private int maxHealth = 100;
 
-    internal bool isDead = false;
-    internal int pHealing = 10;
-    internal int mHealing = 40;
+    public bool isDead { get; set; } = false;
+    public int pHealing { get; set; } = 10;
+    public int mHealing { get; set; } = 40;
     
     private void Start()
     {
@@ -52,14 +52,14 @@ public class Player : MonoBehaviour
             TakeMoney(2);
     }
     
-    public void TakeDamage(int damage)
+    internal void TakeDamage(int damage)
     {
         currentHealth -= damage;
         GUI.SetHealth(currentHealth);
         if (currentHealth <= 0) Die();
     }
     
-    public void TakeHealing(int health)
+    internal void TakeHealing(int health)
     {
         if (currentHealth + health <= maxHealth)
             currentHealth += health;
@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
         GUI.SetHealth(currentHealth);
     }
     
-    public void TakeMoney(int coins)
+    internal void TakeMoney(int coins)
     {
         currentMoney += coins;
         GUI.SetMoney(currentMoney);

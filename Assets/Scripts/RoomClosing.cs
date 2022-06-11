@@ -12,7 +12,7 @@ public class RoomClosing : MonoBehaviour
     private GameObject wallW;
     private EnemySpawn spawn;
 
-    public void Start()
+    private void Start()
     {
         var thisRoom = transform.parent.parent;
         

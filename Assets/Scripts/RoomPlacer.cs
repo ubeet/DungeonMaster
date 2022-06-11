@@ -8,22 +8,22 @@ using Random = UnityEngine.Random;
 
 public class RoomPlacer : MonoBehaviour
 {
-    public Room[] roomPrefabs;
-    public Room startRoom;
-    public Room shopRoom;
-    public Room chestRoom;
-    public Room finalRoom;
-    public int dungeonSize;
-    public int roomStartX;
-    public int roomStartY;
-    public int roomsAmount;
-    public int chestAmount;
-    public GameObject LeftHor;
-    public GameObject RightHor;
-    public GameObject CenterHor;
-    public GameObject TopVert;
-    public GameObject DownVert;
-    public GameObject CenterVert;
+    [SerializeField] private Room[] roomPrefabs;
+    [SerializeField] private Room startRoom;
+    [SerializeField] private Room shopRoom;
+    [SerializeField] private Room chestRoom;
+    [SerializeField] private Room finalRoom;
+    [SerializeField] private int dungeonSize;
+    [SerializeField] private int roomStartX;
+    [SerializeField] private int roomStartY;
+    [SerializeField] private int roomsAmount;
+    [SerializeField] private int chestAmount;
+    [SerializeField] private GameObject LeftHor;
+    [SerializeField] private GameObject RightHor;
+    [SerializeField] private GameObject CenterHor;
+    [SerializeField] private GameObject TopVert;
+    [SerializeField] private GameObject DownVert;
+    [SerializeField] private GameObject CenterVert;
 
     private Room[,] spawnedRooms;
     
@@ -135,7 +135,7 @@ public class RoomPlacer : MonoBehaviour
         SetCorridors();
     }
 
-    public Room[,] GetSpawnedRooms() => spawnedRooms;
+    internal Room[,] GetSpawnedRooms() => spawnedRooms;
 
     private void PlaceOneRoom()
     {
@@ -159,13 +159,7 @@ public class RoomPlacer : MonoBehaviour
         for (int limit = 0; limit < 25; limit++)
         {
             Vector2Int position = vacantPlaces.ElementAt(Random.Range(0, vacantPlaces.Count));
-            /*if (position.x + 1 <= maxX && spawnedRooms[position.x + 1, position.y]?.tag == "BiggestRoom" ||
-                position.x - 1 >= 0 && spawnedRooms[position.x - 1, position.y]?.tag == "BiggestRoom")
-            {
-                Destroy(newRoom.gameObject);
-                newRoom = Instantiate(roomPrefabs[0]);
-            }*/
-            
+
             if (ConnectToRooms(newRoom, position))
             {
                 newRoom.transform.position = new Vector3((position.x - 5) * 29, (position.y - 5) * 24, 0);
@@ -198,12 +192,7 @@ public class RoomPlacer : MonoBehaviour
         for (int limit = 0; limit < 25;limit++)
         {
             Vector2Int position = vacantPlaces.ElementAt(Random.Range(0, vacantPlaces.Count));
-            /*if (position.x + 1 <= maxX && spawnedRooms[position.x + 1, position.y]?.tag == "BiggestRoom" ||
-                position.x - 1 >= 0 && spawnedRooms[position.x - 1, position.y]?.tag == "BiggestRoom")
-            {
-                Destroy(newRoom.gameObject);
-                newRoom = Instantiate(roomPrefabs[0]);
-            }*/
+            
             
             if (ConnectToRooms(newRoom, position))
             {
@@ -220,11 +209,7 @@ public class RoomPlacer : MonoBehaviour
         
         int maxX = spawnedRooms.GetLength(0) - 1;
         int maxY = spawnedRooms.GetLength(1) - 1;
-        
-        Debug.LogWarning(room.wallN != null);
-        Debug.LogWarning(pos.y < maxY);
-        Debug.LogWarning(spawnedRooms[pos.x, pos.y + 1]?.wallS != null);
-        
+
         List<Vector2Int> neighbours = new List<Vector2Int>();
         
         if(room.wallN != null && pos.y < maxY && spawnedRooms[pos.x, pos.y + 1]?.wallS != null)  neighbours.Add(Vector2Int.up);
@@ -241,7 +226,6 @@ public class RoomPlacer : MonoBehaviour
         Room selectedRoom = spawnedRooms[x, y];
         if (selectedDirections == Vector2Int.up)
         {
-            
             room.wallN.SetActive(false);
             selectedRoom.wallS.SetActive(false);
         }

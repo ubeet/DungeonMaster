@@ -50,7 +50,7 @@ public class Ammo : MonoBehaviour
         transform.Translate((Vector2.right + new Vector2(0, random)) * speed * Time.fixedDeltaTime);
     }
 
-    void DestroyAmmo()
+    private void DestroyAmmo()
     {
         Destroy(gameObject);
     }

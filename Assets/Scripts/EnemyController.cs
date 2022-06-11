@@ -3,8 +3,8 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] float speed;
-    [SerializeField] float distance;
+    [SerializeField] private float speed;
+    [SerializeField] private float distance;
     
     private NavMeshAgent agent;
     private Rigidbody2D rb;

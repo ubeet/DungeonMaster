@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private GameObject[] loot;
 
-    internal bool AI = false;
+    public bool AI { get; set; } = false;
     
     private AudioSource source;
     private int maxHealth = 100;
@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
         if (currentHealth <= 0) Die();
     }
     
-    IEnumerator deathCoroutine()
+    private IEnumerator deathCoroutine()
     {
         System.Random rnd = new System.Random();
         source = GetComponent<AudioSource>();

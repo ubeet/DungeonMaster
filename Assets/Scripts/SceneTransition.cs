@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class SceneTransition : MonoBehaviour
 {
-    [SerializeField] Text loadingProgress;
+    [SerializeField] private Text loadingProgress;
     
     private static SceneTransition _instance;
     private Animator animator;

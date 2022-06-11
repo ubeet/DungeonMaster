@@ -7,16 +7,16 @@ using UnityEngine.Serialization;
 [Serializable]
 public class RoomData
 {
-    public float[] position;
-    public bool wallN;
-    public bool wallE;
-    public bool wallS;
-    public bool wallW;
-    public string roomTag;
-    public bool triggers;
-    public bool isOpen;
+    public float[] position { get; set; }
+    public bool wallN { get; set; }
+    public bool wallE { get; set; }
+    public bool wallS { get; set; }
+    public bool wallW { get; set; }
+    public string roomTag { get; set; }
+    public bool triggers { get; set; }
+    public bool isOpen { get; set; }
 
-    public RoomData(Room room)
+    internal RoomData(Room room)
     {
         position = new float[3];
         

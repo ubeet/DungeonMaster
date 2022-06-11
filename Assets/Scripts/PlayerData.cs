@@ -2,11 +2,11 @@
 
 public class PlayerData
 {
-    public int health;
-    public int money;
-    public float[] position;
+    public int health { get; set; }
+    public int money { get; set; }
+    public float[] position { get; set; }
 
-    public PlayerData(Player player)
+    internal PlayerData(Player player)
     {
         health = player.currentHealth;
         money = player.currentMoney;

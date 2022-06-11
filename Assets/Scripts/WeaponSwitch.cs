@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponSwitch : MonoBehaviour
 {
-    public int weaponSwitch = 0;
+    public int weaponSwitch { get; set; } = 0;
     private static GameObject gb;
     private void Start()
     {

@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
-    [SerializeField] public GameObject wallN;
-    [SerializeField] public GameObject wallE;
-    [SerializeField] public GameObject wallS;
-    [SerializeField] public GameObject wallW;
-    [SerializeField] public GameObject triggers;
-    [SerializeField] public GameObject chest;
+    [SerializeField] internal GameObject wallN;
+    [SerializeField] internal GameObject wallE;
+    [SerializeField] internal GameObject wallS;
+    [SerializeField] internal GameObject wallW;
+    [SerializeField] internal GameObject triggers;
+    [SerializeField] internal GameObject chest;
     
 }

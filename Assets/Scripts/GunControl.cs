@@ -26,7 +26,7 @@ public class GunControl : MonoBehaviour
         Initialize();
     }
     
-    public void Initialize()
+    internal void Initialize()
     {
         source = GetComponent<AudioSource>();
         circle = transform.parent.gameObject;

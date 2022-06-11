@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 public class Item : MonoBehaviour
 {
-    public bool isBuff;
-    public int cost;
-    public bool isInInventory;
+    [SerializeField] internal bool isBuff;
+    [SerializeField] internal int cost;
+    [SerializeField] internal bool isInInventory;
 }

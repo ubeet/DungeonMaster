@@ -4,14 +4,14 @@ using Random = System.Random;
 
 public class Chest : Interactable
 {
-    [SerializeField] GameObject[] contents;
+    [SerializeField] private GameObject[] contents;
     
     private readonly Random rand = new Random();
     private AudioSource source;
     private GameObject loot;
     private Animator anim;
     private Vector3 position;
-    public bool isOpen = false;
+    public bool isOpen { get; set; } = false;
     
     private void Start()
     {
