@@ -8,13 +8,13 @@ using UnityEngine.Serialization;
 public class RoomData
 {
     public float[] position { get; set; }
+    public string roomTag { get; set; }
+    public bool triggers { get; set; }
+    public bool isOpen { get; set; }
     public bool wallN { get; set; }
     public bool wallE { get; set; }
     public bool wallS { get; set; }
     public bool wallW { get; set; }
-    public string roomTag { get; set; }
-    public bool triggers { get; set; }
-    public bool isOpen { get; set; }
 
     internal RoomData(Room room)
     {
@@ -27,7 +27,7 @@ public class RoomData
         roomTag = room.tag;
         
         if (room.triggers != null) triggers = room.triggers.activeInHierarchy;
-        if (room.chest != null) isOpen = room.chest.GetComponent<Chest>().isOpen;
+        if (room.chest != null) isOpen = room.chest.GetComponent<Chest>().IsOpen;
 
         if (room.wallN != null) wallN = room.wallN.activeInHierarchy;
         if (room.wallE != null) wallE = room.wallE.activeInHierarchy;

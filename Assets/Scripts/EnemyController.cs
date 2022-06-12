@@ -3,13 +3,15 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private float distance;
+    [Header("Attributes")]
     
-    private NavMeshAgent agent;
-    private Rigidbody2D rb;
+    [SerializeField] private float distance;
+    [SerializeField] private float speed;
+    
     private Vector3 goalPosition;
+    private NavMeshAgent agent;
     private Vector2 direction;
+    private Rigidbody2D rb;
 
     private void Start () 
     {

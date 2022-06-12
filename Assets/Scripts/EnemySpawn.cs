@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
 {
+    [Header("Attributes")]
+    
     [SerializeField] private GameObject enemyGO; 
     
     private RoomClosing room;
@@ -15,7 +17,25 @@ public class EnemySpawn : MonoBehaviour
         isBigRoom = transform.parent.parent.CompareTag("BiggestRoom");
         Invoke(nameof(SpawnEnemies), 1);
     }
-
+    
+    internal void AIEnable()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+            transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<Enemy>().AI = true;
+    }
+    
+    internal void AIDisable()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+            transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<Enemy>().AI = false;
+    }
+    
+    internal void IconEnable()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+            transform.GetChild(i).GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(true);
+    }
+    
     private void SpawnEnemies()
     {
         room = transform.parent.GetChild(transform.parent.childCount - 1).GetChild(0).GetComponent<RoomClosing>();
@@ -30,23 +50,6 @@ public class EnemySpawn : MonoBehaviour
             enemy.transform.GetChild(0).GetComponent<Enemy>().AI = false;
         }
     }
-
-    internal void AIEnable()
-    {
-        for (int i = 0; i < transform.childCount; i++)
-            transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<Enemy>().AI = true;
-    }
-    internal void AIDisable()
-    {
-        for (int i = 0; i < transform.childCount; i++)
-            transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<Enemy>().AI = false;
-    }
-    
-    internal void IconEnable()
-    {
-        for (int i = 0; i < transform.childCount; i++)
-            transform.GetChild(i).GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(true);
-    }
     
     private void Update()
     {
@@ -54,8 +57,7 @@ public class EnemySpawn : MonoBehaviour
         if (transform.childCount == 0)
         {
             var guiManager = GameObject.FindWithTag("GUI").GetComponent<GUIManager>();
-            if (isBigRoom && !guiManager._win)
-                guiManager.Win();
+            if (isBigRoom && !guiManager._win) guiManager.Win();
             room.RoomOpening();
         }
     }

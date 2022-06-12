@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [Header("Attributes")]
+    
     [SerializeField] private GameObject warningScreen;
 
     public void NewGame()

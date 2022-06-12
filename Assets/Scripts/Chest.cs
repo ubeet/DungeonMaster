@@ -4,15 +4,18 @@ using Random = System.Random;
 
 public class Chest : Interactable
 {
+    [Header("Attributes")]
+    
     [SerializeField] private GameObject[] contents;
     
     private readonly Random rand = new Random();
     private AudioSource source;
+    private Vector3 position;
     private GameObject loot;
     private Animator anim;
-    private Vector3 position;
-    public bool isOpen { get; set; } = false;
     
+    public bool IsOpen { get; set; } = false;
+
     private void Start()
     {
         Initialize();
@@ -20,11 +23,12 @@ public class Chest : Interactable
 
     internal void Initialize()
     {
-        anim = GetComponent<Animator>();
-        source = GetComponent<AudioSource>();
         loot = contents[rand.Next(contents.Length)];
+        source = GetComponent<AudioSource>();
+        anim = GetComponent<Animator>();
         position = transform.position;
     }
+    
     private IEnumerator Wait(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
@@ -35,18 +39,15 @@ public class Chest : Interactable
     {
         anim.Play("open");
         source.Play();
-        isOpen = true;
+        IsOpen = true;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && playerInRange)
+        if (Input.GetKeyDown(KeyCode.E) && playerInRange && !IsOpen)
         {
-            if (!isOpen)
-            {
-                OpenChest();
-                StartCoroutine(Wait(0.8f));
-            }
+            OpenChest();
+            StartCoroutine(Wait(0.8f));
         }
     }
 }

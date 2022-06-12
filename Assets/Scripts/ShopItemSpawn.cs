@@ -5,15 +5,17 @@ using UnityEngine.UI;
 
 public class ShopItemSpawn : Interactable
 {
+    [Header("Attributes")]
+    
     [SerializeField] private Item[] Items;
     
-    private AudioSource source;
     private Transform childPoint;
-    private bool isBuff;
-    private Item obj;
-    private Text price;
-    private Player playerObj;
+    private AudioSource source;
     private Animator animator;
+    private Player playerObj;
+    private bool isBuff;
+    private Text price;
+    private Item obj;
     
     private void Start()
     {
@@ -26,6 +28,7 @@ public class ShopItemSpawn : Interactable
         obj.isBuff = false;
         obj.isInInventory = false;
         obj.gameObject.transform.localPosition = new Vector3(0, 0, 0);
+        
         if (!isBuff)
         {
             animator = obj.GetComponent<Animator>();
@@ -40,8 +43,7 @@ public class ShopItemSpawn : Interactable
             playerObj = other.gameObject.GetComponent<Player>();
             if (Input.GetKeyUp(KeyCode.E) && playerObj.currentMoney >= obj.cost)
             {
-                if (isBuff)
-                    playerObj.TakeHealing(obj.tag.Equals("Medicine") ? playerObj.mHealing : playerObj.pHealing);
+                if (isBuff) playerObj.TakeHealing(obj.tag.Equals("Medicine") ? playerObj.mHealing : playerObj.pHealing);
                 else
                 {
                     var gunCircle = other.gameObject.transform.GetChild(1);
@@ -54,11 +56,11 @@ public class ShopItemSpawn : Interactable
                     newGun.gameObject.SetActive(false);
                     State = States.wHands;
                 }
+                
                 playerObj.TakeMoney(-obj.cost);
                 Destroy(obj.gameObject);
             }
-            else if (Input.GetKeyUp(KeyCode.E) && playerObj.currentMoney < obj.cost)
-                source.Play();
+            else if (Input.GetKeyUp(KeyCode.E) && playerObj.currentMoney < obj.cost) source.Play();
         }
     }
     

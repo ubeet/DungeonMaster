@@ -2,16 +2,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f;
+    [Header("Attributes")]
+    
     [SerializeField] private SpriteRenderer lamp;
-    [SerializeField] private Transform light;
     [SerializeField] private float lightSpeed;
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private Transform light;
 
-    private Rigidbody2D rb;
+    private States position = States.idle_down;
     private Vector2 direction;
     private Animator animator;
-    private States position = States.idle_down;
-    
+    private Rigidbody2D rb;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -27,8 +29,7 @@ public class PlayerController : MonoBehaviour
 
         if(!Input.GetButton("Fire1"))
         {
-            if(direction.y == 0 && direction.x == 0)
-                State = position;
+            if(direction.y == 0 && direction.x == 0) State = position;
             else if (direction.x > 0)
             {
                 State = States.right;

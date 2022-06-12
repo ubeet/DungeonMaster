@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [Header("Parameters")]
-    private Transform transform;
+    [Header("Attributes")]
+    
     [SerializeField] private Transform playerTransform;
-    [SerializeField] private string playerTag;
     [SerializeField] private float movingSpeed;
+    [SerializeField] private string playerTag;
+    
+    private Transform transform;
 
     private void Start()
     {
@@ -17,14 +19,13 @@ public class CameraFollow : MonoBehaviour
                 playerTag = "Player";
             playerTransform = GameObject.FindGameObjectWithTag(playerTag).transform;
         }
-
+        
         playerTransform.position = new Vector3()
         {
             x = playerTransform.position.x,
             y = playerTransform.position.y,
             z = playerTransform.position.z
         };
-        
     }
 
     

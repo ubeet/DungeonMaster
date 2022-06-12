@@ -12,12 +12,10 @@ public class Interactable : MonoBehaviour
             this.other = other;
             playerInRange = true;
         }
-        
     }
     
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !other.isTrigger)
-            playerInRange = false;
+        if (other.CompareTag("Player") && !other.isTrigger) playerInRange = false;
     }
 }

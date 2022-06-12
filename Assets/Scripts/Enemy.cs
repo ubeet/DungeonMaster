@@ -5,14 +5,16 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private GameObject[] loot;
-
-    public bool AI { get; set; } = false;
+    [Header("Attributes")]
     
-    private AudioSource source;
+    [SerializeField] private GameObject[] loot;
+    
     private int maxHealth = 100;
-    private Vector3 position;
+    private AudioSource source;
     private int currentHealth;
+    private Vector3 position;
+    
+    public bool AI { get; set; } = false;
 
     private void Start()
     {
@@ -25,15 +27,12 @@ public class Enemy : MonoBehaviour
         if (currentHealth <= 0) Die();
     }
     
-    private IEnumerator deathCoroutine()
+    private IEnumerator DeathCoroutine()
     {
-        System.Random rnd = new System.Random();
-        source = GetComponent<AudioSource>();
-        source.Play();
-        
         while (source.isPlaying)
             yield return null;
         
+        System.Random rnd = new System.Random();
         Destroy(transform.parent.parent.gameObject);
         position = transform.position;
         Instantiate(loot[rnd.Next(0, loot.Length)], new Vector3(position.x, position.y, position.z), Quaternion.identity);
@@ -41,6 +40,9 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        StartCoroutine(deathCoroutine());
+        source = GetComponent<AudioSource>();
+        source.Play();
+        
+        StartCoroutine(DeathCoroutine());
     }
 }

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class WeaponSwitch : MonoBehaviour
 {
-    public int weaponSwitch { get; set; } = 0;
     private static GameObject gb;
+    
+    public int weaponSwitch { get; set; } = 0;
+    
     private void Start()
     {
         SwitchWeapon();
@@ -14,15 +16,14 @@ public class WeaponSwitch : MonoBehaviour
     private void Update()
     {
         int curWeapon = weaponSwitch;
+        
         if (Input.GetKeyUp(KeyCode.Q))
         {
-            if (weaponSwitch >= transform.childCount - 1)
-                weaponSwitch = 0;
-            else
-                weaponSwitch++;
+            if (weaponSwitch >= transform.childCount - 1) weaponSwitch = 0;
+            else weaponSwitch++;
         }
-        if(curWeapon != weaponSwitch)
-            SwitchWeapon();
+        
+        if(curWeapon != weaponSwitch) SwitchWeapon();
     }
 
     private void SwitchWeapon()
@@ -30,12 +31,9 @@ public class WeaponSwitch : MonoBehaviour
         int i = 0;
         foreach (Transform weapon in transform)
         {
-            if (i == weaponSwitch)
-                weapon.gameObject.SetActive(true);
-            else
-                weapon.gameObject.SetActive(false);
+            if (i == weaponSwitch) weapon.gameObject.SetActive(true);
+            else weapon.gameObject.SetActive(false);
             i++;
         }
     }
-
 }

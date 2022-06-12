@@ -5,11 +5,11 @@ using UnityEngine.Serialization;
 
 public class RoomClosing : MonoBehaviour
 {
-    private GameObject triggers;
     private GameObject wallN, doorN;
     private GameObject wallE, doorE;
     private GameObject wallS, doorS;
     private GameObject wallW, doorW;
+    private GameObject triggers;
     private EnemySpawn spawn;
 
     private void Start()
@@ -41,6 +41,7 @@ public class RoomClosing : MonoBehaviour
             if(wallE != null) doorE.SetActive(true);
             if(wallS != null) doorS.SetActive(true);
             if(wallW != null) doorW.SetActive(true);
+            
             spawn.IconEnable();
             spawn.AIEnable();
         }
@@ -52,6 +53,7 @@ public class RoomClosing : MonoBehaviour
         if(wallE != null) doorE.SetActive(false);
         if(wallS != null) doorS.SetActive(false);
         if(wallW != null) doorW.SetActive(false);
+        
         triggers.SetActive(false);
     }
 }    

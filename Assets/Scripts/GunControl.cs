@@ -3,24 +3,26 @@ using UnityEngine;
 
 public class GunControl : MonoBehaviour
 {
-    [SerializeField] private float offset;
+    [Header("Attributes")]
+    
     [SerializeField] private SpriteRenderer gun;
     [SerializeField] private GameObject ammo;
+    [SerializeField] private float offset;
     [SerializeField] private float speed;
     [SerializeField] private int count;
-
+    
+    private States position = States.idle_down;
+    private Transform gunPosChange;
+    private Vector3 goalPosition;
+    private float startTime = 0;
+    private float timeShot = 0;
     private AudioSource source;
+    private Vector3 difference;
+    private Vector2 direction;
     private GameObject circle;
     private Transform shotDir;
     private Animator animator;
-    private Transform gunPosChange;
-    private float startTime = 0;
-    private float timeShot = 0;
-    private Vector3 goalPosition;
-    private Vector3 difference;
-    private Vector2 direction;
-    private States position = States.idle_down;
-
+    
     private void Start()
     {
         Initialize();
@@ -31,11 +33,11 @@ public class GunControl : MonoBehaviour
         source = GetComponent<AudioSource>();
         circle = transform.parent.gameObject;
         shotDir = transform.GetChild(0);
+        
         if(transform.parent.parent.gameObject.TryGetComponent<Animator>(out animator))
             animator.transform.parent.gameObject.GetComponentInParent<Animator>();
-        else
-            animator = new GameObject().AddComponent<Animator>();
-           
+        else animator = new GameObject().AddComponent<Animator>();
+        
         gunPosChange = circle.GetComponent<Transform>();
     }
     private void FixedUpdate()
@@ -59,7 +61,6 @@ public class GunControl : MonoBehaviour
                     stay = direction.y == 0 && direction.x == 0;
                 }
 
-
                 var pos = gunPosChange.rotation.z;
 
                 if (pos > 0.386 && pos < 0.922)
@@ -68,29 +69,30 @@ public class GunControl : MonoBehaviour
                     position = States.idle_up;
                     gun.sortingOrder = 0;
                 }
+                
                 else if (pos > -0.922 && pos <= -0.386)
                 {
                     State = stay ? States.idle_down : States.down;
                     position = States.idle_down;
                     gun.sortingOrder = 2;
                 }
+                
                 else if (pos > -0.386 && pos <= 0.386)
                 {
                     State = stay ? States.idle_right : States.right;
                     position = States.idle_right;
                     gun.sortingOrder = 2;
                 }
+                
                 else if (!(pos > -0.922 && pos <= 0.922))
                 {
                     State = stay ? States.idle_left : States.left;
                     position = States.idle_left;
                     gun.sortingOrder = 0;
                 }
-
-
+                
                 var shotPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                if (animator.gameObject.CompareTag("Enemy"))
-                    shotPos = goalPosition;
+                if (animator.gameObject.CompareTag("Enemy")) shotPos = goalPosition;
                 difference = shotPos - circle.transform.position;
 
                 float rotateZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
@@ -105,13 +107,10 @@ public class GunControl : MonoBehaviour
                     source.Play();
                 }
 
-                if (circle.transform.rotation.z >= -0.707 && circle.transform.rotation.z <= 0.707)
-                    gun.flipY = true;
-                else
-                    gun.flipY = false;
+                if (circle.transform.rotation.z >= -0.707 && circle.transform.rotation.z <= 0.707) gun.flipY = true;
+                else gun.flipY = false;
             }
-            else
-                gun.enabled = false;
+            else gun.enabled = false;
 
             timeShot -= Time.fixedDeltaTime;
             startTime = speed;

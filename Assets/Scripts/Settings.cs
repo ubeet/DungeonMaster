@@ -5,12 +5,15 @@ using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
 {
-    [SerializeField] private AudioMixer audioMixer;
-    [SerializeField] private Slider slider;
+    [Header("Attributes")]
+    
     [SerializeField] private GameObject settingsScreen;
     [SerializeField] private GameObject previousScreen;
+    [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private Dropdown dropdown;
+    [SerializeField] private Slider slider;
     [SerializeField] private Toggle toggle;
+    
     private void Start()
     {
         Screen.fullScreen = Convert.ToBoolean(PlayerPrefs.GetInt("fullscreen"));

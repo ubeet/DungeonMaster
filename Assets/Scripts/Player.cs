@@ -3,19 +3,20 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private GUIManager GUI;
-    [SerializeField] private GameObject deathScreen;
+    [Header("Attributes")]
     
-    public int currentHealth { get; set; }
-    public int currentMoney { get; set; }
-
-    private AudioSource source;
+    [SerializeField] private GameObject deathScreen;
+    [SerializeField] private GUIManager GUI;
+    
     private readonly System.Random rnd = new System.Random();
     private int maxHealth = 100;
+    private AudioSource source;
 
     public bool isDead { get; set; } = false;
     public int pHealing { get; set; } = 10;
     public int mHealing { get; set; } = 40;
+    public int currentHealth { get; set; }
+    public int currentMoney { get; set; }
     
     private void Start()
     {
@@ -29,6 +30,7 @@ public class Player : MonoBehaviour
             GUI.SetMaxHealth(maxHealth);
             GUI.SetHealth(currentHealth);
             GUI.SetMoney(currentMoney);
+            
             Vector3 position;
             position.x = data.position[0];
             position.y = data.position[1];
@@ -46,25 +48,23 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) //for example
-            TakeDamage(10);
-        if (Input.GetKeyDown(KeyCode.M)) //for example
-            TakeMoney(2);
+        if (Input.GetKeyDown(KeyCode.Space)) TakeDamage(10); //for example
+        if (Input.GetKeyDown(KeyCode.M)) TakeMoney(2); //for example
     }
     
     internal void TakeDamage(int damage)
     {
         currentHealth -= damage;
         GUI.SetHealth(currentHealth);
+        
         if (currentHealth <= 0) Die();
     }
     
     internal void TakeHealing(int health)
     {
-        if (currentHealth + health <= maxHealth)
-            currentHealth += health;
-        else
-            currentHealth = maxHealth;
+        if (currentHealth + health <= maxHealth) currentHealth += health;
+        else currentHealth = maxHealth;
+        
         GUI.SetHealth(currentHealth);
     }
     
@@ -92,18 +92,21 @@ public class Player : MonoBehaviour
             Destroy(other.gameObject);
             source.Play();
         }
+        
         if (other.CompareTag("CoinSack") && other.GetComponent<Item>().isBuff)
         {
             TakeMoney(rnd.Next(10, 16));
             Destroy(other.gameObject);
             source.Play();
         }
+        
         if (other.CompareTag("Potion") && other.GetComponent<Item>().isBuff)
         {
             TakeHealing(pHealing);
             Destroy(other.gameObject);
             source.Play();
         }
+        
         if (other.CompareTag("Medicine") && other.GetComponent<Item>().isBuff)
         {
             TakeHealing(mHealing);

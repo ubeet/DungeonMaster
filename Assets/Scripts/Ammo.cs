@@ -3,10 +3,13 @@ using Random = UnityEngine.Random;
 
 public class Ammo : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    [Header("Attributes")]
+    
     [SerializeField] private float destroyTime;
-    [SerializeField] private int damage;
     [SerializeField] private bool isEnemy;
+    [SerializeField] private float speed;
+    [SerializeField] private int damage;
+    
     private Player actionTarget;
     private Enemy actionTargetE;
     private float random;

@@ -4,30 +4,17 @@ using UnityEngine.SceneManagement;
 
 public class GUIManager : MonoBehaviour
 {
+    [Header("Attributes")]
+    
     [SerializeField] private GameObject pauseScreen;
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private GameObject winScreen;
-    [SerializeField] private Text moneyNumber;
     [SerializeField] private GameObject[] HUD;
+    [SerializeField] private Text moneyNumber;
     [SerializeField] private Slider slider;
 
     public bool _win { get; set; } = false;
-    
-    internal void SetMaxHealth(int health)
-    {
-        slider.maxValue = health;
-    }
-    
-    internal void SetHealth(int health)
-    {
-        slider.value = health;
-    }
-    
-    internal void SetMoney(int money)
-    {
-        moneyNumber.text = money.ToString();
-    }
-    
+
     public void Pause()
     {
         Time.timeScale = 0;
@@ -52,20 +39,31 @@ public class GUIManager : MonoBehaviour
         Time.timeScale = 1;
     }
     
+    internal void SetMaxHealth(int health)
+    {
+        slider.maxValue = health;
+    }
+    
+    internal void SetHealth(int health)
+    {
+        slider.value = health;
+    }
+    
+    internal void SetMoney(int money)
+    {
+        moneyNumber.text = money.ToString();
+    }
+    
     internal void Win()
     {
         _win = true;
         winScreen.SetActive(true);
         Time.timeScale = 0;
-        
     }
     
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !deathScreen.activeInHierarchy && !winScreen.activeInHierarchy)
-        {
-            Pause();
-        }
+        if (Input.GetKeyDown(KeyCode.Escape) && !deathScreen.activeInHierarchy && !winScreen.activeInHierarchy) Pause();
 
         switch (PlayerPrefs.GetInt("hudScale"))
         {
@@ -82,6 +80,5 @@ public class GUIManager : MonoBehaviour
                     element.transform.localScale = new Vector3(1.25f,1.25f,1);
                 break;
         }
-        
     }
 }
