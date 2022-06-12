@@ -6,22 +6,26 @@ using UnityEngine.Serialization;
 public class RoomClosing : MonoBehaviour
 {
     private GameObject triggers;
-    private GameObject wallN;
-    private GameObject wallE;
-    private GameObject wallS;
-    private GameObject wallW;
+    private GameObject wallN, doorN;
+    private GameObject wallE, doorE;
+    private GameObject wallS, doorS;
+    private GameObject wallW, doorW;
     private EnemySpawn spawn;
 
     private void Start()
     {
         var thisRoom = transform.parent.parent;
         
-        spawn = thisRoom.GetChild(thisRoom.childCount - 6).GetComponent<EnemySpawn>();
-        wallN = thisRoom.GetChild(thisRoom.childCount - 5).gameObject;
-        wallE = thisRoom.GetChild(thisRoom.childCount - 4).gameObject;
-        wallS = thisRoom.GetChild(thisRoom.childCount - 3).gameObject;
-        wallW = thisRoom.GetChild(thisRoom.childCount - 2).gameObject; 
-        
+        spawn = thisRoom.GetChild(thisRoom.childCount - 10).GetComponent<EnemySpawn>();
+        wallN = thisRoom.GetChild(thisRoom.childCount - 9).gameObject;
+        wallE = thisRoom.GetChild(thisRoom.childCount - 8).gameObject;
+        wallS = thisRoom.GetChild(thisRoom.childCount - 7).gameObject;
+        wallW = thisRoom.GetChild(thisRoom.childCount - 6).gameObject; 
+        doorN = thisRoom.GetChild(thisRoom.childCount - 5).gameObject;
+        doorE = thisRoom.GetChild(thisRoom.childCount - 4).gameObject;
+        doorS = thisRoom.GetChild(thisRoom.childCount - 3).gameObject;
+        doorW = thisRoom.GetChild(thisRoom.childCount - 2).gameObject;
+
         triggers = transform.parent.gameObject;
         if (wallN.activeInHierarchy) wallN = null;
         if (wallE.activeInHierarchy) wallE = null;
@@ -33,10 +37,10 @@ public class RoomClosing : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if(wallN != null) wallN.SetActive(true);
-            if(wallE != null) wallE.SetActive(true);
-            if(wallS != null) wallS.SetActive(true);
-            if(wallW != null) wallW.SetActive(true);
+            if(wallN != null) doorN.SetActive(true);
+            if(wallE != null) doorE.SetActive(true);
+            if(wallS != null) doorS.SetActive(true);
+            if(wallW != null) doorW.SetActive(true);
             spawn.IconEnable();
             spawn.AIEnable();
         }
@@ -44,10 +48,10 @@ public class RoomClosing : MonoBehaviour
 
     internal void RoomOpening()
     {
-        if(wallN != null) wallN.SetActive(false);
-        if(wallE != null) wallE.SetActive(false);
-        if(wallS != null) wallS.SetActive(false);
-        if(wallW != null) wallW.SetActive(false);
+        if(wallN != null) doorN.SetActive(false);
+        if(wallE != null) doorE.SetActive(false);
+        if(wallS != null) doorS.SetActive(false);
+        if(wallW != null) doorW.SetActive(false);
         triggers.SetActive(false);
     }
 }    

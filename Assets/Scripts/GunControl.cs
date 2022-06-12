@@ -118,6 +118,7 @@ public class GunControl : MonoBehaviour
         }
 
     }
+    
     private States State
     {
         get { return (States) animator.GetInteger("state"); }

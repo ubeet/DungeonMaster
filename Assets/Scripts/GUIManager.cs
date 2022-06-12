@@ -12,6 +12,7 @@ public class GUIManager : MonoBehaviour
     [SerializeField] private Slider slider;
 
     public bool _win { get; set; } = false;
+    
     internal void SetMaxHealth(int health)
     {
         slider.maxValue = health;
@@ -26,8 +27,7 @@ public class GUIManager : MonoBehaviour
     {
         moneyNumber.text = money.ToString();
     }
-
-
+    
     public void Pause()
     {
         Time.timeScale = 0;

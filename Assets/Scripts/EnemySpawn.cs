@@ -7,7 +7,6 @@ public class EnemySpawn : MonoBehaviour
 {
     [SerializeField] private GameObject enemyGO; 
     
-    //private GameObject winScreen;
     private RoomClosing room;
     private bool isBigRoom;
     
@@ -16,7 +15,6 @@ public class EnemySpawn : MonoBehaviour
         isBigRoom = transform.parent.parent.CompareTag("BiggestRoom");
         Invoke(nameof(SpawnEnemies), 1);
     }
-    
 
     private void SpawnEnemies()
     {

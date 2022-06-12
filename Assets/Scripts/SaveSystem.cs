@@ -22,23 +22,23 @@ public static class SaveSystem
     }
     
     public static void SaveWorldData(RoomPlacer rooms)
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream stream = new FileStream(WorldPath, FileMode.Create);
+        
+        WorldData data = new WorldData(rooms);
+        try
         {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream stream = new FileStream(WorldPath, FileMode.Create);
-            
-            WorldData data = new WorldData(rooms);
-            try
-            {
-                bf.Serialize(stream, data);
-            }
-            catch (Exception e)
-            {
-                Debug.LogError("World save file not found in " + WorldPath);
-                throw;
-            }
             bf.Serialize(stream, data);
-            stream.Close();
         }
+        catch (Exception e)
+        {
+            Debug.LogError("World save file not found in " + WorldPath);
+            throw;
+        }
+        bf.Serialize(stream, data);
+        stream.Close();
+    }
 
     public static PlayerData LoadPlayerData()
         {

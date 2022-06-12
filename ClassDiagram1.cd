@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Ammo">
+    <Position X="25.75" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>UAAAAAAAAiAAgAAAACAAAAAAAEAAAQAAAAQBAAAAAIA=</HashCode>
+      <FileName>Assets\Scripts\Ammo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraFollow">
+    <Position X="28" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAoAAAiAAAAAAAAAAAAAAAAAEAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\CameraFollow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chest">
+    <Position X="21.75" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AEQABIAAACAAgQIAAAAAIAAAAAQAAAAAAQAAACAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Chest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enemy">
+    <Position X="30" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAIACEAgAIgAAAAIAAAAAAEAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Enemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyController">
+    <Position X="32.25" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACABIQAEAAAAAAAAAEAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\EnemyController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemySpawn">
+    <Position X="34.5" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AEQAAAAABCAAAAAAAQAgAAAQAAAQAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\EnemySpawn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FpsCounter">
+    <Position X="25.75" Y="9.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAEAAAAgAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\FpsCounter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUIManager">
+    <Position X="32.5" Y="14" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>EIQgAABEAAAAAAIAAEAAAAAQACAAABAAAAIEAogAAAA=</HashCode>
+      <FileName>Assets\Scripts\GUIManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GunControl">
+    <Position X="30" Y="9.5" Width="2" />
+    <NestedTypes>
+      <Enum Name="GunControl.States" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\GunControl.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>BICAAABAAiABIQIABABgKAgAAAAAQQAAAAAABAAgAAA=</HashCode>
+      <FileName>Assets\Scripts\GunControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Interactable">
+    <Position X="22.5" Y="2.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAgAAAAAAAAAEAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Assets\Scripts\Interactable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Item">
+    <Position X="32.25" Y="9" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainMenu">
+    <Position X="34.5" Y="9.25" Width="1.75" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true">
+      <Path>
+        <Point X="29.25" Y="5.358" />
+        <Point X="29.25" Y="5.558" />
+        <Point X="34.411" Y="5.558" />
+        <Point X="34.411" Y="9.058" />
+        <Point X="35.375" Y="9.058" />
+        <Point X="35.375" Y="9.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAIAAABAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Assets\Scripts\MainMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player">
+    <Position X="25.5" Y="12" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQEAAAIACEQAAIgBAQAAAAABFAEAACAAAIAgCAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerController">
+    <Position X="28" Y="8.75" Width="1.75" />
+    <NestedTypes>
+      <Enum Name="PlayerController.States" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\PlayerController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAgAAIAAEAAAAIAAAAAIAAQAEAAAABAAgAEA=</HashCode>
+      <FileName>Assets\Scripts\PlayerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerData">
+    <Position X="22.75" Y="16.5" Width="1.5" />
+    <InheritanceLine Type="System.Object" FixedToPoint="true">
+      <Path>
+        <Point X="23.375" Y="12.45" />
+        <Point X="23.375" Y="12.8" />
+        <Point X="23.5" Y="12.8" />
+        <Point X="23.5" Y="16.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAEAg=</HashCode>
+      <FileName>Assets\Scripts\PlayerData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Room">
+    <Position X="32.5" Y="11.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAIABAAAAAAAAAAIAJAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Assets\Scripts\Room.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoomClosing">
+    <Position X="34.5" Y="12" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAIACAACAAIAAAAIAJAAABAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Assets\Scripts\RoomClosing.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoomData">
+    <Position X="23.75" Y="13" Width="1.5" />
+    <InheritanceLine Type="System.Object" FixedToPoint="true">
+      <Path>
+        <Point X="23.375" Y="12.45" />
+        <Point X="23.375" Y="12.8" />
+        <Point X="24.5" Y="12.8" />
+        <Point X="24.5" Y="13" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAIAJIAAACAAAAAAAAAAAACAAACA=</HashCode>
+      <FileName>Assets\Scripts\RoomData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoomPlacer">
+    <Position X="27.5" Y="13.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAQQQABACAQEAAABAAgACBAAAQCAAEAAQAARgACAAA=</HashCode>
+      <FileName>Assets\Scripts\RoomPlacer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SaveSystem">
+    <Position X="32.5" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAEAAAAAAAAAAAAAAAAAAAAAEAAEAAgAAAAAIE=</HashCode>
+      <FileName>Assets\Scripts\SaveSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SceneTransition">
+    <Position X="30" Y="15.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>BAAEAAAAAiAAAAgAAAAEIAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\SceneTransition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Settings">
+    <Position X="34.5" Y="15.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAgIAAACABAAIAAAAAAgACAAAAAACAAAAUAAAAAAg=</HashCode>
+      <FileName>Assets\Scripts\Settings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopItemSpawn">
+    <Position X="23.75" Y="5.75" Width="1.75" />
+    <NestedTypes>
+      <Enum Name="ShopItemSpawn.States" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\ShopItemSpawn.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>BACBAAACAiAAKAIAAAAAAAAAAAAAAAAAAAACBAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ShopItemSpawn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeaponSwitch">
+    <Position X="25.25" Y="17.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAQACAgAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\WeaponSwitch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorldData">
+    <Position X="21.75" Y="13" Width="1.5" />
+    <InheritanceLine Type="System.Object" FixedToPoint="true">
+      <Path>
+        <Point X="23.375" Y="12.45" />
+        <Point X="23.375" Y="12.8" />
+        <Point X="22.5" Y="12.8" />
+        <Point X="22.5" Y="13" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAIAJIAAACAAAAAAAAAAAACAAACA=</HashCode>
+      <FileName>Assets\Scripts\WorldData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityEngine.MonoBehaviour">
+    <Position X="27.75" Y="1.75" Width="3" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Object">
+    <Position X="22.5" Y="10" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

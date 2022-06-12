@@ -2516,7 +2516,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c9877338cfb44f8863fe105da45d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponSwitch: 0
 --- !u!1 &606370212
 GameObject:
   m_ObjectHideFlags: 0
@@ -3096,7 +3095,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 80.7, y: 83.5}
+  m_AnchoredPosition: {x: 25.400024, y: 17.900024}
   m_SizeDelta: {x: 293.75, y: 44.5}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &721869610
@@ -3120,7 +3119,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: ff964b739e7356b439ca64c67194d8ca, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
