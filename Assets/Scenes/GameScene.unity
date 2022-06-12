@@ -993,10 +993,8 @@ GameObject:
   - component: {fileID: 261145559}
   - component: {fileID: 261145556}
   - component: {fileID: 261145560}
-  - component: {fileID: 261145557}
-  - component: {fileID: 261145562}
-  - component: {fileID: 261145563}
   - component: {fileID: 261145564}
+  - component: {fileID: 261145557}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -1043,8 +1041,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &261145557
-CapsuleCollider2D:
+--- !u!60 &261145557
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1056,9 +1054,33 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.000000013924674, y: -0.3996038}
-  m_Size: {x: 0.7070421, y: 0.32688424}
-  m_Direction: 1
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.0012117624, y: 0.10720348}
+      - {x: -0.12626278, y: 0.064229965}
+      - {x: -0.18850386, y: -0.0572443}
+      - {x: -0.18791735, y: -0.08269262}
+      - {x: -0.18835652, y: -0.3106594}
+      - {x: -0.26847863, y: -0.35633898}
+      - {x: -0.2698915, y: -0.43757105}
+      - {x: -0.2089454, y: -0.5000553}
+      - {x: 0.20768511, y: -0.5}
+      - {x: 0.26794696, y: -0.44391346}
+      - {x: 0.26641637, y: -0.34802198}
+      - {x: 0.1885668, y: -0.31315947}
+      - {x: 0.18870074, y: -0.06777191}
+      - {x: 0.13813108, y: 0.036665916}
+      - {x: 0.12475163, y: 0.062876225}
 --- !u!212 &261145558
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1122,8 +1144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08763f7b770e5d3409f7cc966d1dacdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GUI: {fileID: 1624679363}
   deathScreen: {fileID: 997585820}
+  GUI: {fileID: 1624679363}
 --- !u!95 &261145560
 Animator:
   serializedVersion: 3
@@ -1155,86 +1177,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6762be6cb23a494a8f849b79ac010ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
   lamp: {fileID: 1519520835}
-  light: {fileID: 318504743}
   lightSpeed: 13
---- !u!114 &261145562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261145554}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_LightType: 1
-  m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.583
-  m_Color: {r: 0.098039225, g: 0.098039225, b: 0.098039225, a: 1}
-  m_Intensity: 6.49
-  m_LightVolumeOpacity: 0.1
-  m_ApplyToSortingLayers: 00000000
-  m_LightCookieSprite: {fileID: 0}
-  m_UseNormalMap: 0
-  m_LightOrder: 1
-  m_AlphaBlendOnOverlap: 1
-  m_ShadowIntensity: 0
-  m_ShadowVolumeIntensity: 0
-  m_PointLightInnerAngle: 360
-  m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0.15
-  m_PointLightOuterRadius: 0.3
-  m_PointLightDistance: 3
-  m_PointLightQuality: 1
-  m_ShapeLightParametricSides: 5
-  m_ShapeLightParametricAngleOffset: 0
-  m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 0.19
-  m_ShapeLightFalloffOffset: {x: 0, y: 0}
-  m_ShapePath:
-  - {x: -0.1248787, y: -0.5, z: 0}
-  - {x: 0.12487867, y: -0.5, z: 0}
-  - {x: 0.18737812, y: -0.4376217, z: 0}
-  - {x: 0.18737805, y: -0.31062576, z: 0}
-  - {x: 0.3751219, y: -0.12512088, z: 0}
-  - {x: 0.3751219, y: 0.3748781, z: 0}
-  - {x: 0.25, y: 0.5, z: 0}
-  - {x: -0.25, y: 0.5, z: 0}
-  - {x: -0.31262144, y: 0.43737862, z: 0}
-  - {x: -0.37512192, y: 0.37487814, z: 0}
-  - {x: -0.3751219, y: -0.1251209, z: 0}
-  - {x: -0.187378, y: -0.312, z: 0}
-  - {x: -0.1873781, y: -0.4376217, z: 0}
---- !u!61 &261145563
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261145554}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0028059483, y: -0.20870018}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.3739581, y: 0.58259964}
-  m_EdgeRadius: 0
+  speed: 5
+  light: {fileID: 318504743}
 --- !u!82 &261145564
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2394,8 +2340,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 261145555}
-  playerTag: 
   movingSpeed: 10
+  playerTag: 
 --- !u!1 &596545259
 GameObject:
   m_ObjectHideFlags: 0
@@ -3144,8 +3090,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba515bce7b3114e66b9cef0742885bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fpsText: {fileID: 721869610}
   _hudRefreshRate: 1
+  _fpsText: {fileID: 721869610}
 --- !u!222 &721869612
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5877,13 +5823,13 @@ MonoBehaviour:
   pauseScreen: {fileID: 596545259}
   deathScreen: {fileID: 997585820}
   winScreen: {fileID: 1252681696}
-  moneyNumber: {fileID: 663702592}
   HUD:
   - {fileID: 1010469583}
   - {fileID: 660435758}
   - {fileID: 103712171}
   - {fileID: 2107401151}
   - {fileID: 456450085}
+  moneyNumber: {fileID: 663702592}
   slider: {fileID: 1010469586}
 --- !u!114 &1624679365
 MonoBehaviour:
@@ -5897,11 +5843,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d8bc5109a57e34dadb31d790f78dda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: 4698351d6a75588468e607d6c38b35c8, type: 2}
-  slider: {fileID: 430614197}
   settingsScreen: {fileID: 666900088}
   previousScreen: {fileID: 596545259}
+  audioMixer: {fileID: 24100000, guid: 4698351d6a75588468e607d6c38b35c8, type: 2}
   dropdown: {fileID: 767121838}
+  slider: {fileID: 430614197}
   toggle: {fileID: 1308895736}
 --- !u!1 &1641816442 stripped
 GameObject:

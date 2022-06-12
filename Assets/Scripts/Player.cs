@@ -78,8 +78,7 @@ public class Player : MonoBehaviour
     {
         SaveSystem.DeleteData();
         isDead = true;
-        GetComponent<BoxCollider2D>().enabled = false;
-        GetComponent<CapsuleCollider2D>().enabled = false;
+        GetComponent<PolygonCollider2D>().enabled = false;
         deathScreen.SetActive(true);
         Time.timeScale = 0;
     }

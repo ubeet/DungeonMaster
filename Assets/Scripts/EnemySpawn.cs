@@ -15,15 +15,19 @@ public class EnemySpawn : MonoBehaviour
     private void Start()
     {
         isBigRoom = transform.parent.parent.CompareTag("BiggestRoom");
-        Invoke(nameof(SpawnEnemies), 1);
+        //Invoke(nameof(SpawnEnemies), 1);
     }
-    
+
     internal void AIEnable()
     {
+        SpawnEnemies();
         for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).GetChild(0).gameObject.SetActive(true);
             transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<Enemy>().AI = true;
+        }
     }
-    
+
     internal void AIDisable()
     {
         for (int i = 0; i < transform.childCount; i++)

@@ -41,9 +41,9 @@ public class RoomClosing : MonoBehaviour
             if(wallE != null) doorE.SetActive(true);
             if(wallS != null) doorS.SetActive(true);
             if(wallW != null) doorW.SetActive(true);
-            
-            spawn.IconEnable();
+            triggers.SetActive(false);
             spawn.AIEnable();
+            spawn.IconEnable();
         }
     }
 
